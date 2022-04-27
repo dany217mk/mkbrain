@@ -1,0 +1,42 @@
+<main id="main">
+      <div class="clm">
+        <div class="menu-friend" id="menu-friend">
+          <?= $friendModel->existViewImg($id_chat); ?>
+          <p><?= $user_chat['user_name'];?> <?= $user_chat['user_surname']; ?></p>
+          <a href="../view/<?=  $user_chat['user_id']; ?>">Смотерть профиль</a>
+        </div>
+        <div>
+        <div class="loading-icon" id="loading-icon">
+          <img src="../assets/img/preload.gif" alt="">
+        </div>
+        <div class="header">
+          <a href="../im" class="back-icon"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Назад</span></a>
+          <div class="details">
+          <span><a href="../view/<?= $user_chat['user_id']; ?>"><?= $user_chat['user_name']. " " . $user_chat['user_surname'] ?></a></span>
+          <p></p>
+          </div>
+          <a href="../view/<?= $user_chat['user_id']; ?>">
+          <?= $friendModel->existViewImg($id_chat); ?>
+        </a>
+        </div>
+        <div class="chat-box">
+
+        </div>
+        <form action="#" class="typing-area">
+        <input type="text" name="message" class="input-msg" placeholder="Type a message here..." autocomplete="off">
+        <button class="btn-msg"n><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+      </form>
+    </div>
+      </div>
+      <div class="clm list-aside">
+        <ul>
+          <li><a href="../im">Личные сообщения</a></li>
+          <!-- <li><a href="../requests">Сообщения в группах</a></li>-->
+        <!--  <li><a href="../bot">Бот</a></li> -->
+          <li><span><?= $user_chat['user_name']; ?> <?= $user_chat['user_surname']; ?></span></li>
+        </ul>
+      </div>
+    </main>
+<script>
+       const userChatId = <?= $id_chat; ?>;
+</script>

@@ -1,0 +1,333 @@
+@media (max-width: 800px) {
+  main{
+    flex-direction: column-reverse;
+  }
+  main > div:nth-child(1) {
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #form-friend.sticky {
+    width: 80%;
+    left: 5px;
+  }
+  .body > div {
+    padding-left: 5px;
+  }
+  .no-friend > a {
+    width: 80%;
+  }
+  }body{
+  padding-bottom: 10px;
+  min-height: auto;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+}
+main > div:nth-child(1){
+  width: 78%;
+  border-radius: 20px 20px 0 0;
+  overflow-x: scroll;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+main > div:nth-child(2){
+  width: 13%;
+  position: fixed;
+  right: 1%;
+}
+.header{
+  border-bottom: 1px solid #dce1e6;
+  background: var(--hover_bg);
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header ul{
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  align-items: center;
+  margin: 0;
+}
+.header ul li a{
+  padding: 18px 6px 20px;
+  color: #939393;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid transparent;
+  margin: 0 4px -1px;
+  font-size: 14px;
+}
+.header ul li a.active{
+  border-color: var(--btn);
+  color:  #000000;
+}
+.header ul li a span{
+  color: #939393;
+}
+.header ul li{
+  margin-left: 10px;
+}
+.header > span{
+  text-decoration: none;
+  color: #2a5885;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.header > span:hover{
+  text-decoration: underline;
+}
+.form{
+  border-bottom: 1px solid #00000020;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px 15px 26px;
+  position: sticky;
+}
+.form i {
+    color: gray;
+}
+.form input{
+  background: #fff;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  border: none;
+}
+#form-friend.sticky{
+  background: #fff;
+  position:  fixed;
+  top: 54px;
+  width: 40%;
+  border: 1px solid #00000020;
+  border-radius:  20px;
+  z-index: 1000;
+}
+.body{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 60px;
+  padding-bottom: 40px;
+}
+.body button{
+  background: #fff;
+  border: none;
+  font-size: 20px;
+  color: #b8b9baf0;
+  transition: all 0.3s ease;
+}
+.body button:hover{
+  color: #5684ba;
+}
+.body > div{
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  margin-top: 20px;
+}
+.body > div img{
+  height: 160px;
+  width: 160px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #fff;
+    border: 1px solid #ccc;
+}
+.body > div img:hover{
+  filter: brightness(.94);
+  transition: all .5s ease;
+}
+.body > div > div > div:nth-child(1){
+  display: flex;
+  flex-direction: column;
+}
+.body > div > div > div:nth-child(1) a:first-child{
+    color: #2a5885;
+    font-weight: bold;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.body > div > div > div:nth-child(1) a:last-child{
+  color: #656565;
+  font-size: 13px;
+}
+.body > div button{
+  padding: 7px;
+}
+.body > div > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.no-friend{
+  text-align: center;
+  display: block !important;
+  width: 540px !important;
+}
+.no-friend > a{
+  display: block;
+  width: 350px;
+  margin: 10px auto;
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: #7db851;
+  border-radius: 4px;
+}
+.empty{
+  display: block !important;
+  text-align: center;
+  width: 540px !important;
+}
+main > div:nth-child(3) {
+    width: 13%;
+    position: fixed;
+    right: 1%;
+    top: 180px;
+    /*bottom: 10px;*/
+    overflow: hidden;
+}
+main > div:nth-child(3).active {
+  bottom: 10px;
+}
+.header-setting{
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-bottom: 1px solid #dce1e6;
+  background: #fafbfc;
+}
+.header-setting.active i::before{
+  content: "\f107";
+}
+.header-setting:hover{
+  background: #eee;
+}
+.body-setting{
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 30px;
+  display: none;
+}
+.body-setting.active{
+  display: block;
+}
+.body-setting > div{
+  display: flex;
+  flex-direction: column;
+  padding: .5rem 1rem;
+}
+.body-setting > div > span{
+  margin: 6px 0 0 0;
+  padding: 0 0 13px;
+  font-weight: 700;
+  color: #626d7a;
+}
+.labelRad{
+  padding: 5px;
+}
+.labelRad > span{
+  padding-left: 5px;
+}
+.body-setting select{
+  background-color: #fff;
+  border: 1px solid #ccd0d5;
+  font-weight: normal;
+  padding: 11px;
+  width: 100%;
+  position: relative;
+}
+.body-setting div:last-child label{
+  padding-bottom: 50px;
+}
+#clearFilter{
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+#clearFilter.active{
+  display: flex;
+}
+#clearFilter span{
+  display: block;
+  padding: .5rem 1rem;
+  color: #434343;
+  user-select: none;
+  border: 1px solid #000;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 20px;
+  border-radius: 30px;
+}
+#clearFilter span:hover{
+  background: #eee;
+}
+@media (max-width: 800px) {
+  main{
+    flex-direction: column-reverse;
+  }
+  main > div:nth-child(1) {
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #form-friend.sticky {
+    width: 80%;
+    left: 5px;
+  }
+  .body > div {
+    padding-left: 5px;
+  }
+  .no-friend > a {
+    width: 80%;
+  }
+  main > div:nth-child(3) {
+    display: none;
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .empty {
+    width: 100% !important;
+  }
+  #search_width{
+    display: none;
+  }
+  .body {
+    grid-template-columns: 1fr 1fr;
+    padding-left: 0px;
+  }
+  .no-friend{
+    width: 100% !important;
+  }
+}

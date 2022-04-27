@@ -1,0 +1,30 @@
+<div class="loading-icon" id="loading-icon">
+      <img src="<?=IMG?>/preload.gif" alt="">
+    </div>
+<main id="main">
+      <div class="clm">
+        <div class="list-friends">
+          <div class="header">
+            <ul>
+              <li><a href="#" class="active">Мои сообщения <span id="num"><?= $total; ?><span></span></span></a></li>
+            </ul>
+          </div>
+          <div class="form" id="form-friend">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" id="search" name="search-friend" placeholder="Поиск" class="input">
+          </div>
+          <div class="body" id="list">
+          </div>
+        </div>
+    </div>
+    <div class="clm list-aside">
+      <ul>
+        <li><span>Личные сообщения</span></li>
+      <!--  <li><a href="../requests">Сообщения в группах</a></li> -->
+      <!--  <li><a href="../bot">Бот</a></li> -->
+      </ul>
+    </div>
+    </main>
+    <script>
+  		let total = <?= $total; ?>;
+      </script>

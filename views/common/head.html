@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+   <meta charset="utf-8">
+    <link rel="stylesheet" href="<?=CSS?>/all.css">
+    <link href="<?=LIBS?>/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?=IMG?>/logo_min.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $title;?></title>
+    <? foreach ($styles as $style): ?>
+        <link rel="stylesheet" href="<?= $style; ?>">
+    <? endforeach; ?>
+  </head>
+  <body>

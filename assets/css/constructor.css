@@ -1,0 +1,542 @@
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+}
+main > div:nth-child(1){
+  width: 95%;
+  overflow-x: scroll;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+
+.linkBack{
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+}
+.linkBack.sticky{
+  top: -55px;
+}
+.linkBack a {
+    padding: 4px 8px;
+    color: #434343;
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 14px 20px 15px 6px;
+    color: #818c99;
+    font-size: 14px;
+    height: 19px;
+}
+.linkBack a i{
+ margin-right: 10px;
+}
+.linkBack a:hover{
+  box-shadow: 0 0 0 6px #f3f1ed;
+  background: #f3f1ed;
+}
+main ul, main ol{
+  list-style: none;
+}
+main h2,main h3 ,main h4{
+  margin: 20px 10px;
+  font-size: 20px;
+  color: #343434;
+  font-weight: 500;
+}
+main{
+  font-family: tfutura,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  margin-bottom: 20px;
+}
+main #block1, main #block2{
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 15px;
+  display: none;
+  box-shadow: 1px 2px 12px 0 rgba(53,0,132,.12);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+main #block1.active, main #block2.active{
+  display: block;
+}
+main #block3{
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: none;
+}
+main #block3.active{
+  display: flex;
+  align-items: center;
+}
+main #block3 > div:first-child{
+  width: 85%;
+  box-shadow: 1px 2px 12px 0 rgba(53,0,132,.12);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+    min-height: 50vh;
+}
+main #block3 > div:last-child{
+  width: 13%;
+  position: fixed;
+  right: 25px;
+  top: 120px;
+  background: #f0f2ff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+  padding-bottom: 20px;
+}
+.constructor-menu > span {
+    padding: 10px;
+    display: block;
+}
+.constructor-menu select {
+  display: block;
+    border-radius: .25rem;
+    width: 90%;
+    margin: 4px auto;
+    padding: .375rem .75rem;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+
+}
+.inst{
+  width: 95%;
+}
+mark{
+  padding: .05em;
+ background-color: #fcf8e3;
+}
+main .date{
+  float: right;
+  margin: 10px;
+  background: #fcf8e3;
+}
+.linkNav{
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.linkNav ul{
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+.linkNav ul li{
+  margin-bottom: -1px;
+}
+.linkNav ul li button{
+  background: #fff;
+  outline: none;
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-color: #fff #fff #dee2e6;
+  color: #007bff;
+  display: block;
+  padding: .5rem 1rem;
+}
+.linkNav ul li button:hover{
+  border-color: #e9ecef #e9ecef #dee2e6;
+  color: #0056b3;
+}
+.linkNav ul li button.active{
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+
+
+#attempts-block, #time-block{
+  display: none;
+}
+#attempts-block.active{
+  display: block;
+}
+#time-block.active{
+  display: flex;
+}
+
+#addBlock{
+  width: 80%;
+  background: #ccc;
+  border: none;
+  position: relative;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  padding: 1.2rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+#addBlock:hover{
+  opacity: .8;
+}
+.block > div > div{
+  margin: 10px 5px;
+}
+.block > div > div  label{
+  display: block;
+  color: #2f6473;
+  font-weight: 500;
+  font-size: 16px;
+}
+.block > div > div textarea{
+  resize: none;
+  width: 520px;
+  height: 120px;
+  border-radius: .25rem;
+  margin-top: 4px;
+  padding: .375rem .75rem;
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+  outline: none;
+}
+.alertBlockText {
+    display: flex;
+}
+.len {
+    margin: 5px 10px;
+}
+#block2 .input{
+  padding: 5px 24px 6px 9px;
+  border-radius: 3px;
+  border: 1px solid #dce1e6;
+  width: 300px;
+  margin-top: 4px;
+  outline: none;
+  color: #495057;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+.error {
+    font-size: 14px;
+    color: red;
+    line-height: 16px;
+    padding-bottom: 10px;
+    margin: 5px 0;
+    text-shadow: 1px 1px 0 rgb(255 255 255);
+}
+#block2 select{
+  background-color: #fff;
+  border: 1px solid #ccd0d5;
+  font-weight: normal;
+  padding: 11px;
+  width: 300px;
+  position: relative;
+}
+#time-block label{
+  display: block;
+  color: #2f6473;
+  font-weight: 500;
+  font-size: 16px;
+}
+#time-block select{
+  margin-bottom: 10px;
+}
+.labelCheckBox{
+  display: block;
+  margin: 20px 0;
+}
+.input_wrapper {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.input_file {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.input_file-icon-wrapper {
+  height: 60px;
+  width: 60px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #fff;
+}
+
+.input_file-button-text {
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.input_file-button {
+  width: 100%;
+  max-width: 290px;
+  height: 60px;
+  background: var(--btn);
+  color: #fff !important;
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#time-block > div{
+  margin-right: 15px;
+}
+#time-block > div select{
+  width: 150px;
+}
+#continue{
+  display: block;
+  background: #3e8ef7;
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+  color: #fff;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease;
+}
+#continue:hover{
+  opacity: .8;
+}
+#block2 > h1{
+  text-align: center;
+    margin: 40px 0;
+    font-size: 40px;
+    word-break: break-word;
+    color: #343434;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.block > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+#ques-blocks > div{
+  color: #2f6473;
+  background-color: #e9e9e9;
+  width: 70%;
+  transition: all .5s ease;
+  border-color: #000000;
+  padding: 15px;
+  margin: 10px;
+  position: relative;
+}
+#ques-blocks > div .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: transparent;
+    border: 1px solid #eee;
+    border-radius: 100px;
+    padding: 4px;
+    font-size: 22px;
+    color: red;
+}
+#ques-blocks > div label {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+}
+#ques-blocks > div .text{
+  width: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: .375rem .75rem;
+    font-size: 0.93rem;
+    color: #495057;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    transition: all 0.4s ease;
+}
+#ques-blocks > div textarea{
+  max-width: 90%;
+  max-height: 300px;
+  min-width: 40%;
+  min-height: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .375rem .75rem;
+  font-size: 0.93rem;
+  color: #495057;
+  margin: 10px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  transition: all 0.4s ease;
+}
+.labelRad > input[type="text"], .labelCheck > input[type="text"] {
+    width: 25%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: .375rem .75rem;
+    font-size: 0.93rem;
+    color: #495057;
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    transition: all 0.4s ease;
+}
+.addOpt, .addOpt {
+    background: transparent;
+    border: 0;
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: .5rem 1rem;
+}
+#btn_safe{
+  display: block;
+  background: #3e8ef7;
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+  color: #fff;
+  outline: none;
+  border: none;
+  transition: all 0.3s ease;
+}
+#btn_safe:hover{
+  opacity: .8;
+}
+.img-block{
+  display: none;
+}
+#layer_bg {
+  position: fixed;
+  display: none;
+  top: 0;
+  width: 100%;
+  z-index: 1006;
+  overflow: hidden;
+  left: 0;
+  background: #ffffff;
+  height: 100vh;
+  opacity: .8;
+}
+#layer_bg.active {
+  display: block;
+}
+.cons-loading{
+  position: fixed;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 1007;
+}
+.cons-loading.active{
+  display: flex;
+}
+.cons-loading img{
+  width: 100px;
+}
+.cons-loading div{
+  margin-top: 10px;
+}
+.rounded {
+  width: 80%;
+    margin-left: 40px;
+counter-reset: li;
+list-style: none;
+font: 14px "Trebuchet MS", "Lucida Sans";
+padding: 0;
+text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.rounded span {
+position: relative;
+display: block;
+padding: .4em .4em .4em 2em;
+margin: .5em 0;
+background: #DAD2CA;
+color: #444;
+text-decoration: none;
+border-radius: .3em;
+transition: .3s ease-out;
+}
+.rounded span img {
+  width: 95%;
+}
+.rounded span:hover {background: #E9E4E0;}
+.rounded span:hover:before {transform: rotate(360deg);}
+.rounded span:before {
+content: counter(li);
+counter-increment: li;
+position: absolute;
+left: -1.3em;
+top: 50%;
+margin-top: -1.3em;
+background: #8FD4C1;
+height: 2em;
+width: 2em;
+line-height: 2em;
+border: .3em solid white;
+text-align: center;
+font-weight: bold;
+border-radius: 2em;
+transition: all .3s ease-out;
+}
+@media (max-width: 800px) {
+.block > div {
+  display: block;
+}
+#block2 .input, .block > div > div textarea, #block2 select {
+  width: 90%;
+}
+#time-block.active {
+    display: block;
+}
+main #block3 > div:last-child {
+  width: 100%;
+  position: static;
+  margin-bottom: 10px;
+}
+main #block3.active {
+  flex-direction: column-reverse;
+}
+#addBlock {
+    width: 100%;
+  }
+  #ques-blocks > div {
+    width: 89%;
+  }
+  #ques-blocks > div .text {
+    width: 80%;
+  }
+  .labelRad > input[type="text"], .labelCheck > input[type="text"] {
+    width: 55%;
+  }
+  #ques-blocks > div textarea {
+    max-width: 85%;
+  }
+}

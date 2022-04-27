@@ -1,0 +1,56 @@
+<main id="main">
+        <div class="clm">
+          <div class="linkBack">
+            <a href="../tests"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="main_testview">
+            <div class="view_img">
+              <? if (is_null($view['test_img']) || $view['test_img'] == ""): ?>
+                <img src="../assets/img/testImg.png">
+              <? else: ?>
+                <img src="../assets/img/testImg.png">
+              <?php endif; ?>
+            </div>
+            <div>
+              <div class="view_info">
+                <div>
+                  <h3><?= $view['test_name']; ?></h3>
+                </div>
+                <div class="test-info">
+                <div>
+                  <span id="btn_test_menu">Основная информация <i  class="fa fa-chevron-right"></i></span>
+                  <ul id="block_test">
+                    <li><span>Предмет:</span><span><?= $view['subject_name']; ?></span></li>
+                    <li><span>Код теста:</span><span><?= $view['test_code']; ?></span></li>
+                    <li><span>Метод оценивания:</span><span><?= $view['method_name']; ?></span></li>
+                    <li><span>Автор теста:</span><span><?= $view['user_name'] . ' ' . $view['user_surname']; ?></span></li>
+                    <li><span>Кол-во вопросов:</span><span><?= $view['test_cnt']; ?></span></li>
+                    <li><span>Время на решение теста:</span><span><?= $test_time; ?></span></li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+
+              <!--<div class="my_info">
+                <div>
+                  <span>Мои попытки</span>
+                  <ul>
+                      <li><span></span></li>
+                  </ul>
+                </div>
+              </div>-->
+            </div>
+          </div>
+          <? if ($view['test_attempts'] == 0 || $numAtt < $view['test_attempts']): ?>
+          <a href="../test/<?= $view['test_id']; ?>">Решить тест</a>
+        <? else: ?>
+        <span style='display: block; text-align: center; color: red;'>У вас закончились попытки</span>
+          <?php endif; ?>
+      </div>
+      <div class="clm list-aside">
+        <ul>
+          <li><a href="../tests">Все  тесты</a></li>
+        </ul>
+      </div>
+    </main>

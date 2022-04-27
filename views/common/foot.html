@@ -1,0 +1,11 @@
+<script type="text/javascript" src="<?=JS?>/constants.js"></script>
+<script type="text/javascript" src="<?=JS?>/cookie.js"></script>
+<script type="text/javascript" src="<?=JS?>/main.js"></script>
+<script type="text/javascript" src="<?=JS?>/notification.js"></script>
+<? if (isset($scripts)): ?>
+        <? foreach ($scripts as $script): ?>
+        <script src="<?= $script; ?>"></script>
+        <? endforeach; ?>
+    <? endif; ?>
+      </body>
+</html>

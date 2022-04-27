@@ -1,0 +1,265 @@
+<div id="cursor"></div>
+<header id="header">
+ <div>
+    <div>
+      <a href="<?= FULL_SITE_ROOT; ?>"><img src="./assets/img/logo.png"> <b>MKBrain</b></a>
+    </div>
+    <? if ($this->userModel->isAuth()): ?>
+    <div>
+      <a href="logout">Выйти</a>
+      <a href="my">Личный кабинет</a>
+    </div>
+     <? else: ?>
+      <div>
+        <a href="auth"><i class="fas fa-sign-in-alt"></i> Вход / Регистрация</a>
+      </div>
+      <? endif; ?>
+  </div>
+</header>
+<main id="main" class="main home-section">
+ <section id="banner">
+  <div class="container_banner">
+   <div class="row_banner">
+    <div class="col-md-6_banner">
+     <p class="promo-title">Обучайтесь вместе с MKBrain</p>
+      <div class="desc">
+       <p class="desc_p">Бесплатный многофункциональный сервис для проведения дистанционного обучения<a class="main_a" href="auth">Войти или создать аккаунт</a></p>
+       <ul>
+         <li><a href="#spec">Специализации</a></li>
+         <li><a href="#possibility">Функциональность</a></li>
+         <li><a href="#review">Отзывы</a></li>
+         <li><a href="#services">Особенности</a></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+  </div>
+ </section>
+  <section id="spec">
+            <h1 class="title">Почему именно мы ?</h1>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <p>Мы разрабатываем алгоритмы адаптивного обучения, помогаем учителям, облегчаем процесс связи между школой и учеником. Наша цель - сделать образование открытым и удобным.</p>
+                </div>
+                <div class="col-md-6 directions">
+                  <div>
+                    Поддержка учителей
+                  </div>
+                  <div>
+                    Технологии для образования
+                  </div>
+                  <div>
+                    Удобная связь между учителем и учеником
+                  </div>
+                  <div>
+                    Наука и просвещение
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+      <section id="team" class="about_teem">
+        <div class="about">
+          <div class="img-text">
+              <p></p>
+          </div>
+          <div class="team">
+            <h1>Создаём образование будущего вместе</h1>
+            <p>Мир вокруг постоянно меняется: появляются новые профессии
+              и забываются те, которые были востребованы ещё несколько лет назад. Учителю важно постоянно учиться и смело открываться новому.</p>
+              <p>И цифровое образование позволяет осовременить учебный процесс и найти общий язык между людьми разных поколений.</p>
+            <a href="auth" class="learn">Сделайте шаг в будущее!</a>
+          </div>
+        </div>
+    </section>
+          <section id="possibility">
+            <h1>Учиться</h1>
+            <p>Образование как тип мышления</p>
+            <div class="container">
+              <div class="row">
+                <div>
+                  <a href="auth">
+                    <div> <h4>Онлайн-курсы</h4> </div>
+                    <div> <p>Каталог онлайн-тестов, созданных учебными заведениями, компаниями и индивидуальными авторами.</p> </div>
+                    <span>Перейти <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+                <div>
+                  <a href="auth">
+                    <div> <h4>Мобильные приложения</h4> </div>
+                    <div> <p>Мобильные приложения с удобным интрефейсом и возможность. синхронизацией прогресса.</p> </div>
+                    <span>Перейти <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+                <div>
+                  <a href="auth">
+                    <div> <h4>Среда единомышленников</h4> </div>
+                    <div> <p>Общение, конкурсы, акции, встречи с преподавателями, приглашения на стажировки.</p> </div>
+                    <span>Перейти <i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+      <section id="about">
+      <div class="container">
+        <h1 class="title text-center">ПОЧЕМУ выбирют НАС?</h1>
+        <div class="row">
+          <div class="col-md-6 about-us">
+            <p class="about-title">Мы помогаем учителям</p>
+            <ul>
+              <li><span>Найти коллег-единомышленников</span></li>
+              <li><span>Разобраться в цифровых технологиях</span></li>
+              <li><span>Внедрить в обучение новые подходы</span></li>
+              <li><span>Найти контакт с детьми и родителями</span></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img src="./assets/img/network.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="review">
+      <h1 class="title">ЧТО ГОВОРЯТ пользователи </h1>
+      <div id="slider" class="slider">
+      <div class="slider-item">
+        <div>
+          <div>
+            <div class="imgUser"> <img src="./assets/img/user1.png" alt=""></div> <div class="name-review">Никитин Иван Борисович</div>
+        </div>
+        <div class="review">
+          <h3>Отзыв</h3>
+          <span class="post">Должность: Пользователь образовательной платформы MKBrain </span>
+          <p class="txt">За то время пока я пользуюсь платформой MKBrain она существенно изменилась и, надо заметить, в лучшую сторону. На платформе представлены курсы по самым разным направлениям знаний таким как Математика, Информационные технологии, Программирование, Иностранные языки и т. д. Качество самих курсов часто зависит от организации, или преподавателя, которые их создают и поддерживают. Большая часть всё-таки довольно неплохие, хотя и предполагают самостоятельное изучение помимо предоставляемого материала в уроках. Основные преимущества платформы это доступность, бесплатность, удобная навигация, постоянно пополняющийся контент, возможность сдавать задания по программированию прямо на сайте с автоматизированной проверкой решений. Для тех кто делает свои шаги в освоении онлайн-образования рекомендую.</p>
+          <div class="mark">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="date">11.01.2021</p>
+        </div>
+      </div>
+      </div>
+      <div class="slider-item">
+        <div>
+          <div>
+            <div class="imgUser"> <img src="./assets/img/user2.png" alt=""></div> <div class="name-review">Москалец Данила Алексеевич</div>
+        </div>
+        <div class="review">
+          <h3>Отзыв</h3>
+          <span class="post">Должность: Основатель MKStudio ,Ученик Лицея №150</span>
+          <p class="txt">Я считаю, что проект CheckBrain очень актуален. В период технологического развития и перехода многих учебных заведений на дистанционный формат, веб сайт CheckBrain, готов предоставить множество онлайн курсов, а также связь между учителем и учеником, для того чтобы учащиеся могли спокойно заниматься дома, без всяких трудностей, чтобы достичь максимального результата, а также подтвердить свои знания. </p>
+          <div class="mark">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="date">11.01.2021</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="btns">
+    <button type="button" id="prev" disabled name="button">Предыдущий</button>
+    <button type="button" id="next" name="button">Следующий</button>
+  </div>
+  <div class="btns-item" id="btns-item">
+
+  </div>
+    </section>
+    <section id="purpose">
+      <h1 class="title">Наши Цели</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>Развивайтесь вместе с нами и добивайтесь успеха! Мы нацелены на предоставление вам лучших курсов, которые написаны понятным языком, разборчивы и продуктивны. Мы хотим поделиться с вами свежими темами и идеями.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="./assets/img/header_img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <h1 class="title">Особенности</h1>
+            <div class="row text-center">
+                <div class="col-md-4 service">
+                    <img src="./assets/img/service1.png" class="service-img" alt="">
+                    <h4>Адаптивность</h4>
+                    <p>Мы усоврешенстум наши проекты, стараемся, чтобы они были доступны и понятны. Мы следим за котнетом и за вашей безопасностью.</p>
+                </div>
+                <div class="col-md-4 service">
+                    <img src="./assets/img/service2.png" class="service-img" alt="">
+                    <h4>коммуникабельность</h4>
+                    <p>Мы общаемся с потенциальными пользователями, всегда исправляем свои ошибки и делаем все возможное, чтобы у  учеников и учителей не возникало трудностей при использовании платформы</p>
+                </div>
+                <div class="col-md-4 service">
+                    <img src="./assets/img/service3.png" class="service-img" alt="">
+                    <h4>Креативность</h4>
+                    <p>Все наши сотрудники обладают креативным мышлением.</p>
+                </div>
+            </div>
+            <a class="link link-primary" href="#footer">All Services</a>
+        </div>
+    </section>
+    <section id="project">
+      <div class="container">
+        <p>НАШИ ПАРТНЕРЫ</p>
+        <div class="icons">
+          <span><img src="./assets/img/logo6.png" alt=""></span>
+          <span><img src="./assets/img/logo7.png" alt=""></span>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
+      <div class="container-footer">
+        <div class="sec about">
+          <h2>About Us</h2>
+          <ul class="sci">
+            <li><a href="https://vk.com/dany_217mk"><i class="fab fa-vk" aria-hidden="true"></i></a></li>
+            <li><a href="https://t.me/dany_217mk"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
+            <li><a href="https://instagram.com/dany_217mk"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="privacy">Политика сайта</a></li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Shop</h2>
+          <ul>
+            <li><a href="./report/development">Премиум аккаунт</a></li>
+          </ul>
+        </div>
+        <div class="sec contact">
+          <h2>Contact us</h2>
+          <ul class="info">
+            <li>
+              <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              <p><a href="mailto:<?= ADMIN_EMAIL; ?>"><?= ADMIN_EMAIL; ?></a></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div class="copyrightText">
+      <p>Copyright @ 2021 MKBrain. All Rights Reserved.</p>
+    </div>
+    </main>
+
+    <script>
+      let boolHomePage = true;
+      let loading = 0;
+    </script>

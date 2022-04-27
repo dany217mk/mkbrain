@@ -1,0 +1,204 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+}
+main > div:nth-child(1){
+  width: 78%;
+  border-radius: 20px 20px 0 0;
+  overflow-x: scroll;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+main > div:nth-child(2){
+  width: 13%;
+  position: fixed;
+  right: 1%;
+}
+.header{
+  border-bottom: 1px solid #dce1e6;
+  background: var(--hover_bg);
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header ul{
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  align-items: center;
+  margin: 0;
+}
+.header ul li a{
+  padding: 18px 6px 20px;
+  color: #939393;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid transparent;
+  margin: 0 4px -1px;
+  font-size: 14px;
+}
+.header ul li a.active{
+  border-color: var(--btn);
+  color:  #000000;
+}
+.header ul li a span{
+  color: #939393;
+}
+.header ul li{
+  margin-left: 10px;
+}
+.header > a{
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: #5181b8;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+.form{
+  border-bottom: 1px solid #00000020;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px 15px 26px;
+  position: sticky;
+}
+.form i {
+    color: gray;
+}
+.form input{
+  background: #fff;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  border: none;
+}
+#form-friend.sticky{
+  background: #fff;
+  position:  fixed;
+  top: 52px;
+  width: 40%;
+  border: 1px solid #00000020;
+  border-radius:  20px;
+  z-index: 1000;
+}
+.body{
+  margin-top: 12px;
+}
+.body > a:last-child {
+    margin-bottom: 0px;
+    border-bottom: none;
+}
+.body > a {
+    padding: 10px 40px;
+    border-bottom-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+    justify-content: space-between;
+    transition: none;
+}
+.body > a:hover {
+  text-decoration: none;
+  background: #aeb7c21f;
+}
+.body > a .content {
+    display: flex;
+    align-items: center;
+}
+.body > a  .status-dot {
+    font-size: 12px;
+    color: #468669;
+    padding-left: 10px;
+}
+.body > a .status-dot.hide {
+    color: #fff;
+}
+.body > a .status-dot.hide-gray {
+    color: #ccc;
+}
+.body > a img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+.body > a .content .details {
+    color: #000;
+    margin-left: 20px;
+}
+.body > a .details span {
+    font-size: 13px;
+    font-weight: 700;
+    font-size: 13px;
+}
+.body > a p {
+    color: #67676a;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.no-friend{
+  text-align: center;
+  display: block !important;
+  width: 100%;
+}
+.no-friend > a{
+  display: block;
+  width: 350px;
+  margin: 10px auto;
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: var(--btn);
+  border-radius: 4px;
+}
+.empty{
+  display: block !important;
+  text-align: center;
+}
+.btn-delete{
+  background: #fff;
+  border: none;
+  position: absolute !important;
+  right: 40px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  main{
+    flex-direction: column-reverse;
+  }
+  main > div:nth-child(1) {
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #form-friend.sticky {
+    width: 80%;
+    left: 5px;
+  }
+  .body > a {
+    padding-left: 5px;
+  }
+}

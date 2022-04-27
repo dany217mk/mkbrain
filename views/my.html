@@ -1,0 +1,75 @@
+<main id="main">
+    <div class="clm">
+      <div class="user-img">
+        <div>
+          <?= $this->getUserModel()->existImg(); ?>
+          <div class="setting-img">
+            <ul>
+              <li><a href="settings">Настроить аватарку</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="settings">Редактировать</a>
+      </div>
+    </div>
+    <div class="clm">
+      <div class="info">
+        <div class="main-info">
+          <div>
+            <h3><?=$this->getUser()['user_name'];?> <?=$this->getUser()['user_surname'];?></h3>
+            <span сlass="status">Online</span>
+          </div>
+          <? if (trim($this->getUser()['user_describe']) == ""): ?>
+            <p class="choose" id="describe">Установить статус</p>
+          <? else: ?>
+            <p id="describe"><?=$this->getUser()['user_describe'];?></p>
+          <? endif; ?>
+           <div id="block-status">
+             <button type="button" id="close-status"><i class="fa fa-times" aria-hidden="true"></i></button>
+             <input type="text" value="<?= $this->getUser()['user_describe']; ?>" placeholder="" id="input-status">
+             <div>
+             <button type="button" id="btn-status">Сохранить</button>
+             <div class="len"> <span id="spanLen">0</span>/255</div>
+           </div>
+           </div>
+        </div>
+        <div class="add-info">
+          <div class="dob">
+            <span>День рождения:</span>
+            <span><?= $dob; ?></span>
+          </div>
+          <button id="show-details">Показать подробную информацию</button>
+          <div class="user-info" id="user-info">
+            <div>
+              <span>Основная информация</span>
+              <ul>
+                <li><span>Возраст:</span><span><?= floor( ( time() - strtotime($this->getUser()['user_dob']) ) / (60 * 60 * 24 * 365.25) ); ?></span></li>
+                <?php if (!is_null($this->getUser()['user_email']) && $this->getUser()['user_email'] != ""): ?>
+                      <li><span>E-mail:</span><span><?= $this->getUser()['user_email']; ?></span></li>
+                <?php endif; ?>
+                <li><span>Пол:</span><span><?= $this->getUser()['gender_name']; ?></span></li>
+                <li><span>Роль на сайте:</span><span><?= $this->getUser()['role_name']; ?></span></li>
+                <?php if (!is_null($this->getUser()['organization_name']) && $this->getUser()['organization_name'] != ""): ?>
+                   <li><span>Моя организация:</span><span><?= $this->getUser()['organization_name']; ?></span></li>
+                <?php endif; ?>
+                <li><span>ВК:</span><span><a href="https://vk.com/id<?= $this->getUser()['user_vk_id']; ?>" target="_blank"><?= $this->getUser()['user_vk_id']; ?></a></span></li>
+              </ul>
+              <a href="settings">Изменить информацию</a>
+            </div>
+          </div>
+      </div>
+      <div class="list-info">
+        <ul>
+          <li><a href="friends"><span><?= $totalFriend; ?></span><span>друзей</span></a></li>
+          <li><a href=""><span>0</span><span>тестов</span></a></li>
+          <li><a href=""><span>0</span><span>групп</span></a></li>
+          <li><a href=""><span>Ø</span><span>оценка</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-section">
+      <h3>Избранные тесты</h3>
+      <h2>Здесь пока-что ничего нет</h2>
+    </div>
+  </div>
+</main>

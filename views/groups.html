@@ -1,0 +1,29 @@
+<main id="main">
+      <div class="clm">
+        <div class="list-groups">
+          <div class="header">
+            <ul>
+              <li><a href="" class="active">Все группы <span id="num"><?= $totalGroup; ?><span></span></span></a></li>
+            </ul>
+            <a href="group-search">Найти группы</a>
+          </div>
+          <div class="form" id="form-friend">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" id="search" name="search-friend" placeholder="Поиск" class="input">
+          </div>
+          <div class="body" id="list">
+
+          </div>
+        </div>
+    </div>
+    <div class="clm list-aside">
+      <ul>
+        <li><span>Мои группы</span></li>
+        <li><a href="group_requests">Заявки в группы</a></li>
+        <li><a href="group-search">Поиск групп</a></li>
+      </ul>
+    </div>
+    </main>
+<script>
+      		let total = <?= $totalGroup; ?>;
+</script>

@@ -1,0 +1,56 @@
+<main id="main">
+        <div class="clm">
+          <div class="list-friends">
+            <div class="header">
+              <ul>
+                <li><span id="btn1" class="active">Новые тесты</span></li>
+                <li><span id="btn2">Популярные тесты</span></li>
+                <li><span id="btn3">Приватные тесты</span></li>
+              </ul>
+              <span id="search_width" onclick="openSetting()"><i class="fa fa-sliders" aria-hidden="true"></i> Расширенный поиск</span>
+            </div>
+            <div class="form" id="form-test">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <input type="search" maxlength="36" id="search" name="search-test" placeholder="Поиск" class="input">
+            </div>
+            <div id="clearFilter">
+              <span onclick="clearFilter()">Очистить фильтр</span>
+            </div>
+            <div id="code-block">
+              <input type="password" id="code" maxlength="8">
+              <button type="button" id="codeBtn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="body" id="list">
+
+            </div>
+          </div>
+      </div>
+      <div class="clm list-aside">
+        <ul>
+          <li><span>Все тесты</span></li>
+        </ul>
+      </div>
+
+      <div class="clm search-setting" id="search-setting">
+        <div class="header-setting" id="header-setting" onclick="openSetting()">
+          <span>Параметры поиска</span>
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </div>
+        <div class="body-setting" id="body-setting">
+
+          <div>
+            <span>Тематика теста:</span>
+            <select name="subject" id="subject">
+            <?php foreach ($subjects as $subject): ?>
+              <option value="<?= $subject[0]; ?>"><?= $subject[1]; ?></option>
+            <?php endforeach; ?>
+            <option id="all" selected value="all">Все</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </main>
+    <script>
+          let total = <?= $total; ?>;
+    </script>

@@ -1,0 +1,91 @@
+<main id="main">
+   <div class="clm">
+     <div class="user-img">
+       <div>
+         <?= $this->friendModel->existViewImg($id_view); ?>
+         <div class="setting-img">
+           <ul>
+           </ul>
+         </div>
+       </div>
+       <div id="friend-action">
+       <?= $btnActionText; ?>
+      </div>
+      <? if ($boolFriend): ?>
+        <a href="../chat/<?=$view['user_id'];?>" class="msg_link">Написать сообщение</a>
+      <? endif; ?>
+     </div>
+   </div>
+   <div class="clm">
+     <div class="info">
+       <div class="main-info">
+         <div>
+           <h3><?= $view['user_name'] ?> <?= $view['user_surname'] ?> </h3>
+           <span сlass="status"></span>
+         </div>
+          <p id="describe"><?= $view['user_describe'] ?></p>
+       </div>
+       <div class="add-info">
+         <? if ($view['user_privacy'] == 1 && !$boolFriend): ?>
+         <br>
+        <? else: ?>
+        <div class="dob">
+          <span>День рождения:</span>
+          <span><?= $dob; ?></span>
+        </div>
+        <button id="show-details">Показать подробную информацию</button>
+        <div class="user-info" id="user-info">
+          <div>
+            <span>Основная информация</span>
+            <ul>
+              <li><span>Возраст:</span><span><?= floor( ( time() - strtotime($view['user_dob']) ) / (60 * 60 * 24 * 365.25) ); ?></span></li>
+              <?php if (!is_null($view['user_email']) && $view['user_email'] != ""): ?>
+                    <li><span>E-mail:</span><span><?= $view['user_email']; ?></span></li>
+              <?php endif; ?>
+              <li><span>Пол:</span><span><?= $view['gender_name']; ?></span></li>
+              <li><span>Роль на сайте:</span><span><?= $view['role_name']; ?></span></li>
+              <?php if (!is_null($view['organization_name']) && $view['organization_name'] != ""): ?>
+                 <li><span>Моя организация:</span><span><?= $view['organization_name']; ?></span></li>
+              <?php endif; ?>
+              <? if ($view['user_vk_id'] != 0): ?>
+              <li><span>ВК:</span><span><a href="https://vk.com/id<?= $view['user_vk_id']; ?>" target="_blank"><?= $view['user_vk_id']; ?></a></span></li>
+              <? endif; ?>
+            </ul>
+          </div>
+        </div>
+         <? endif; ?>
+     </div>
+     <? if ($view['user_privacy'] == 1 && !$boolFriend): ?>
+     <div class="privacy">
+       <h4>Аккаунт приватный</h4>
+     </div>
+     <? else: ?>
+     <div class="list-info">
+       <ul>
+         <li><span><span><?= $totalFriend; ?></span><span>друзей</span></span></li>
+         <li><span><span>0</span><span>тестов</span></span></li>
+         <li><span><span>0</span><span>групп</span></span></li>
+         <li><span><span>Ø</span><span>оценка</span></span></li>
+       </ul>
+     </div>
+     <? endif; ?>
+   </div>
+   <div class="main-section">
+     <? if ($view['user_privacy'] == 1 && !$boolFriend): ?>
+     <h3>Аккаунт приватный</h3>
+     <? else: ?>
+      <h3>Нет информации</h3>
+     <? endif; ?>
+   </div>
+   </div>
+ </main>
+<script>
+  let id_view = <?=  $id_view; ?>;
+  let privacy = <?=  $view['user_privacy']; ?>;
+  <? if ($boolFriend): ?>
+     let boolFriend = true;
+  <? else: ?>
+    let boolFriend = false;
+  <? endif; ?>
+
+</script>

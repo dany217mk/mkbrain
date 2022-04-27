@@ -1,0 +1,192 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+}
+main > div:nth-child(1){
+  width: 78%;
+  overflow-x: scroll;
+  border-radius: 20px 20px 0 0;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+main > div:nth-child(2){
+  width: 13%;
+  position: fixed;
+  right: 1%;
+}
+.header{
+  border-bottom: 1px solid #dce1e6;
+      background: var(--hover_bg);
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header ul{
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+  align-items: center;
+  margin: 0;
+}
+.header ul li a{
+  padding: 18px 6px 20px;
+  color: #939393;
+  text-decoration: none;
+  display: block;
+  border-bottom: 2px solid transparent;
+  margin: 0 4px -1px;
+  font-size: 14px;
+}
+.header ul li a.active{
+  border-color: var(--btn);
+  color:  #000000;
+}
+.header ul li a span{
+  color: #939393;
+}
+.header ul li{
+  margin-left: 10px;
+}
+.header > a{
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: var(--btn);
+  border-radius: 4px;
+  margin-right: 20px;
+}
+.form{
+  border-bottom: 1px solid #00000020;
+  display: flex;
+  align-items: center;
+  padding: 15px 10px 15px 26px;
+  position: sticky;
+}
+.form i {
+    color: gray;
+}
+.form input{
+  background: #fff;
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  border: none;
+}
+#form-friend.sticky{
+  background: #fff;
+  position:  fixed;
+  top: 54px;
+  width: 40%;
+  border: 1px solid #00000020;
+  border-radius:  20px;
+  z-index: 1000;
+}
+.body{
+  margin-top: 12px;
+}
+.body > div{
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #dce1e6;
+  padding-left: 40px;
+}
+.body > div:last-child{
+  border-bottom: none;
+}
+.body > div img{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.body > div > div{
+  display: flex;
+  margin-left: 20px;
+  flex-direction: column;
+  align-items: baseline;
+}
+.body > div > div a{
+  color: #2a5885;
+}
+.body > div > div a:nth-child(1){
+  font-weight: bold;
+}
+.body > div > div span{
+  margin-top: 2px;
+  margin-bottom: 9px;
+  color: #656565;
+  font-size: 13px;
+}
+.body > div > div a:hover{
+  color: #2a5885;
+}
+.no-friend{
+  text-align: center;
+  display: block !important;
+}
+.no-friend > a{
+  display: block;
+  width: 350px;
+  margin: 10px auto;
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: var(--btn);
+  border-radius: 4px;
+}
+.empty{
+  display: block !important;
+  text-align: center;
+}
+.btn-delete{
+  background: #fff;
+  border: none;
+  position: absolute !important;
+  right: 40px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  main{
+    flex-direction: column-reverse;
+  }
+  main > div:nth-child(1) {
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #form-friend.sticky {
+    width: 80%;
+    left: 5px;
+  }
+  .body > div {
+    padding-left: 5px;
+  }
+  .no-friend > a {
+    width: 80%;
+  }
+  .btn-delete {
+    right: 0;
+  }
+}

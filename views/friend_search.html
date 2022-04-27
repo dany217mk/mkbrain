@@ -1,0 +1,74 @@
+<main id="main">
+      <div class="clm">
+        <div class="list-friends">
+          <div class="header">
+            <ul>
+              <li><a href="" class="active">Всего пользователей <span><?= $total; ?><span></span></span></a></li>
+            </ul>
+            <span id="search_width" onclick="openSetting()"><i class="fa fa-sliders" aria-hidden="true"></i> Расширенный поиск</span>
+          </div>
+          <div class="form" id="form-friend">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" id="search" name="search-friend" placeholder="Поиск" class="input">
+          </div>
+          <div id="clearFilter">
+            <span onclick="clearFilter()">Очистить фильтр</span>
+          </div>
+          <div class="body" id="list">
+          </div>
+        </div>
+    </div>
+    <div class="clm list-aside">
+      <ul>
+        <li><a href="friends">Мои друзья</a></li>
+        <li><a href="requests">Заявки в друзья</a></li>
+        <li><span>Поиск друзей</span></li>
+      </ul>
+    </div>
+
+    <div class="clm search-setting" id="search-setting">
+      <div class="header-setting" id="header-setting" onclick="openSetting()">
+        <span>Параметры поиска</span>
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
+      <div class="body-setting" id="body-setting">
+        <div>
+          <span>Пол</span>
+           <?php foreach ($genders as $gender): ?>
+             <label class="labelRad" id="gender<?= $gender[0];?>"><input type="radio" class="gender" name="gender" value="<?= $gender[0];?>"><span><?= $gender[1] ?></span></label>
+           <?php endforeach; ?>
+          <label class="labelRad"><input type="radio" checked class="gender" id="any" name="gender" value="<?= count($genders)+1; ?>"><span>Любой</span></label>
+          <script>let max_gedner = '<?= count($genders) + 1; ?>'</script>
+        </div>
+        <div>
+          <span>Организация</span>
+          <label class="labelCheckbox"><input type="checkbox" name="organization" id="organization" class="check_label"><span id="checkSpan">Моя организация</span></label>
+        </div>
+        <div>
+          <span>Роль</span>
+          <?php foreach ($roles as $role): ?>
+           <label class="labelRad" id="role<?= $role[0];?>"><input type="radio" class="role" name="role" value="<?= $role[0];?>"><span><?= $role[1] ?></span></label>
+          <?php endforeach; ?>
+          <label class="labelRad"><input type="radio" checked class="role" id="all" name="role" value="<?= count($roles)+1; ?>"><span>Все</span></label>
+          <script>let max_role = '<?= count($roles) + 1; ?>'</script>
+        </div>
+        <div>
+          <span>Сортировка</span>
+          <select name="sort" id="sort">
+            <option value="sort">Сортировка</option>
+            <option value="user_surname">По фамилии</option>
+            <option value="user_id">Новые аккаунты</option>
+          </select>
+        </div>
+        <div>
+          <span>VK</span>
+            <label class="labelCheckbox"><input type="checkbox" name="vk" id="vk" class="check_label"><span id="checkSpan">Пользователи зарегестрированные через вк</span></label>
+        </div>
+      </div>
+    </div>
+    </main>
+<script>
+    let total = <?= $total; ?>;
+    let my_organization = '<?= $this->getUser()['user_organization_id']; ?>';
+
+</script>

@@ -1,0 +1,180 @@
+<div id="layer_bg"></div>
+<div class="cons-loading" id="cons_loading"> <img src="./assets/img/preload.gif" alt=""> <div>Подождите, идёт загрузка...</div></div>
+<main id="main">
+      <div class="clm">
+      <div class="linkNav">
+    <ul>
+      <li><button type="button" class="active" id="btn1">Инструкция</button> </li>
+      <li><button type="button" id="btn2">Описание теста</button> </li>
+      <li><button type="button" id="btn3">Конструктор</button> </li>
+    </ul>
+    </div>
+    <div id="block1" class="active">
+      <h1>Инструкция</h1>
+      <h2>Доступные темы тестов:</h2>
+      <ul class="rounded">
+        <? foreach ($subjects as $subject): ?>
+          <li><span><?= $subject[1] ?></span></li>
+        <? endforeach; ?>
+      </ul>
+      <h2>Доступные методы оценивания:</h2>
+      <ul class="rounded">
+        <? foreach ($methods as $method): ?>
+          <li><span><?= $method[1] ?></span></li>
+        <? endforeach; ?>
+      </ul>
+      <h2>Дотспуные типы ответов</h2>
+      <ul class="rounded">
+        <li><span>Текстовое поле (короткий ответ)</span></li>
+        <li><span>Один правильный ответ</span></li>
+        <li><span>Несколько правильных ответов</span></li>
+      </ul>
+      <h2>Алгоритм создания теста:</h2>
+      <ol class="rounded">
+        <li><span>Заполните форму описания теста<img src="./assets/img/desc_test.png"></span></li>
+        <li><span>Перейдите в конструктор
+         <ul>
+           <li><span>Справа вы можете найти меню с типами вопросов и ответов<img src="./assets/img/method_test.png"></span></li>
+           <li><span>Для того, чтобы добавить вопрос, данную кнопку<img src="./assets/img/add_test_btn.png"></span></li>
+           <li><span>В ответе напишите или выберете правильный ответ</span></li>
+           <li><span>Осталось только добавить тест и немного подождать</span></li>
+         </ul></span>
+        </li>
+      </ol>
+    </div>
+    <div id="block2">
+      <h1>Конструктор</h1>
+      <div class="block">
+      <div>
+      <div>
+        <label>Название теста</label>
+        <input type="text" class="input" id="name">
+        <div id="nameError" class="error"></div>
+      </div>
+      <div>
+        <label>Тема теста</label>
+        <select name="subject" id="subject">
+            <option id="all" selected value="choose">Тема теста</option>
+        <?php foreach ($subjects as $subject): ?>
+          <option value="<?= $subject[0]; ?>"><?= $subject[1]; ?></option>
+        <?php endforeach; ?>
+        </select>
+        <div id="subjectError" class="error"></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>Описание теста</label>
+        <textarea name="describe" id="describe"></textarea>
+        <div class="alertBlockText">
+           <div class="len"> <span id="spanLen">0</span>/255</div>
+     			<div id="describeError" class="error"></div>
+     		</div>
+      </div>
+      <div>
+      <p>
+        <label class="labelCheckBox"><input type="checkbox" name="attempts-allow" id="attempts-allow"><span id="checkSpan">Добавить ограничение попыток</span></label>
+        <div id="attempts-block">
+          <label>Количество попыток:</label>
+          <input type="number" class="input" id="attempts">
+          <div id="attemptsError" class="error"></div>
+        </div> </p>
+      <p>
+        <label class="labelCheckBox"><input type="checkbox" name="show" id="show"><span id="checkSpan">Не показывать ответы после окончания теста</span></label>
+      </p>
+      <p>
+        <label class="labelCheckBox"><input type="checkbox" name="privacy" id="privacy"><span id="checkSpan">Сделать тест приватным</span></label>
+      </p>
+    </div>
+    </div>
+    <div>
+      <div>
+        <label>Метод оценивания</label>
+        <select name="method" id="method">
+          <option id="all" selected value="choose">Метод оценивания</option>
+        <?php foreach ($methods as $method): ?>
+          <option value="<?= $method[0]; ?>"><?= $method[1]; ?></option>
+        <?php endforeach; ?>
+        </select>
+        <div id="methodError" class="error"></div>
+      </div>
+      <div>
+            <label class="labelCheckBox"><input type="checkbox" name="time-allow" id="time-allow"><span id="checkSpan">Добавить ограничение на тест ограничение по времени</span></label>
+            <div id="time-block">
+              <div>
+              <label>Часы:</label>
+              <select name="hour" id="hour">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div>
+              <label>Минуты:</label>
+              <select name="minutes" id="minutes">
+                <? for ($i = 0; $i < 60; $i++): ?>
+                <option value="<?= $i; ?>"><?= $i; ?></option>
+              <? endfor; ?>
+              </select>
+            </div>
+            <div>
+              <label>Секунды:</label>
+              <select name="seconds" id="seconds">
+                <? for ($i = 0; $i < 60; $i++): ?>
+                <option value="<?= $i; ?>"><?= $i; ?></option>
+              <? endfor; ?>
+              </select>
+            </div>
+            </div>
+            <div class="error" id="timeError"></div>
+      </div>
+    </div>
+    <div>
+
+      <div class="img-block">
+        <label>Изображение <i>(необязательно)</i></label>
+          <div class="input_wrapper">
+            <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
+             <input type="file" name="img" accept="image/png,image/jpg,image/jpeg,image/gif" id="input_file" class="input input_file">
+             <label for="input_file" class="input_file-button" id="inp_file_block">
+                <span class="input_file-icon-wrapper"><img class="input_file-icon" src="./assets/img/add.svg" alt="Выбрать файл" width="25"></span>
+                <span class="input_file-button-text">Выберите файл</span>
+             </label>
+          </div>
+          <div id="imgError" class="error"></div>
+
+      </div>
+      <button type="button" id="continue">Продолжить <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+    </div>
+    <div id="block3">
+      <div>
+        <h1>Тест <span id="test_name"></span></h1>
+        <div id="ques-blocks">
+
+        </div>
+        <button id="addBlock">Добавить вопрос</button>
+        <button type="button" id="btn_safe">Сохранить тест</button>
+      </div>
+      <div class="constructor-menu">
+        <h3>Меню конструктора</h3>
+        <span>Всего заданий <span id="cnt_tasks">0</span></span>
+        <span>Тип вопроса:</span>
+        <select id="type_question">
+          <option value="1">Текстовое поле (одно предложение)</option>
+          <option value="2">Текстовое поле (целый текст)</option>
+        </select>
+        <span>Тип ответа:</span>
+        <select id="type_answer">
+          <option value="1">Текстовое поле (короткий ответ)</option>
+          <!--<option value="2">Текстовое поле (большой текст)</option>-->
+          <option value="3">Один правильный ответ</option>
+          <option value="4">Несколько правильных ответов</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    </main>

@@ -1,0 +1,35 @@
+body{
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.linkBack a {
+  color: #434343;
+}
+.btns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border: 4px solid #fff;
+  border-radius: 25rem;
+  background: #fff;
+}
+.btns a{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #fff;
+}
+.btns a:hover {
+    background: #00314dd4;
+}

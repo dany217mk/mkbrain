@@ -1,0 +1,67 @@
+<main id="main">
+ <div class="clm">
+   <div class="report_menu">
+     <ul>
+      <? if ($boolUser): ?>
+                <li><a href="<?= FULL_SITE_ROOT; ?>/my">Личный кабинет</a></li>
+      <? endif; ?>
+      <li><a href="<?= $back; ?>">Вернуться на прошулю страницу</a></li>
+    </ul>
+   </div>
+  <div class="note <?= $incident; ?>">
+   <?php if ($incident == 'success'): ?>
+       <h3>Оперция успешно выполнена!</h3>
+       <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+  <?php elseif($incident == 'successUpload'): ?>
+        <h3>Данные успешно отправлены</h3>
+        <p>Данные успешно изменены. Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+   <?php elseif($incident == 'errorUpload'): ?>
+        <h3>Ошибка при отправке данных :/</h3>
+        <p>Видимо возникли какие-то проблемы. Проверьте корректно ли введенны данные. Если эта ошибка постоянно появляется, свяжитесь с <a href="<?=CONTACT_ADMIN?>">администрацией</a></p>
+   <?php elseif($incident == 'warning'): ?>
+        <h3>Что-то пошло не так :/</h3>
+        <p>Если эта ошибка постоянно появляется, свяжитесь с <a href="<?=CONTACT_ADMIN?>">администрацией</a>. Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+   <?php elseif($incident == 'noquery'): ?>
+        <h3>Такого запроса не существует</h3>
+        <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+   <?php elseif($incident == 'numtry'): ?>
+        <h3>У вас закончились попытки</h3>
+         <p>Вы можете связаться с администратором теста</p>
+   <?php elseif($incident == 'nopromo'): ?>
+         <h3>Такого промокода не существует!</h3>
+         <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+   <?php elseif($incident == 'numtryx'): ?>
+       <h3>Ваша прошлая попытка была отправлена!</h3>
+       <p>Вы не завершили прошлую попытку, баллы за нее аннулируются. Попробуйте решить тест еще раз!</p>
+   <?php elseif($incident == 'connectAdmin'): ?>
+      <h3>Ошибка системного уровня!</h3>
+      <p><b><font color='red'>There is no such directory, contact the site administration to fix errors, we bring our apologies</font></b>. Данной ошибки не должно было возникать, но если вы видите это сообщение, свяжитесь с <a href="<?=CONTACT_ADMIN?>">администрацией</a></p>
+   <?php elseif($incident == 'error'): ?>
+      <h3>Произошла неизвестная ошибка</h3>
+      <p>Если эта ошибка постоянно появляется, свяжитесь с <a href="<?=CONTACT_ADMIN?>">администрацией</a></p>
+    <?php elseif($incident == 'noreg'): ?>
+      <h3>Войдите в аккаунт, чтобы выполнить данную операцию</h3>
+      <?php elseif($incident == 'noexist'): ?>
+         <h3>Такой страницы не существует. Ошибка 404 :=(</h3>
+         <img src="<?=IMG?>/404picture.png" class="picture404" alt="404">
+      <?php elseif($incident == 'development'): ?>
+         <h3>Страница находится в разработке</h3>
+         <img src="<?=IMG?>/worker.png" alt="">
+        <canvas id='canvasdonut' width='300' height=240'></canvas>
+        <p>Осталось совсем чуть-чуть, уже скоро мы откроем доступ к этой странице.</p>
+         <?php elseif($incident == 'technical'): ?>
+           <h3>На сайте ведутся технические работы</h3>
+           <img src="<?=IMG?>/worker.png" alt="">
+           <canvas id='canvasdonut' width='300' height=240'></canvas>
+           <p>На текущий момент наш интернет-ресурс недоступен. Сайт не сломался. Мы просто решили сделать его немного лучше. Обновите страницу немного позже. Все будет работать.</p>
+        <?php elseif($incident == 'undefinedUser'): ?>
+         <h3>Время вашей сессии истекло, <a href="<?=FULL_SITE_ROOT?>/auth">войдите в аккаунт</a></h3>
+        <?php endif; ?>
+              <hr>
+           <span>Если у вас возникли вопросы, вы можете связаться с нами, написав нам <a href="<?=CONTACT_ADMIN?>">сообщение</a></span>
+         </div>
+ </div>
+</main>
+<?php if ($incident == 'technical' || $incident == 'development'): ?>
+<script type="text/javascript" src="<?=JS?>/donut.js"></script>
+<?php endif; ?>

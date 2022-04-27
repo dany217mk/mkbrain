@@ -1,0 +1,100 @@
+header > div{
+  padding: 4px;
+}
+.linkBack{
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  top: 0;
+  transition: all 0.4s ease;
+  box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+}
+.linkBack.sticky{
+  top: -55px;
+}
+.linkBack a {
+    padding: 4px 8px;
+    color: #434343;
+    display: block;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 14px 20px 15px 6px;
+    color: #818c99;
+    font-size: 14px;
+    height: 19px;
+}
+.linkBack a i{
+ margin-right: 10px;
+}
+.linkBack a:hover{
+  box-shadow: 0 0 0 6px #f3f1ed;
+  background: #f3f1ed;
+}
+main ul, main ol{
+  list-style: none;
+}
+main h2,main h3 ,main h4{
+  margin: 20px 10px;
+  font-size: 20px;
+  color: #343434;
+  font-weight: 500;
+}
+main #block1, main #block2{
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 15px;
+  display: none;
+  box-shadow: 1px 2px 12px 0 rgba(53,0,132,.12);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+main #block1.active, main #block2.active{
+  display: block;
+}
+mark{
+  padding: .05em;
+ background-color: #fcf8e3;
+}
+main .date{
+  float: right;
+  margin: 10px;
+  background: #fcf8e3;
+}
+.linkNav{
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.linkNav ul{
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+.linkNav ul li{
+  margin-bottom: -1px;
+}
+.linkNav ul li button{
+  background: #fff;
+  outline: none;
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-color: #fff #fff #dee2e6;
+  color: #007bff;
+  display: block;
+  padding: .5rem 1rem;
+}
+.linkNav ul li button:hover{
+  border-color: #e9ecef #e9ecef #dee2e6;
+  color: #0056b3;
+}
+.linkNav ul li button.active{
+  border-color: #dee2e6 #dee2e6 #fff;
+}

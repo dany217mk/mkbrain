@@ -1,0 +1,125 @@
+header > div{
+  padding: 4px;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+  width: 78%;
+  overflow-x: scroll;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+.sidebar.open ~ main{
+  margin-left: 19%;
+}
+.note{
+  padding: .75rem 1.25rem;
+  font-weight: 400;
+  width: 85%;
+  margin: 50px auto;
+  line-height: 1.5;
+  font-size: 16px;
+  border: 1px solid transparent;
+}
+.note p{
+  margin: 16px 0;
+}
+.note hr{
+  margin: 4px 0;
+}
+.note h3 {
+    margin: 0;
+}
+.note hr{
+  border: 0;
+  border-top: 1px solid transparent;
+  margin: .25rem 0;
+}
+.note a{
+  color: #007bff;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.note a:hover{
+  color: #0056b3;
+  text-decoration: underline;
+}
+.warning, .noquery, .numtry, .nopromo, .errorUpload, .numtryx{
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.error{
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.error hr{
+  border-color: #f5c6cb;
+}
+.noreg, .undefinedUser, .connectAdmin, .development, .technical, .noexist{
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+.noreg hr, .undefinedUser hr, .connectAdmin hr, .development hr, .technical hr, .noexist hr{
+  border-color: #a1dae3;
+}
+.warning hr, .noquery hr, .numtry hr, .nopromo hr,  .errorUpload hr, .numtryx hr{
+  border-color: #ffe8a1;
+}
+.success,  .successUpload{
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.success hr,  .successUpload hr{
+  border-color: #bbdbc2;
+}
+canvas{
+    display: block;
+    border-radius: 100%;
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+.picture404{
+  width: 40%;
+  display: block;
+  margin: 0 auto;
+}
+.report_menu ul{
+  display: flex;
+  align-items: center;
+  list-style:  none;
+  margin: 0;
+  padding-left: 0;
+}
+.report_menu ul li a{
+  display: block;
+	padding: 15px 30px 15px 40px;
+	font-size: 14px;
+	color: #454547;
+	text-decoration: none;
+	transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+.report_menu ul li{
+	position: relative;
+	border-right: 1px solid #c7c8ca;
+}
+.report_menu ul li a:hover {
+	border-bottom: 3px solid #434343;
+}
+@media (max-width: 800px) {
+.clm{
+  width: 95%;
+  margin: 0 auto !important;
+}
+.report_menu{
+  display: none;
+}
+}

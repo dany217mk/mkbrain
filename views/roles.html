@@ -1,0 +1,14 @@
+<div class="linkBack">
+    <a href="./"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+  </div>
+  <div>
+    <h1>Ваша роль на портале:</h1>
+  </div>
+  <div class="btns">
+    <?php foreach ($roles as $role): ?>
+      <a href="role/<?= $role[0]; ?>"><?= $role[1]?></a>
+    <?php endforeach; ?>
+  </div>
+</body>
+<script type="text/javascript" src="./assets/js/notification.js"></script>
+</html>

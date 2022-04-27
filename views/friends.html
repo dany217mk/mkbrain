@@ -1,0 +1,29 @@
+<main id="main">
+      <div class="clm">
+        <div class="list-friends">
+          <div class="header">
+            <ul>
+              <li><a href="" class="active">Все друзья <span id="num"><?= $totalFriend; ?><span></span></span></a></li>
+            </ul>
+            <a href="friend-search">Найти друзей</a>
+          </div>
+          <div class="form" id="form-friend">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" id="search" name="search-friend" placeholder="Поиск" class="input">
+          </div>
+          <div class="body" id="list">
+
+          </div>
+        </div>
+    </div>
+    <div class="clm list-aside">
+      <ul>
+        <li><span>Мои друзья</span></li>
+        <li><a href="requests">Заявки в друзья</a></li>
+        <li><a href="friend-search">Поиск друзей</a></li>
+      </ul>
+    </div>
+    </main>
+<script>
+      		let total = <?= $totalFriend; ?>;
+</script>

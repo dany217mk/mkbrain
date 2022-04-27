@@ -1,0 +1,93 @@
+<main id="main">
+      <div class="clm">
+        <div class="block">
+          <div class="header"><span>Приватность</span> </div>
+          <div>
+            <table>
+              <tr>
+                <td>Сделать аккаунт приватным</td>
+                <td>
+                  <div class="checkbox">
+                    <input type="checkbox" id="private" <?= $checkPrivacy; ?> class="checkbox-input">
+                    <label for="private" class="checkbox-label"></label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='setting_img' class="block active">
+          <div class="header"><span>Мое изображение</span> </div>
+          <div>
+            <table>
+              <tr>
+                <td>Изменить изображение</td>
+                <td>
+                  <form id="upload_file" action="upload_file"  enctype="multipart/form-data" method="post">
+                  <div class="input_wrapper">
+                    <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
+                     <input type="file" name="img" accept="image/png,image/jpg,image/jpeg,image/gif" id="input_file" class="input input_file">
+                     <label for="input_file" class="input_file-button" id="inp_file_block">
+                        <span class="input_file-icon-wrapper"><img class="input_file-icon" src="./assets/img/add.svg" alt="Выбрать файл" width="25"></span>
+                        <span class="input_file-button-text">Выберите файл</span>
+                     </label>
+                  </div>
+                  <div id="mistakeImg" class="error"></div>
+                  <input type="submit" id="change_img" value="Cохранить">
+                </form>
+                </td>
+              </tr>
+              <tr>
+                <td>Удалить изображение</td>
+                <td>
+                  <? if ($this->getUserModel()->existImg() != IMG_DEFAULT): ?>
+                    <a href="delete_img"  class="btn-delete" id="delete_img">Удалить изображение</a>
+                  <? else: ?>
+                    <button class="btn-delete" disabled id="delete_img">У вас нет изображения</button>
+                  <? endif; ?>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="block">
+          <div class="header"><span>Организации</span> </div>
+          <div class="my-organization">
+            <span>Моя организация</span>
+            <span id="my-org"><?= $org; ?></span>
+          </div>
+          <? if (!is_null($this->getUser()['organization_name']) && $this->getUser()['organization_name'] != ""): ?>
+          <a class="exit-org" href="exit_org">Выйти из моей организации</a>
+          <?php endif; ?>
+          <div class="table-list">
+            <div class="form" id="form-organizations">
+            <div class="textBlock">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" value="" id="search" name="search" placeholder="Поиск" class="input" spellcheck="false" data-ms-editor="true">
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Организация</th>
+                <th>Дейсвтия</th>
+              </tr>
+            </thead>
+            <tbody id="list">
+
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+      <div class="clm list-aside">
+        <ul>
+          <li><button id="btn1" class="btn">Приватность</button></li>
+          <li><button id="btn2" class="btn active">Мое изображение</button></li>
+          <li><button id="btn3" class="btn">Организации</button></li>
+        </ul>
+      </div>
+    </main>
+<script>
+let total = <?= $totalOrg; ?>;
+</script>

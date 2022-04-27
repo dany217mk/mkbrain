@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Добро пожаловать | MKBrain</title>
+    <link rel="stylesheet" href="./assets/css/auth.css">
+  <link href="./assets/libs/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/img/logo_min.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="layer_bg" class="<?= $regActive;?> <?= $authActive; ?> <?= $codeAuthActive; ?>"></div>
+    <div class="close-area <?= $regActive;?> <?= $authActive; ?> <?= $codeAuthActive; ?>" id="close-area">
+      <i class="fas fa-times"></i>
+    </div>
+    <section id="join" class="<?= $regActive;?>">
+      <div class="header">
+        <h1>Регистрация</h1>
+        <p>Быстро и легко.</p>
+        <i id="close-reg" class="fa fa-times" aria-hidden="true"></i>
+        <? if (count($errors) == 1 && $regActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <?= $error; ?>
+          <? endforeach; ?>
+        </div>
+      <? elseif(count($errors) > 1 && $regActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <li><?= $error; ?></li>
+          <? endforeach; ?>
+        </div>
+
+        <? endif; ?>
+      </div>
+      <div class="body">
+        <form id="form-reg" method="post">
+          <div>
+            <input type="text" name="name" id="name" class="reg-text" placeholder="Имя">
+            <input type="text" name="surname" id="surname" class="reg-text" placeholder="Фамилия">
+          </div>
+          <div>
+            <input type="email" name="email" class="reg-text" id="email-reg" placeholder="Почта">
+          </div>
+          <div>
+            <input type="password" name="password" class="reg-text" id="password-reg" placeholder="Новый пароль">
+            <input type="password" name="cpassword" class="reg-text" id="cpassword" placeholder="Повторите пароль">
+          </div>
+          <div class="dateBlock">
+            <label>Дата рождения</label>
+            <div>
+            <select name="day">
+              <? for ($i=1; $i <= 31; $i++): ?>
+              <option value="<?= $i; ?>"><?= $i; ?></option>
+              <? endfor; ?>
+            </select>
+            <select name="month">
+              <option value="1">Январь</option>
+              <option value="2">Февраль</option>
+              <option value="3">Март</option>
+              <option value="4">Апрель</option>
+              <option value="5">Май</option>
+              <option value="6">Июнь</option>
+              <option value="7">Июль</option>
+              <option value="8">Август</option>
+              <option value="9">Сентябрь</option>
+              <option value="10">Октябрь</option>
+              <option value="11">Ноябрь</option>
+              <option value="12">Декабрь</option>
+            </select>
+            <select name="year">
+              <? for ($i=($num-100); $i <= ($num-6); $i++): ?>
+              <? if ($i == ($num-16)): ?>
+              <option selected value="<?= $i; ?>"><?= $i; ?></option>
+              <? else: ?>
+              <option value="<?= $i; ?>"><?= $i; ?></option>
+              <? endif; ?>
+              <? endfor; ?>
+            </select>
+          </div>
+          </div>
+          <div class="genderBlock">
+            <label>Пол</label>
+            <div>
+                <? foreach ($genders as $gender): ?>
+                  <label class="labelRad"><input type="radio" class="gender" name="gender" value="<?= $gender[0];?>"><span><?= $gender[1] ?></span></label>
+                <? endforeach ?>
+
+          </div>
+          </div>
+          <div class="info">
+            <p>Нажимая кнопку Регистрация, вы принимаете <a href="privacy">Условия, Политику использования данных и Политику в отношении файлов cookie.</a></p>
+          </div>
+          <div>
+            <input type="submit" name="signup" value="Регистрация">
+          </div>
+        </form>
+      </div>
+    </section>
+    <section id="auth" class="<?= $authActive; ?>">
+      <form id="form" class="form_auth" method="POST" autocomplete="off">
+        <h2>Авторизация</h2>
+        <i id="close-auth" class="fa fa-times" aria-hidden="true"></i>
+        <? if (count($errors) == 1 && $authActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <?= $error; ?>
+          <? endforeach; ?>
+        </div>
+        <? elseif(count($errors) > 1 && $authActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <li><?= $error; ?></li>
+          <? endforeach; ?>
+        </div>
+
+        <? endif; ?>
+      <div class="field input">
+        <input type="text" name="email" id="email" class="text" placeholder="email">
+        <div class="error" id="error-email"></div>
+      </div>
+      <div class="field input">
+        <input type="password" name="password" id="password" class="text" placeholder="Пароль">
+        <div class="error" id="error-password"></div>
+      </div>
+      <div class="field button">
+        <input type="submit" class="submit" id="btn-auth" name="login" value="Войти">
+        <a href="./report/development">Забыли пароль?</a>
+      </div>
+      </form>
+    </section>
+    <section id="auth_code" class="<?= $codeAuthActive; ?>">
+      <form  method="post" id="form_auth_code" class="form_auth_code">
+        <h2>Вас приглашают в класс</h2>
+        <i id="close-auth_code" class="fa fa-times" aria-hidden="true"></i>
+        <? if (count($errors) == 1 && $codeAuthActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <?= $error; ?>
+          <? endforeach; ?>
+        </div>
+        <? elseif(count($errors) > 1 && $codeAuthActive == 'active'): ?>
+        <div class="alert alert-danger text-center alert-reg">
+          <? foreach ($errors as $error): ?>
+          <li><?= $error; ?></li>
+          <? endforeach; ?>
+        </div>
+
+        <? endif; ?>
+        <input type="password" name="code" id="code" placeholder="Введите код приглашения" class="inp_code">
+        <div class="error" id="error-code"></div>
+        <input type="submit" name="code_validation" id="code_valid" class="code_btn" value="Принять приглашение">
+      <span id="close-code_yet">У меня нет кода(</span>
+      </form>
+    </section>
+    <main>
+      <a href="./"><span>MKBrain</span></a>
+      <div class="menu-btns">
+        <h2>Войдите или зарегистрируйтесь</h2>
+        <div class="socials">
+            <h3>Через соцсеть</h3>
+            <div>
+              <a class="vk_link" href="https://oauth.vk.com/authorize?client_id=<?=ID;?>&display=page&redirect_uri=<?=URL;?>&response_type=code&v=5.81"><span><i class="fab fa-vk" aria-hidden="true"></i></span></a>
+            </div>
+        </div>
+        <div class="btns-act">
+          <h3>Авторизация с помошью средств MKBrain</h3>
+          <div>
+            <div>
+              <button type="button" id="auth-button" name="button">Войти</button>
+              <button type="button" id="reg-button" name="button">Регистрация</button>
+            </div>
+            <button type="button" id="auth_code-button"  name="button">Меня пригласил учитель</button>
+          </div>
+        </div>
+        <p>Регистрируясь в сервисе, принимаю условия <a href="privacy">соглашения</a> и <a href="privacy">политики конфиденциальности</a></p>
+      </div>
+    </main>
+
+
+
+
+    <script src="./assets/js/notification.js"></script>
+    <script src="./assets/js/auth.js"></script>
+  </body>
+</html>
