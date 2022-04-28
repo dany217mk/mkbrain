@@ -13,6 +13,16 @@ $routes = array(
     'timechecking' => 'timechecking',
     'checktest/([0-9]+)' => 'checktest/$1'
   ),
+  'GroupController' => array(
+    'groups' => 'groups',
+    'group-requests' => 'requests',
+    'updategroups' => 'updategroups',
+    'updategrouprequests' => 'updategrouprequests',
+    'requestgroupdeleted' => 'requestgroupdeleted',
+    'group-search' => 'search',
+    'requestadding' => 'requestadding',
+    'group/([0-9]+)' => 'group/$1',
+  ),
   'FriendController' => array(
     'friends' => 'friends',
     'updatefriends' => 'update_friends',
@@ -30,19 +40,6 @@ $routes = array(
     'updatesearchfriend' => 'updatesearchfriend',
     'friendadding' => 'friendadding'
   ),
-  'GroupController' => array(
-    'groups' => 'groups',
-    'group_requests' => 'requests',
-    'updategroups' => 'updategroups'
-  ),
-  'MessageController' => array(
-    'addmsg' => 'addmsg',
-    'getchat' => 'getchat',
-    'readmsg' => 'readmsg',
-    'im' => 'im',
-    'chat/([0-9]+)' => 'chat/$1',
-    'updateim' => 'updateim',
-  ),
   'UserController' => array(
     'roles' => 'role',
     'role/([0-9]+)' => 'roleedit/$1',
@@ -57,6 +54,14 @@ $routes = array(
     'add_org' => 'addorg',
     'upload_file' => 'upload',
     'delete_img' => 'deleteimg'
+  ),
+  'MessageController' => array(
+    'addmsg' => 'addmsg',
+    'getchat' => 'getchat',
+    'readmsg' => 'readmsg',
+    'im' => 'im',
+    'chat/([0-9]+)' => 'chat/$1',
+    'updateim' => 'updateim',
   ),
   'AuthController' => array(
     'vkauth/?code=([a-z]+)' => 'vkauth/$1',

@@ -13,8 +13,8 @@ main{
 }
 main > div:nth-child(1){
   width: 78%;
-  border-radius: 20px 20px 0 0;
   overflow-x: scroll;
+  border-radius: 20px 20px 0 0;
 }
 main > div{
   background: #fff;
@@ -28,7 +28,7 @@ main > div:nth-child(2){
 }
 .header{
   border-bottom: 1px solid #dce1e6;
-    background: var(--hover_bg);
+      background: var(--hover_bg);
   border-radius: 4px 4px 0 0;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ main > div:nth-child(2){
   padding-left: 10px;
   border: none;
 }
-#form-friend.sticky{
+#form-group.sticky{
   background: #fff;
   position:  fixed;
   top: 54px;
@@ -96,83 +96,67 @@ main > div:nth-child(2){
 }
 .body{
   margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-left: 60px;
+  padding-bottom: 40px;
+}
+.body button{
+  background: #fff;
+  border: none;
+  font-size: 20px;
+  color: #b8b9baf0;
+  transition: all 0.3s ease;
+}
+.body button:hover{
+  color: #5684ba;
 }
 .body > div{
   display: flex;
-  padding: 12px 0;
-  border-bottom: 1px solid #dce1e6;
-  padding-left: 40px;
-}
-.body > div:last-child{
-  border-bottom: none;
+  flex-direction: column;
+  width: 160px;
+  margin-top: 20px;
 }
 .body > div img{
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-.body > div > div{
-  display: flex;
-  margin-left: 20px;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.body > div > div button{
-  text-decoration: none;
-  color: #fff;
-  padding: .5rem 1rem;
-  background: var(--main);
-  cursor: pointer;
+  height: 160px;
+  width: 160px;
+  object-fit: contain;
   border-radius: 4px;
-  border: none;
+  background: #fff;
+    border: 1px solid #ccc;
 }
-.body > div > div button.del{
-  background: red;
-  margin-left: 10px;
+.body > div img:hover{
+  filter: brightness(.94);
+  transition: all .5s ease;
 }
-.body > div > div a{
-  color: #2a5885;
+.body > div > div > div:nth-child(1){
+  display: flex;
+  flex-direction: column;
 }
-.body > div > div div a{
-    padding: .5rem 1rem;
+.body > div > div > div:nth-child(1) a:first-child{
+    color: #2a5885;
+    font-weight: bold;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
-.body > div > div div a:hover{
-   background: #e5ebf1;
-   border-radius: 4px;
-}
-.body > div > div a:nth-child(1){
-  font-weight: bold;
-}
-.body > div > div span{
-  margin-top: 2px;
-  margin-bottom: 9px;
+.body > div > div > div:nth-child(1) a:last-child{
   color: #656565;
   font-size: 13px;
 }
-.body > div > div a:hover{
-  color: #2a5885;
+.body > div button{
+  padding: 7px;
 }
-.no-friend{
-  text-align: center;
-  display: block !important;
-}
-.no-friend > a{
-  display: block;
-  width: 350px;
-  margin: 10px auto;
-  text-decoration: none;
-  color: #fff;
-  padding: .5rem 1rem;
-  background: var(--btn);
-  border-radius: 4px;
+.body > div > div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .no-group{
   text-align: center;
   display: block !important;
+  width: auto !important;
 }
-.no-group > a{
+.no-group> a{
   display: block;
   width: 350px;
   margin: 10px auto;
@@ -185,6 +169,15 @@ main > div:nth-child(2){
 .empty{
   display: block !important;
   text-align: center;
+}
+.btn-delete{
+  background: #fff;
+  border: none;
+  position: absolute !important;
+  right: 40px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
 }
 @media (max-width: 800px) {
   main{
@@ -200,7 +193,7 @@ main > div:nth-child(2){
     width: 100%;
     margin-bottom: 10px;
   }
-  #form-friend.sticky {
+  #form-group.sticky {
     width: 80%;
     left: 5px;
   }
@@ -210,17 +203,7 @@ main > div:nth-child(2){
   .no-friend > a {
     width: 80%;
   }
-  .body > div > div >div {
-    display: flex;
-    flex-direction: column;
+  .btn-delete {
+    right: 0;
   }
-    .body > div > div >div a{
-      margin-top: 5px;
-    }
-    .header > a {
-      margin-right: 2px;
-    }
-    .body > div > div button.del {
-      margin-top: 5px;
-    }
 }

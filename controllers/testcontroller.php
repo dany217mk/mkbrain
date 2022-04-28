@@ -273,7 +273,7 @@ class TestController extends Controller{
     $counter = 0;
 
 	 foreach ($data as $item) {
-     if ($item['test_privacy'] == 1) {
+     if ($item['test_privacy'] == 1 && !isset($_POST['privacy'])) {
       continue;
     }
     $text .= '<div>';

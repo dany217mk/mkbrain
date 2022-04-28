@@ -22,7 +22,7 @@ class Router
                     $requestedController = new $controller();
                     $requestedAction = 'action' . ucfirst($action);
                     $boolFound = true;
-                    if (!method_exists($requestedController, $requestedAction)) {
+                   if (!method_exists($requestedController, $requestedAction)) {
                       header("Location: " . FULL_SITE_ROOT . "/report/noexist");
                       exit;
                     }

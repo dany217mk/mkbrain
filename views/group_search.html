@@ -5,7 +5,7 @@
             <ul>
               <li><a href="" class="active">Все группы <span id="num"><?= $totalGroup; ?><span></span></span></a></li>
             </ul>
-            <a href="group-search">Найти группы</a>
+            <a href="groups">Мои группы</a>
           </div>
           <div class="form" id="form-friend">
             <i class="fa fa-search" aria-hidden="true"></i>
@@ -18,12 +18,12 @@
     </div>
     <div class="clm list-aside">
       <ul>
-        <li><span>Мои группы</span></li>
+        <li><a href="groups">Мои группы</a></li>
         <li><a href="group-requests">Заявки в группы</a></li>
-        <li><a href="group-search">Поиск групп</a></li>
+        <li><span>Поиск групп</span></li>
       </ul>
     </div>
     </main>
-<script>
+<script> 
       		let total = <?= $totalGroup; ?>;
 </script>

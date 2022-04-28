@@ -189,6 +189,7 @@
           ?>
         </form>
      </div>
+   </div>
      <div class="clm menu-test">
        <h3>Меню теста</h3>
        <span>Всего заданий: <span id="task_num"><?= $view['test_cnt']; ?></span></span>

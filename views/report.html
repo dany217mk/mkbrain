@@ -21,6 +21,9 @@
    <?php elseif($incident == 'warning'): ?>
         <h3>Что-то пошло не так :/</h3>
         <p>Если эта ошибка постоянно появляется, свяжитесь с <a href="<?=CONTACT_ADMIN?>">администрацией</a>. Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+  <?php elseif($incident == 'no_organization'): ?>
+    <h3>Для того, чтобы найти  класс, сначала надо выбрать свою организацию. Вы можете сделать это в <a href="../settings">настройках</a></h3>
+    <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
    <?php elseif($incident == 'noquery'): ?>
         <h3>Такого запроса не существует</h3>
         <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>

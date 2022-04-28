@@ -130,6 +130,7 @@ class Helper
           exit;
       }
       if ($_POST['border'] == $total && !isset($_COOKIE['search'])) {
+        echo $notFoundMsg;
         exit;
       }
       $data = mysqli_fetch_all($res, MYSQLI_ASSOC);
