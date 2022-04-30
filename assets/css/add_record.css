@@ -1,0 +1,137 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+  margin-top: 20px;
+}
+main > div:nth-child(1){
+  width: 78%;
+  overflow-x: scroll;
+}
+main > div{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+main > div:nth-child(2){
+  width: 13%;
+  position: fixed;
+  right: 1%;
+}
+.form h1{
+  text-align: center;
+  font-size: 44px;
+}
+.form form{
+  display: block;
+  width: 85%;
+  margin: 10px auto;
+}
+main form div{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+form div label{
+  margin-right: 20px;
+}
+form div textarea{
+  height: 200px;
+  width: 400px;
+  font-size: 13px;
+  padding: .5rem 1rem;
+  border: 1px solid #cecece;
+  background: #F6F6f6;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+.input_wrapper {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.input_file {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.input_file-icon-wrapper {
+  height: 60px;
+  width: 60px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #fff;
+}
+
+.input_file-button-text {
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.input_file-button {
+  width: 100%;
+  max-width: 290px;
+  height: 60px;
+  background: var(--btn);
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn-delete{
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 1rem;
+  background: #e54a4a;
+  border-radius: 4px;
+  margin-right: 20px;
+  border: none;
+  float: right;
+  transition: all 0.3s ease;
+}
+.btn-delete:hover{
+  background: red;
+  text-decoration: none;
+  color: #fff;
+}
+
+#inp_file_block.choosen{
+  background: #ccc;
+}
+#change_img{
+  padding: 7px 10px;
+  border-radius: .25rem;
+  margin: 15px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  color: #434343;
+  display: inline-block;
+  background-color: #edeef0;
+  border-color: #0f888f;
+  float: right;
+}
+#change_img:focus {
+    background-color: #0d7278;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgb(15 136 143 / 25%);
+    border-color: #0d7278;
+}

@@ -16,6 +16,7 @@
     define("CODE", "7Oava0Rs0mDOhxUoQ5hw");
     define("URL", FULL_SITE_ROOT . "/vkauth/");
     define("IMG_USER", ASSETS . "/img_user");
+    define("IMG_RECORD", ASSETS . "/img_record");
     define("IMG_DEFAULT", "<img src='" . IMG . "/profile.png'>");
     define("ROLE_PAGE", '/mkbrain/roles');
     $db = array(

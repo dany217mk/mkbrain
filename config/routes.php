@@ -22,6 +22,12 @@ $routes = array(
     'group-search' => 'search',
     'requestadding' => 'requestadding',
     'group/([0-9]+)' => 'group/$1',
+    'groupaction' => 'groupaction',
+    'updaterecords' => 'updaterecords',
+    'putlike' => 'putlike',
+    'addcomment' => 'addcomment',
+    'add-record/([0-9]+)' => 'addrecord/$1',
+    'news' => 'news'
   ),
   'FriendController' => array(
     'friends' => 'friends',
@@ -53,7 +59,8 @@ $routes = array(
     'update_org' => 'updateorg',
     'add_org' => 'addorg',
     'upload_file' => 'upload',
-    'delete_img' => 'deleteimg'
+    'delete_img' => 'deleteimg',
+    'deletefavorite' => 'deletefavorite'
   ),
   'MessageController' => array(
     'addmsg' => 'addmsg',

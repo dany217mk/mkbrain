@@ -12,6 +12,9 @@ class MainController
       header("Location: " . FULL_SITE_ROOT . "/report/noexist");
       die();
     }
+    if (isset($_COOKIE['uid'])) {
+      header("Location: news");
+    }
     $title = SERVER_NAME;
     $styles = [CSS . '/home.css'];
     $scripts = [JS . '/slider.js', JS . '/home.js'];

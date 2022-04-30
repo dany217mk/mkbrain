@@ -1,80 +1,4 @@
-document.getElementById('show-details').onclick = function(){
-       document.getElementById('group-info').classList.toggle('active');
-       if (document.getElementById('group-info').classList.contains('active')) {
-         document.getElementById('show-details').innerHTML = "Скрыть подробную информацию";
-       } else {
-         document.getElementById('show-details').innerHTML = "Показать подробную информацию";
-       }
-     }
-
-
-
-
-
-   function deleteRequest(id){
-     if (!confirm("Вы точно хотите удалить этого пользователя?")){
-       return false;
-     }
-     var request = createRequest();
-     var data = new FormData();
-     data.append('id_group', id);
-     data.append('type', 'deleteRequest');
-     request.open('POST','../groupaction');
-     request.addEventListener('readystatechange', function() {
-       if ((request.readyState==4) && (request.status==200)) {
-         if (request.responseText == "success") {
-           notification("Пользователь удалён", 'success');
-           window.location.href = "../group/" + id_group;
-         } else{
-           notification("Ошибка удаления!", 'error');
-         }
-       }
-     });
-    request.send(data);
-   }
-
-
-   function addRequest(id){
-     var request = createRequest();
-     var data = new FormData();
-     data.append('id_group', id);
-     data.append('type', 'addRequest');
-     request.open('POST','../groupaction');
-     request.addEventListener('readystatechange', function() {
-       if ((request.readyState==4) && (request.status==200)) {
-         if (request.responseText == "success") {
-           notification("Заявка отправлена", 'success');
-           window.location.href = "../group/" + id_group;
-         } else{
-           notification("Ошибка отправки заявки!", 'error');
-         }
-       }
-     });
-    request.send(data);
-   }
-
-   function removeRequest(id){
-     var request = createRequest();
-     var data = new FormData();
-     data.append('id_group', id);
-     data.append('type', 'removeRequest');
-     request.open('POST','../groupaction');
-     request.addEventListener('readystatechange', function() {
-       if ((request.readyState==4) && (request.status==200)) {
-         notification(request.responseText);
-         if (request.responseText == "success") {
-           notification("Заявка отменена", 'success');
-           window.location.href = "../group/" + id_group;
-         } else{
-           notification("Ошибка отмены заявки!", 'error');
-         }
-       }
-     });
-    request.send(data);
-   }
-
-
-   const BORDER = 10;
+ const BORDER = 5;
  let l_border = 0;
  let loadMoreBlock = document.getElementById('list');
 
@@ -115,8 +39,7 @@ document.getElementById('show-details').onclick = function(){
    var request = createRequest();
    var data = new FormData();
    data.append('border', l_border);
-   data.append('id_group', id_group);
-   request.open('POST','../updaterecords');
+   request.open('POST','updatenews');
    request.addEventListener('readystatechange', function() {
    if ((request.readyState==4) && (request.status==200)) {
      if (request.responseText.trim() == "<h1 class='no-records'>Здесь пока-что нет записей</h1>") {
@@ -142,7 +65,7 @@ document.getElementById('show-details').onclick = function(){
    var request = createRequest();
    var data = new FormData();
    data.append('id_record', id);
-   request.open('POST','../putlike');
+   request.open('POST','putlike');
    request.addEventListener('readystatechange', function() {
      if ((request.readyState==4) && (request.status==200)) {
        if (request.responseText == "put") {
@@ -170,7 +93,7 @@ function addComment(id, user_id, user_img, user_name, user_surname){
   var data = new FormData();
   data.append('id_record', id);
   data.append('text', inp.value);
-  request.open('POST','../addcomment');
+  request.open('POST','addcomment');
   request.addEventListener('readystatechange', function() {
     if ((request.readyState==4) && (request.status==200)) {
       if (request.responseText == "success") {

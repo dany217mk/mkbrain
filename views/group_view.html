@@ -1,1 +1,58 @@
-<? print_r($group); ?>
+<main id="main">
+  <div class="clm">
+      <div class="info">
+        <h1><?= $group['group_name'] ?></h1>
+        <span>Информация</span>
+        <div class="add-info">
+          <div class="dob">
+            <span>Организация класса:</span>
+            <span><?= $group['organization_name']; ?></span>
+          </div>
+          <button id="show-details">Показать подробную информацию</button>
+          <div class="group-info" id="group-info">
+            <div>
+              <ul>
+                <li><span>Администратор класса:</span><span><a href="../view/<?= $group['user_id']; ?>"><?= $group['user_name'] . ' ' . $group['user_surname']; ?></a></span></li>
+                <li><span>Дата создания:</span><span><?= $doc; ?></span></li>
+                <li><span>Описание: </span><span><?= $group['group_describe']; ?></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="records">
+        <? if(!$participantBool): ?>
+        <h1 class="no-participant">Чтобы смотреть записи данного класса необходимо быть участником</h1>
+        <? else: ?>
+        <? if ($group['group_allow_add'] == 1 || $adminBool): ?>
+        <a href="../add-record/<?= $id_group; ?>" class="add-record">Добавить запись</a>
+        <? endif; ?>
+        <h4 class="title_list">Записи сообщетсва</h4>
+        <div class="list" id="list">
+
+        </div>
+        <? endif; ?>
+      </div>
+  </div>
+  <div class="clm">
+    <div>
+      <div class="group-img">
+        <div>
+          <? if(is_null($group['group_img']) || $group['group_img'] == ""): ?>
+            <img src="../assets/img/group.png" alt="">
+          <? else: ?>
+            <img src="./assets/img_group/' . $group['group_img'] . '" alt="">
+          <? endif; ?>
+        <div id="group-action">
+          <?= $btnActionText; ?>
+     </div>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</main>
+<script>
+  let id_group = <?=  $id_group; ?>;
+  let total = <?= $totalRecords; ?>;
+  </script>

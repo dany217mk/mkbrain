@@ -49,3 +49,22 @@ document.getElementById('describe').onclick = function(){
           document.getElementById('show-details').innerHTML = "Показать подробную информацию";
         }
       }
+
+      function deleteFavorite(id){
+        var request = createRequest();
+        var data = new FormData();
+        data.append('id_test', id);
+        request.open('POST','deletefavorite');
+        request.addEventListener('readystatechange', function() {
+          if ((request.readyState==4) && (request.status==200)) {
+            notification(request.responseText);
+            if (request.responseText == "success") {
+              notification("Успешно", 'success');
+              window.location.href = "./my";
+            } else{
+              notification("Ошибка 464!", 'error');
+            }
+          }
+        });
+       request.send(data);
+      }

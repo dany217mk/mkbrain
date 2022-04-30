@@ -401,6 +401,9 @@ body > main {
   align-items: center;
   justify-content: center;
 }
+#auth_code-button{
+  display: none;
+}
 body > main .menu-btns{
   width: 392px;
   box-shadow: 0 10px 20px 0 rgb(0 0 0 / 8%);

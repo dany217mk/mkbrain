@@ -1,0 +1,143 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+  margin-top: 20px;
+}
+main > div:nth-child(1){
+  width: 78%;
+  overflow-x: scroll;
+}
+main > div:nth-child(2){
+  width: 13%;
+  position: fixed;
+  right: 1%;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+.records {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+.no-records{
+  text-align: center;
+}
+.record_block{
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 60%;
+  box-shadow: 1px 2px 12px 0 rgb(53 0 132 / 12%);
+  background: #fff;
+}
+.list .type{
+  background: #b04fff;
+  padding: 2px;
+  color: #f4ffee;
+  margin-top: 5px;
+}
+.text p{
+  font-size: 18px;
+  padding: 10px;
+  word-break: break-word;
+}
+.img_block img{
+  display: block;
+  width: 95%;
+  margin: 10px auto;
+}
+.record_footer{
+  display: flex;
+  justify-content: space-between;
+}
+.record_footer > div:first-child i{
+  font-size: 22px;
+  color: #ccc;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+.record_footer > div:first-child i:hover{
+  transform: scale(1.1);
+}
+.record_footer > div:first-child i.active{
+  color: red;
+}
+.record_footer > div:first-child span{
+  font-size: 20px;
+}
+.record_footer > div:last-child span:first-child{
+  margin-right: 10px;
+}
+.comments{
+  border-top: 1px solid #eee;
+  margin-top: 15px;
+}
+.form_comments{
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form_comments input{
+  border-radius: 0;
+  padding: .65rem 1rem;
+}
+.body_comments > div{
+  display: flex;
+  align-items: center;
+  margin: 10px 2px;
+  border-top: 1px solid #eee;
+}
+.body_comments > div:first-child{
+  border-top: 0;
+}
+.body_comments div > a img{
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.body_comments div > div{
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.body_comments div > div p{
+  padding: 0;
+  margin: 2px 0;
+  word-break: break-word;
+}
+.body_comments div > div span{
+  font-size: 12px;
+}
+.record_header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.record_header img{
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  background: #eee;
+  border-radius: 50%;
+}
+.record_header > a{
+  margin-left: 20px;
+}

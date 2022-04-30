@@ -45,7 +45,10 @@
       $split = explode("-", $this->getUser()['user_dob']);
       $dob = $split[2] . "." . $split[1] . "." . $split[0];
       $row = $friendModel->countFriends();
+      $favorites = $this->getUserModel()->getFavoritesTests();
       $totalFriend =  $row['COUNT(*)'];
+      $totalGroup = $this->getUserModel()->getCountGroups();
+      $totalTest = $this->getUserModel()->getCountTests();
       require_once   './views/common/head.html';
       require_once   './views/common/header.html';
       require_once  './views/common/nav.php';
@@ -72,6 +75,15 @@
       require_once  './views/common/nav.php';
       require_once  './views/settings.html';
       $this->helper->outputCommonFoot($scripts);
+    }
+
+    public function actionDeletefavorite(){
+      $res = $this->getUserModel()->deleteFavorite($_POST['id_test']);
+      if ($res) {
+        echo "success";
+      } else {
+        echo "error";
+      }
     }
 
     public function actionDescribe(){

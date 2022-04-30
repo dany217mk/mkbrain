@@ -24,6 +24,30 @@
       return $mas['user_id'];
     }
 
+    public function getFavoritesTests(){
+      $query = "SELECT `test_name`, `test_id`, `favorite_id` FROM `favorites`
+      LEFT JOIN `tests` ON `test_id` = `favorite_test_id`
+       WHERE `favorite_user_id` = '" . $_COOKIE['uid'] . "'";
+      return $this->returnAllAssoc($query);
+    }
+
+    public function getCountGroups(){
+      $query = "SELECT COUNT(*) FROM `requests`  WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_status_id` = 2";
+      $row = $this->returnAssoc($query);
+      return $row['COUNT(*)'];
+    }
+
+    public function getCountTests(){
+      $query = "SELECT COUNT(*) FROM `tests`  WHERE `test_user_id` = '" . $_COOKIE['uid'] . "'";
+      $row = $this->returnAssoc($query);
+      return $row['COUNT(*)'];
+    }
+
+    public function deleteFavorite($id){
+      $query = "DELETE FROM `favorites` WHERE `favorite_id` = $id";
+      return $this->returnActionQuery($query);
+    }
+
     public function checkIfUserExistVkAuth($vk_id){
       $query = "SELECT * FROM `users` WHERE `user_vk_id` = '" . $vk_id . "'";
       return $this->returnActionQuery($query);
@@ -139,6 +163,30 @@
       $query = "SELECT `user_img` FROM `users` WHERE `user_id` = '" . $_COOKIE['uid'] . "'";
       $res = $this->returnAssoc($query);
       return $res['user_img'];
+    }
+
+    public function getImgWithDefault(){
+      $query = "SELECT `user_img` FROM `users` WHERE `user_id` = '" . $_COOKIE['uid'] . "'";
+      $res = $this->returnAssoc($query);
+      $img = '';
+      if (is_null($res['user_img']) || $res['user_img'] == '') {
+        $img = '../assets/img/profile.png';
+      } else {
+        $img = '../assets/img_user/' . $res['user_img'];
+      }
+      return $img;
+    }
+
+    public function getImgWithDefaultOther(){
+      $query = "SELECT `user_img` FROM `users` WHERE `user_id` = '" . $_COOKIE['uid'] . "'";
+      $res = $this->returnAssoc($query);
+      $img = '';
+      if (is_null($res['user_img']) || $res['user_img'] == '') {
+        $img = './assets/img/profile.png';
+      } else {
+        $img = './assets/img_user/' . $res['user_img'];
+      }
+      return $img;
     }
 
     public function existImg(){

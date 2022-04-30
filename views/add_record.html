@@ -1,0 +1,40 @@
+<main id="main">
+  <div class="clm">
+    <div class="form">
+      <h1>Добавить запись</h1>
+      <form method="post" id="form" enctype="multipart/form-data">
+        <div>
+          <label>Текст записи: </label>
+          <textarea name="text" id="text"></textarea>
+        </div>
+        <div>
+          <label>Тема записи</label>
+          <select name="type">
+            <? foreach($types as $type): ?>
+              <option value="<?= $type[0]; ?>"><?= $type[1]; ?></option>
+            <? endforeach; ?>
+          </select>
+        </div>
+        <div>
+          <label>Изображения:</label>
+          <div class="input_wrapper">
+            <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
+             <input type="file" multiple name="img[]" accept="image/png,image/jpg,image/jpeg,image/gif" id="input_file" class="input input_file">
+             <label for="input_file" class="input_file-button" id="inp_file_block">
+                <span class="input_file-icon-wrapper"><img class="input_file-icon" src="../assets/img/add.svg" alt="Выбрать файл" width="25"></span>
+                <span class="input_file-button-text">Выберите файлы</span>
+             </label>
+          </div>
+        </div>
+        <div>
+          <input type="submit" value="Выложить">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="clm list-aside">
+    <ul>
+      <li><a href="../group/<?= $group['group_id']; ?>"><?= $group['group_name']; ?></a></li>
+    </ul>
+  </div>
+</main>
