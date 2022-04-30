@@ -44,6 +44,22 @@ class Test extends Model{
      WHERE `test_id` = '" . $id . "'";
      return $this->returnAssoc($query);
   }
+
+  public function getMark($type, $id){
+    if ($type == 1) {
+      $query = "SELECT `mark_value` FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '$id' LIMIT 1";
+    } elseif ($type == 2) {
+      $query = "SELECT AVG(`mark_value`) as `mark_value` FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '$id'";
+    } else{
+      $query = "SELECT `mark_value` FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '$id' ORDER BY `mark_id` DESC  LIMIT 1";
+    }
+    $row = $this->returnAssoc($query);
+    if (empty($row['mark_value'])) {
+      return 0;
+    }
+    return $row['mark_value'];
+  }
+
   public function getNumAtt($id){
     $query = "SELECT * FROM `test_status` WHERE `test_status_test_id` = '" . $id . "' AND `test_status_user_id` = '" . $_COOKIE['uid'] . "' AND `test_status_is_completed` = '1'";
     return $this->returnNumRows($query);

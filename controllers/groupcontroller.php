@@ -31,7 +31,7 @@ class GroupController extends Controller{
           $this->groupModel->addRecordImg($record_id, $filename);
         }
       }
-      header("Location: ../report/successUpload");
+      header("Location: ../group/" . $id_group);
     }
 
 
@@ -90,12 +90,12 @@ class GroupController extends Controller{
     $text = "";
     $id_group = $_POST['id_group'];
     $total = $this->groupModel->countRecords($id_group);
-    $querySearch = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id` FROM `records`
+    $querySearch = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `type_id` FROM `records`
                     LEFT JOIN `users` ON `user_id` = `record_user_id`
                     LEFT JOIN  `types` ON `type_id` = `record_type_id`
                     WHERE `record_group_id` = '$id_group'
                     ORDER BY `record_id` DESC;";
-    $queryAll = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text` , `user_id` FROM `records`
+    $queryAll = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text` , `user_id`, `type_id` FROM `records`
                     LEFT JOIN `users` ON `user_id` = `record_user_id`
                     LEFT JOIN  `types` ON `type_id` = `record_type_id`
                     WHERE `record_group_id` = '$id_group'
@@ -113,7 +113,7 @@ class GroupController extends Controller{
       $split = explode("-", $item['record_date']);
       $doc = $split[2] . "." . $split[1] . "." . $split[0];
       $text .= '<div class="record_block" id="record' . $item['record_id'] . '">';
-      $text .= '<span class="type">' .  $item['type_name'] . '</span>';
+      $text .= '<span class="type" id="type' . $item['type_id'] . '">' .  $item['type_name'] . '</span>';
       $text .= '<div class="text">';
       $text .= '<p>' . $item['record_text'] . '</p>';
       $text .= '</div>';
@@ -175,14 +175,14 @@ class GroupController extends Controller{
   public function actionUpdatenews(){
     $text = "";
     $total = $this->groupModel->getCountAllRecords();
-    $querySearch = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `group_img`, `group_name`, `group_id` FROM `records`
+    $querySearch = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `group_img`, `group_name`, `group_id`, `type_id` FROM `records`
                     LEFT JOIN `users` ON `user_id` = `record_user_id`
                     LEFT JOIN  `types` ON `type_id` = `record_type_id`
                     LEFT JOIN `groups` ON `record_group_id` = `group_id`
                     LEFT JOIN `requests` ON `request_group_id` = `group_id`
                     WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_status_id` = 2
                     ORDER BY `record_id` DESC;";
-    $queryAll = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `group_img`, `group_name`, `group_id` FROM `records`
+    $queryAll = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `group_img`, `group_name`, `group_id`, `type_id` FROM `records`
                     LEFT JOIN `users` ON `user_id` = `record_user_id`
                     LEFT JOIN  `types` ON `type_id` = `record_type_id`
                     LEFT JOIN `groups` ON `record_group_id` = `group_id`
@@ -190,7 +190,7 @@ class GroupController extends Controller{
                     WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_status_id` = 2
                     ORDER BY `record_id` DESC LIMIT " . (int)$_POST['border'] . ", " . 5 . ";";
     $funFilter = '';
-    $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<h1 class='no-records'>Здесь пока-что нет записей</h1>");
+    $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<h1 class='no-records'>Здесь пока-что ничего нет, вам необходимо <a href='groups'>присоединиться к классу</a></h1>");
     foreach ($data as $item) {
       $imgs = $this->groupModel->getRecordImgs($item['record_id']);
       $comments = $this->groupModel->getComments($item['record_id']);
@@ -210,7 +210,7 @@ class GroupController extends Controller{
       }
       $text .= '<a href="group/' . $item['group_id'] . '">' .  $item['group_name'] . '</a>';
       $text .= '</div>';
-      $text .= '<span class="type">' .  $item['type_name'] . '</span>';
+      $text .= '<span class="type" id="type' . $item['type_id'] . '">' .  $item['type_name'] . '</span>';
       $text .= '<div class="text">';
       $text .= '<p>' . $item['record_text'] . '</p>';
       $text .= '</div>';

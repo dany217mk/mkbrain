@@ -19,8 +19,8 @@
                 </div>
                 <div class="test-info">
                 <div>
-                  <span id="btn_test_menu">Основная информация <i  class="fa fa-chevron-right"></i></span>
-                  <ul id="block_test">
+                  <span id="btn_test_menu" class="active">Основная информация <i  class="fa fa-chevron-right"></i></span>
+                  <ul id="block_test" class="active">
                     <li><span>Предмет:</span><span><?= $view['subject_name']; ?></span></li>
                     <li><span>Код теста:</span><span><?= $view['test_code']; ?></span></li>
                     <li><span>Метод оценивания:</span><span><?= $view['method_name']; ?></span></li>
@@ -32,14 +32,9 @@
               </div>
               </div>
 
-              <!--<div class="my_info">
-                <div>
-                  <span>Мои попытки</span>
-                  <ul>
-                      <li><span></span></li>
-                  </ul>
-                </div>
-              </div>-->
+              <div class="my_info">
+                  <span>Текущая оценка за тест: </span><span class="mark"><?= $markText; ?></span>
+              </div>
             </div>
           </div>
           <? if ($view['test_attempts'] == 0 || $numAtt < $view['test_attempts']): ?>

@@ -42,7 +42,7 @@
    request.open('POST','updatenews');
    request.addEventListener('readystatechange', function() {
    if ((request.readyState==4) && (request.status==200)) {
-     if (request.responseText.trim() == "<h1 class='no-records'>Здесь пока-что нет записей</h1>") {
+     if (request.responseText.trim() == "<h1 class='no-records'>Здесь пока-что ничего нет, вам необходимо <a href='groups'>присоединиться к классу</a></h1>") {
        if (loadMoreBlock.innerHTML.trim() == "" || loadMoreBlock.innerHTML.trim() == '<div class="loading-icon"><h4>Загрузка...</h4></div>') {
          boolGroup = false;
          loadMoreBlock.insertAdjacentHTML('beforeend', request.responseText);

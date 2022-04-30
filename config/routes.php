@@ -60,7 +60,8 @@ $routes = array(
     'add_org' => 'addorg',
     'upload_file' => 'upload',
     'delete_img' => 'deleteimg',
-    'deletefavorite' => 'deletefavorite'
+    'deletefavorite' => 'deletefavorite',
+    'marks' => 'marks'
   ),
   'MessageController' => array(
     'addmsg' => 'addmsg',

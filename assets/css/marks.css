@@ -1,0 +1,67 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+  margin-top: 20px;
+}
+main > div:nth-child(1){
+  width: 95%;
+  overflow-x: scroll;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+main .total{
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  box-shadow: 1px 2px 12px 0 rgb(53 0 132 / 12%);
+  border-radius: 8px;
+}
+main .total h3{
+  margin: 0;
+  margin-bottom: 16px;
+  color: #343434;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+main .total div {
+    margin: 15px 0;
+}
+main table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  background: white;
+  max-width: 70%;
+  width: 70%;
+  border-collapse: collapse;
+  text-align: left;
+  margin: 20px auto;
+}
+main th {
+  font-weight: normal;
+  color: #039;
+  border-bottom: 2px solid #6678b1;
+  padding: 10px 8px;
+}
+main td {
+  color: #669;
+  padding: 9px 8px;
+  transition: .3s linear;
+}
+main tr:hover td {
+  color: #6699ff;
+}
+main fieldset{
+  width: 95%;
+  margin: 10px auto;
+}

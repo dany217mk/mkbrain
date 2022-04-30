@@ -2,6 +2,7 @@ const BORDER = 20;
     let l_border = 0;
     let privacyBtn = false;
     let popular = false;
+        let newBool = false;
     let privacy = false;
     let loadMoreBlock = document.getElementById('list');
 
@@ -30,7 +31,7 @@ const BORDER = 20;
       if (!privacy) {
         output();
       }
-      scrollTop()
+     scrollTop()
     }
 
     function lazyScroll() {
@@ -91,8 +92,9 @@ const BORDER = 20;
               boolFriend = false;
               loadMoreBlock.insertAdjacentHTML('beforeend', request.responseText);
             } else{
-              if (boolFilter) {
+              if (boolFilter && !popular && !newBool) {
                 boolFriend = false;
+                popular = false;
                 loadMoreBlock.insertAdjacentHTML('beforeend', "<div class='empty'><h4>Не найдено ни одной записи</h4><div>");
               }
             }
@@ -149,15 +151,14 @@ const BORDER = 20;
         output();
     }
 
-    function createFavorite(id) {
 
-    }
 
 
     document.getElementById('btn1').onclick = function(){
       clearBtns();
       this.classList.add('active');
       popular = false;
+      newBool = true;
       l_border = 0;
       if (boolFriend) {
         loadMoreBlock.innerHTML = "";
@@ -170,6 +171,7 @@ const BORDER = 20;
       this.classList.add('active');
       popular = true;
       boolFilter = true;
+      newBool = false;
       if (boolFriend) {
         loadMoreBlock.innerHTML = "";
       }
@@ -182,6 +184,7 @@ const BORDER = 20;
       this.classList.add('active');
       popular = false;
       privacy = true;
+      newBool = false;
       l_border = 0;
       document.getElementById('code-block').classList.add('active');
       if (boolFriend) {

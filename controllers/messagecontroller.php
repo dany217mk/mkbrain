@@ -87,7 +87,7 @@ class MessageController extends Controller{
 
   public function actionReadmsg(){
     if (isset($_POST['id'])) {
-        $this->messageModel->readAllMsgs($id);
+        $this->messageModel->readAllMsgs($_POST['id']);
     }
   }
 

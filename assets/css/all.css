@@ -12,9 +12,9 @@
   --background_body: #edeef070;
 	--white: #fff;
   --gray: #eee;
-  --sidebar: #fff;
-  --sidebar-icon: rgb(51,51,51);
-  --sidebar-font: rgb(51,51,51);
+  --sidebar: #313a46;
+  --sidebar-icon: #73808f;
+  --sidebar-font: #fff;
   --msg_out: #5b61b9;
   --msg_in: #eee;
   --hover_bg: #f4f5fd;
@@ -165,6 +165,7 @@ input[type=radio] + label {
  header{
      width: 100%;
      background: #fff;
+		 box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
      position: fixed;
      top: 0;
      z-index: 1004;
@@ -341,12 +342,12 @@ input[type=radio] + label {
 	  top: 0;
 	  height: 100%;
 	  width: 52px;
-	  background: var(--sidebar);
 	  padding: 6px 14px;
 	  z-index: 99;
 	  transition: all 0.5s ease;
 	  z-index: 1005;
-	  box-shadow: rgb(0 0 0 / 8%) 0px 10px 20px 0px;
+		background: var(--sidebar);
+		box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 	}
 	.sidebar.open{
 	  width: 225px;
@@ -440,21 +441,21 @@ input[type=radio] + label {
 	  text-decoration: none;
 	  transition: all 0.4s ease;
 	  background: var(--sidebar);
-	  filter: drop-shadow(1px 2px 1px #eee);
+	  filter: drop-shadow(1px 2px 1px #000);
 	}
 	.sidebar li a:hover{
-	  background: #f8f8f8;
+		background: #3f4a58;
 	}
 	.sidebar.open li a{
-	  filter: drop-shadow(0px 0px);
-	  border-radius: 2px;
+	  filter: drop-shadow(1px 1px transparent);
+	  border-radius: 8px;
 	}
 	.sidebar.open li a:hover{
-	  background: #f8f8f8;
+	  background: #3f4a58;
 	}
 	.sidebar li a:hover i{
 	  transition: all 0.3s ease;
-	  color:  var(--main);
+	  color:  #00ebb0;
 	}
 	.sidebar li a .links_name{
 	  color: var(--sidebar-icon);
@@ -479,7 +480,7 @@ input[type=radio] + label {
 	  line-height: 50px;
 	  font-size: 17px;
 	  border-radius: 12px;
-		color: var(--btn);
+		color: var(--sidebar-icon);
 	}
 	 .sidebar li i.active::after{
 	   content: "";

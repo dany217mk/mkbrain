@@ -119,6 +119,17 @@ class TestController extends Controller{
       $test_time = $hourStr . ':' . $minStr . ':' . $secStr;
 
    $numAtt = $this->testModel->getNumAtt($id_view);
+
+   $mark = round($this->testModel->getMark($view['test_method_id'], $id_view), 2);
+
+   $markText = $mark;
+
+   if ($mark == 0) {
+     $markText = 'ø';
+   } else {
+     $markText = $mark;
+   }
+
     $title = $view['test_name'];
     $styles = [CSS . '/testview.css'];
     $scripts = [JS . '/testview.js'];
@@ -288,7 +299,7 @@ class TestController extends Controller{
     }
     $text .= '</div>';
     $text .= '<div class="sett">';
-      $text .= '<span><i class="fa fa-heart" aria-hidden="true"></i><b>' . $item['test_likes'] . '</b></span><span><i class="fas fa-street-view"></i><b>3</b></span>';
+      $text .= '<span><i class="fa fa-heart" aria-hidden="true"></i><b>' . $item['test_likes'] . '</b></span>';
     $text .= '</div>';
     $text .= '</div>';
     $text .= '</a>';

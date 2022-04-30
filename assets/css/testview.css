@@ -174,3 +174,24 @@ main > div:nth-child(2){
     width: 90% !important;
   }
 }
+.mark{
+  padding-bottom: 3px;
+  font-size: 19px;
+  line-height: 21px;
+  box-shadow: inset 0 0 0 1px hsl(0deg 0% 100% / 10%), 0 2px 8px rgb(13 18 22 / 15%);
+  background: #606ff0;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+.my_info{
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}

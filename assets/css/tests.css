@@ -118,7 +118,7 @@ main #list{
   margin: 25px 50px;
   justify-content: space-around;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   clear: both;
 }
 main #list > div{

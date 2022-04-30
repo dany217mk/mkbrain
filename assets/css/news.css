@@ -43,10 +43,26 @@ main > div:nth-child(2){
   background: #fff;
 }
 .list .type{
-  background: #b04fff;
   padding: 2px;
   color: #f4ffee;
   margin-top: 5px;
+}
+.list #type1{
+  background: #b04fff;
+}
+.list #type2{
+  background: #399c2d;
+}
+.list #type3{
+  background: #fff3cd;
+  color: #434343;
+}
+.list #type4{
+  background: #e343bb;
+}
+.list #type5{
+  background: #eee;
+  color: #000
 }
 .text p{
   font-size: 18px;

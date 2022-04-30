@@ -37,6 +37,13 @@
       return $row['COUNT(*)'];
     }
 
+    public function getCountAttempts(){
+      $query = "SELECT COUNT(*) FROM `marks`  WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "'";
+      $row = $this->returnAssoc($query);
+      return $row['COUNT(*)'];
+    }
+
+
     public function getCountTests(){
       $query = "SELECT COUNT(*) FROM `tests`  WHERE `test_user_id` = '" . $_COOKIE['uid'] . "'";
       $row = $this->returnAssoc($query);
@@ -46,6 +53,23 @@
     public function deleteFavorite($id){
       $query = "DELETE FROM `favorites` WHERE `favorite_id` = $id";
       return $this->returnActionQuery($query);
+    }
+
+    public function getMark(){
+      $query = "SELECT AVG(`mark_value`) as `avg` FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "'";
+      $row = $this->returnAssoc($query);
+      return $row['avg'];
+    }
+
+    public function getCountDefeniteMark($mark){
+      $query = "SELECT COUNT(*)  FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_value` = '$mark';";
+      $row = $this->returnAssoc($query);
+      return $row['COUNT(*)'];
+    }
+
+    public function getAllTestMarks(){
+      $query = "SELECT `test_name`, `test_id`, `mark_value` FROM `marks` LEFT JOIN `tests` ON  `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' ORDER BY `mark_id`  DESC";
+      return $this->returnAllAssoc($query);
     }
 
     public function checkIfUserExistVkAuth($vk_id){

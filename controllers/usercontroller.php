@@ -49,10 +49,48 @@
       $totalFriend =  $row['COUNT(*)'];
       $totalGroup = $this->getUserModel()->getCountGroups();
       $totalTest = $this->getUserModel()->getCountTests();
+      $mark = round($this->getUserModel()->getMark(), 2);
+      if ($mark == 0) {
+        $markText='ø';
+      } else {
+        $markText = $mark;
+      }
       require_once   './views/common/head.html';
       require_once   './views/common/header.html';
       require_once  './views/common/nav.php';
       require_once  './views/my.html';
+      $this->helper->outputCommonFoot($scripts);
+    }
+
+    public function actionMarks(){
+      $testMarks = $this->getUserModel()->getAllTestMarks();
+      $totalAttempt = $this->getUserModel()->getCountAttempts();
+      $markAvg = $this->getUserModel()->getMark();
+      if ($markAvg >= 4.5) {
+        $perf = "Отличник";
+        $rec = 'Продолжайте в том же духе, не сбивайте планку и добивайтесь успехов. Вы молодец!';
+      } elseif ($markAvg >= 3.5) {
+        $perf = "Хорошист";
+        $rec = 'Очень хорошо, до стадии «отличник» остался один шаг, работайте и развивайтесь!';
+      } elseif ($markAvg >= 2.5) {
+        $perf = "Троечник";
+        $rec = 'Неплохо, но можно и лучше, постарайтесь сконцентрироваться и попробывать ещё раз, у вас все получится, не сомневайтесь! ';
+      } elseif ($markAvg == 0) {
+        $perf = "Мы пока-что не знаем какой вы ученик";
+        $rec = 'Пока-что никаких рекомендаций';
+      }
+       else {
+        $perf = "Двоечник";
+        $rec = 'Соберитесь и сконцентрируйтесь на решении задач, у вас все получится, просто надо немного постараться';
+      }
+      $markNum = [$this->getUserModel()->getCountDefeniteMark(2), $this->getUserModel()->getCountDefeniteMark(3), $this->getUserModel()->getCountDefeniteMark(4), $this->getUserModel()->getCountDefeniteMark(5)];
+      $title = 'Оценки';
+      $styles = [CSS . '/marks.css'];
+      $scripts = ['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js', JS . '/marks.js', ];
+      require_once   './views/common/head.html';
+      require_once   './views/common/header.html';
+      require_once  './views/common/nav.php';
+      require_once  './views/marks.html';
       $this->helper->outputCommonFoot($scripts);
     }
 

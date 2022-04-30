@@ -85,7 +85,8 @@ let form = document.querySelector('.typing-area');
        data.append('id', userChatId);
        request.open('POST','../readmsg');
        request.addEventListener('readystatechange', function() {
-       //  if ((request.readyState==4) && (request.status==200)) {}
+         /*if ((request.readyState==4) && (request.status==200)) {
+         }*/
        });
       request.send(data);
      }
