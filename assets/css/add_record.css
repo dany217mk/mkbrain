@@ -135,3 +135,25 @@ form div textarea{
     box-shadow: 0 0 0 0.2rem rgb(15 136 143 / 25%);
     border-color: #0d7278;
 }
+.linkBack a {
+  color: #434343;
+}
+@media (max-width: 800px) {
+main > div:nth-child(2) {
+  position: static;
+  width: 100%;
+}
+main > div:nth-child(1) {
+  width: 100%;
+}
+main{
+  display: flex;
+flex-direction: column-reverse;
+}
+main form div {
+  flex-direction: column;
+}
+form div label {
+  margin-bottom: 10px;
+}
+}

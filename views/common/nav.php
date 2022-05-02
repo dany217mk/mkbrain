@@ -40,10 +40,10 @@
 <nav class="sidebar_mobile">
   <? if (isset($this->user)): ?>
   <ul>
-    <li><a href="<?= FULL_SITE_ROOT ?>/my"><span class="icon"><i class="fas fa-newspaper" aria-hidden="true"></i></span><span class="title">Новости</span></a></li>
+    <li><a href="<?= FULL_SITE_ROOT ?>/news"><span class="icon"><i class="fas fa-newspaper" aria-hidden="true"></i></span><span class="title">Новости</span></a></li>
     <li><a href="<?= FULL_SITE_ROOT ?>/services"><span class="icon"><i class="fa fa-list" aria-hidden="true"></i></span><span class="title">Сервисы</span></a></li>
     <li><a href="<?= FULL_SITE_ROOT ?>/im"><span class="icon"><i class="fas fa-comments" aria-hidden="true"></i></span><span class="title">Сообщения</span></a></li>
-    <li><a href="<?= FULL_SITE_ROOT ?>/group"><span class="icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span><span class="title">Классы</span></a></li>
+    <li><a href="<?= FULL_SITE_ROOT ?>/groups"><span class="icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span><span class="title">Классы</span></a></li>
     <li><a href="<?= FULL_SITE_ROOT ?>/tests"><span class="icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span><span class="title">Тесты</span></a></li>
   </ul>
   <? else: ?>

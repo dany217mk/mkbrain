@@ -254,4 +254,12 @@ main > div:nth-child(1) > div:nth-child(2) {
   main{
     margin-top: 50px;
   }
+  .typing-area {
+    position: fixed;
+    width: 90%;
+    bottom: 60px;
+  }
+  .chat-box {
+    height: 65vh;
+  }
 }

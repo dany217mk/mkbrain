@@ -10,9 +10,6 @@ main > div:nth-child(2) {
   display: flex;
   flex-direction: column;
 }
-.info{
-
-}
 .group-img{
   background: #fff;
   padding: 10px;
@@ -260,4 +257,24 @@ margin: 0 auto;
 .list #type5{
   background: #eee;
   color: #000
+}
+@media (max-width: 800px) {
+  main > div:nth-child(1) {
+      width: 100%;
+  }
+  .record_block {
+    width: 90%;
+  }
+  main{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  main > div:nth-child(2) {
+    margin-bottom: 20px;
+  }
+  .group-img img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
 }

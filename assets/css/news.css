@@ -157,3 +157,15 @@ main > div:nth-child(2){
 .record_header > a{
   margin-left: 20px;
 }
+@media (max-width: 800px) {
+  main > div:nth-child(2) {
+    display: none;
+  }
+  main > div:nth-child(1) {
+    width: 100%;
+    margin-top: 0;
+  }
+  .record_block {
+    width: 90%;
+  }
+}

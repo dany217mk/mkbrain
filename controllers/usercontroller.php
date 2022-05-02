@@ -65,7 +65,7 @@
     public function actionMarks(){
       $testMarks = $this->getUserModel()->getAllTestMarks();
       $totalAttempt = $this->getUserModel()->getCountAttempts();
-      $markAvg = $this->getUserModel()->getMark();
+      $markAvg = round($this->getUserModel()->getMark(),2);
       if ($markAvg >= 4.5) {
         $perf = "Отличник";
         $rec = 'Продолжайте в том же духе, не сбивайте планку и добивайтесь успехов. Вы молодец!';

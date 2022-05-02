@@ -1,5 +1,8 @@
 <?php
 $routes = array(
+  'ServiceController' => array(
+    'services' => 'service'
+  ),
   'TestController' => array(
     'testview/([0-9]+)' => 'testview/$1',
     'tests' => 'tests',
