@@ -1,0 +1,34 @@
+<main id="main">
+  <div class="clm">
+    <h1>Панель директора</h1>
+    <? if ($orgBool): ?>
+      <div class="my_org">
+        <span>Ваша организация:</span>
+        <span><?= $this->getUser()['organization_name']; ?></span>
+      </div>
+    <? endif; ?>
+    <div class="services">
+    <? if (!$orgBool): ?>
+      <div>
+        <a href="organization_add">
+          <i class="fa fa-user-plus"></i>
+          <span>Создать организацию</span>
+        </a>
+      </div>
+      <? else:  ?>
+      <div>
+        <a href="create_organization">
+          <i class="fa fa-users-rectangle"></i>
+          <span>Классы</span>
+        </a>
+      </div>
+      <div>
+        <a href="create_organization">
+          <i class="fa fa-people-group"></i>
+          <span>Ученики</span>
+        </a>
+      </div>
+      <? endif;  ?>
+    </div>
+  </div>
+</main>

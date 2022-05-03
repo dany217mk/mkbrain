@@ -37,29 +37,50 @@ main .total h3{
 main .total div {
     margin: 15px 0;
 }
-main table {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-  font-size: 14px;
-  background: white;
-  max-width: 70%;
-  width: 70%;
-  border-collapse: collapse;
-  text-align: left;
-  margin: 20px auto;
+main table{
+  width: 50%;
+  margin: 0 auto;
+  border-spacing: 0 10px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 main th {
-  font-weight: normal;
-  color: #039;
-  border-bottom: 2px solid #6678b1;
-  padding: 10px 8px;
+padding: 10px 20px;
+background: #56433D;
+color: #F9C941;
+border-right: 2px solid;
+font-size: 0.9em;
+}
+main th:first-child {
+text-align: left;
 }
 main td {
-  color: #669;
-  padding: 9px 8px;
-  transition: .3s linear;
+vertical-align: middle;
+padding: 10px;
+font-size: 14px;
+text-align: center;
+border-top: 2px solid #56433D;
+border-bottom: 2px solid #56433D;
+border-right: 2px solid #56433D;
 }
-main tr:hover td {
-  color: #6699ff;
+main td:first-child {
+border-left: 2px solid #56433D;
+text-align:  center;
+}
+main td:first-child {
+text-align: left;
+}
+main td span{
+  border-radius: 30px;
+  background: #56433D;
+  color: #F9C941;
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 main fieldset{
   width: 95%;

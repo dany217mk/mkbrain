@@ -63,6 +63,7 @@
     }
 
     public function actionMarks(){
+      $this->getUserModel()->solveAllTest();
       $testMarks = $this->getUserModel()->getAllTestMarks();
       $totalAttempt = $this->getUserModel()->getCountAttempts();
       $markAvg = round($this->getUserModel()->getMark(),2);
@@ -83,7 +84,7 @@
         $perf = "Двоечник";
         $rec = 'Соберитесь и сконцентрируйтесь на решении задач, у вас все получится, просто надо немного постараться';
       }
-      $markNum = [$this->getUserModel()->getCountDefeniteMark(2), $this->getUserModel()->getCountDefeniteMark(3), $this->getUserModel()->getCountDefeniteMark(4), $this->getUserModel()->getCountDefeniteMark(5)];
+      $markNum = [$this->getUserModel()->getCountDefeniteMark(2, $testMarks), $this->getUserModel()->getCountDefeniteMark(3, $testMarks), $this->getUserModel()->getCountDefeniteMark(4, $testMarks), $this->getUserModel()->getCountDefeniteMark(5, $testMarks)];
       $title = 'Оценки';
       $styles = [CSS . '/marks.css'];
       $scripts = ['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js', JS . '/marks.js', ];
@@ -146,6 +147,10 @@
     }
 
     public function actionExitorg(){
+      if ($this->getUserModel()->isAdminOrg()) {
+        header("Location: ./report/admin_org");
+        exit;
+      }
         $res = $this->getUserModel()->emptyOrg();
         if ($res) {
           header("Location: ./report/success");

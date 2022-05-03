@@ -21,7 +21,7 @@
           <? foreach($testMarks as $testMark): ?>
             <tr>
               <td><a href="./testview/<?= $testMark['test_id']; ?>"><?= $testMark['test_name']; ?></a></td>
-              <td><?= $testMark['mark_value']; ?></td>
+              <td><span><?= round($testMark['mark_value'], 2); ?></span></td>
             </tr>
           <? endforeach; ?>
         <? endif; ?>

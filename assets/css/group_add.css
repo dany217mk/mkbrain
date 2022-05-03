@@ -13,18 +13,13 @@ main{
   margin-top: 20px;
 }
 main > div:nth-child(1){
-  width: 78%;
+  width: 90%;
   overflow-x: scroll;
 }
 main > div{
   background: #fff;
   border-radius: 4px;
   border: 1px solid #00000020;
-}
-main > div:nth-child(2){
-  width: 13%;
-  position: fixed;
-  right: 1%;
 }
 .form h1{
   text-align: center;
@@ -120,23 +115,4 @@ form div textarea{
 }
 .linkBack a {
   color: #434343;
-}
-@media (max-width: 800px) {
-main > div:nth-child(2) {
-  position: static;
-  width: 100%;
-}
-main > div:nth-child(1) {
-  width: 100%;
-}
-main{
-  display: flex;
-flex-direction: column-reverse;
-}
-main form div {
-  flex-direction: column;
-}
-form div label {
-  margin-bottom: 10px;
-}
 }

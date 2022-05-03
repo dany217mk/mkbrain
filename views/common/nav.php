@@ -23,7 +23,7 @@
       echo "<ul class='nav-list'>";
       while (($row = $res->fetch_assoc()) != false) {
         echo "<li>";
-        echo "<a href='" . $row['menu_link'] . "'>";
+        echo "<a href='" . FULL_SITE_ROOT . '/' . $row['menu_link'] . "'>";
         if ($row['menu_name'] == "Письма") {
           echo '<i class="' . $row['menu_favicon'] . ' ' . $noteMsg . '"></i>';
         } else {

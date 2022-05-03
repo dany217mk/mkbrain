@@ -43,6 +43,15 @@
       return $row['COUNT(*)'];
     }
 
+    public function isAdminOrg(){
+      $query = "SELECT COUNT(*) as `cnt` FROM `organizations` WHERE `organization_user_id` = '" . $_COOKIE['uid'] . "'";
+      $row = $this->returnAssoc($query);
+      if ($row['cnt'] > 0) {
+        return true;
+      }
+        return false;
+    }
+
 
     public function getCountTests(){
       $query = "SELECT COUNT(*) FROM `tests`  WHERE `test_user_id` = '" . $_COOKIE['uid'] . "'";
@@ -61,15 +70,49 @@
       return $row['avg'];
     }
 
-    public function getCountDefeniteMark($mark){
-      $query = "SELECT COUNT(*)  FROM `marks` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_value` = '$mark';";
-      $row = $this->returnAssoc($query);
-      return $row['COUNT(*)'];
+    public function getCountDefeniteMark($mark, $data){
+      $counter = 0;
+      foreach ($data as $item) {
+        if ($item['mark_value'] < ($mark+0.5) && $item['mark_value'] >= ($mark - 0.5)) {
+          $counter++;
+        }
+      }
+      return $counter;
     }
 
     public function getAllTestMarks(){
-      $query = "SELECT `test_name`, `test_id`, `mark_value` FROM `marks` LEFT JOIN `tests` ON  `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' ORDER BY `mark_id`  DESC";
-      return $this->returnAllAssoc($query);
+      $query = "SELECT *, `test_method_id`, `test_id` FROM `marks` LEFT JOIN `tests` ON `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "';";
+      $masCheck = [];
+      $data = array();
+      $row = $this->returnAllAssoc($query);
+      foreach ($row as $item) {
+        if (in_array($item['mark_test_id'], $masCheck)) {
+          continue;
+        }
+        if ($item['test_method_id'] == 1) {
+          $query = "SELECT `test_name`, `mark_value`, `test_id` FROM `marks` LEFT JOIN `tests` ON `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '" . $item['mark_test_id'] . "' ORDER BY `mark_id` LIMIT 1;";
+          array_push($data, $this->returnAssoc($query));
+        } elseif ($item['test_method_id'] == 2) {
+          $query = "SELECT `test_name`, AVG(`mark_value`) AS `mark_value`, `test_id` FROM `marks` LEFT JOIN `tests` ON `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '" . $item['mark_test_id'] . "' ORDER BY `mark_id`;";
+          array_push($data, $this->returnAssoc($query));
+        } elseif ($item['test_method_id'] == 3) {
+          $query = "SELECT `test_name`, `mark_value`, `test_id` FROM `marks` LEFT JOIN `tests` ON `test_id` = `mark_test_id` WHERE `mark_user_id` = '" . $_COOKIE['uid'] . "' AND `mark_test_id` = '" . $item['mark_test_id'] . "' ORDER BY `mark_id` DESC LIMIT 1;";
+          array_push($data, $this->returnAssoc($query));
+        }
+        array_push($masCheck, $item['mark_test_id']);
+      }
+      return $data;
+    }
+
+    public function solveAllTest(){
+      $query = "SELECT * FROM `test_status` WHERE `test_status_user_id` = '" . $_COOKIE['uid'] . "' AND `test_status_is_completed` = 0";
+      $row =  $this->returnAllAssoc($query);
+      foreach ($row as $item) {
+        if ($item['test_status_doe'] - time() <= 0){
+          $this->actionQuery("UPDATE `test_status` SET `test_status_is_completed` = 1 WHERE `test_status_id` = '" . $item['test_status_id'] . "';");
+          $this->actionQuery("INSERT INTO `marks` (`mark_user_id`, `mark_value`, `mark_test_id`) VALUES ('" . $_COOKIE['uid'] . "', '2', '" . $item['test_status_test_id']  . "');");
+        }
+      }
     }
 
     public function checkIfUserExistVkAuth($vk_id){

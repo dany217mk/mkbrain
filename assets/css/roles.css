@@ -33,3 +33,15 @@ body{
 .btns a:hover {
     background: #00314dd4;
 }
+@media (max-width: 800px) {
+  body{
+    flex-direction: column;
+  }
+  .btns {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .btns a {
+    width: 100%;
+  }
+}

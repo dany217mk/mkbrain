@@ -17,6 +17,17 @@ class GroupController extends Controller{
     $this->helper->outputCommonFoot($scripts);
   }
 
+  public function actionAdd(){
+    $title = "Создание Класса";
+    $styles = [CSS . '/group_add.css'];
+    $scripts = [JS . '/group_add.js'];
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/group_add.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
   public function actionAddrecord($data){
     $id_group = $data[0];
     if (isset($_POST['text'])) {

@@ -1,0 +1,70 @@
+body{
+  padding-bottom: 10px;
+}
+main{
+  margin-top: 60px;
+  display: flex;
+  transition: all 0.5s ease;
+  align-items: start;
+}
+.clm{
+  margin-left: 60px;
+  position: relative;
+  margin-top: 20px;
+}
+main > div:nth-child(1){
+  width: 90%;
+  overflow-x: scroll;
+}
+main > div{
+  background-image: url(../img/banner10.png);
+  min-height: 80vh;
+  border-radius: 4px;
+  border: 1px solid #00000020;
+}
+.clm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .form{
+  width: 50%;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 1px 2px 12px 0 rgb(53 0 132 / 12%);
+  border-radius: 8px;
+}
+main .form h1{
+  display: block;
+  text-align: center;
+  margin: 40px 0;
+  font-size: 40px;
+  color: #434343;
+  font-family: Arial,sans-serif;
+  line-height: 1.3;
+  font-weight: 500;
+}
+main .form .inp{
+  display: block;
+  width: 60%;
+  border-radius: 0;
+  padding: 1rem;
+  margin: 10px auto;
+}
+main .form .sub{
+  display: block;
+  margin: 15px auto;
+  padding: 10px 40px;
+  border-radius: 4px;
+  background: #1eb54c;
+  color: #fff;
+}
+.info{
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+}
+.info p {
+    text-align: center;
+    color: #777;
+    font-size: 11px;
+}

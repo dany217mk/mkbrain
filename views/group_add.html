@@ -1,0 +1,42 @@
+<main id="main">
+  <div class="clm">
+    <div class="form">
+      <div class="linkBack">
+        <a href="../group/<?= $id_group; ?>"><i class="fas fa-arrow-left-long"></i></a>
+      </div>
+      <h1>Создание класса</h1>
+    <form method="post" enctype="multipart/form-data">
+      <div>
+        <label>Название класса: </label>
+        <input type="text" name="name">
+      </div>
+      <div>
+        <label>Организация:</label>
+        <input type="text" readonly name="organization" value="<?= $this->getUser()['organization_name']; ?>">
+      </div>
+      <div>
+        <label>Описание класса:</label>
+        <textarea name="describe"></textarea>
+      </div>
+     <div>
+      <label>Изображение:</label>
+      <div class="input_wrapper">
+        <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
+         <input type="file"  name="img" accept="image/png,image/jpg,image/jpeg,image/gif" id="input_file" class="input input_file">
+         <label for="input_file" class="input_file-button" id="inp_file_block">
+            <span class="input_file-icon-wrapper"><img class="input_file-icon" src="./assets/img/add.svg" alt="Выбрать файл" width="25"></span>
+            <span class="input_file-button-text">Выберите файл</span>
+         </label>
+      </div>
+      </div>
+      <div>
+        <label>Разрешение добавлять записи всем пользователям</label>
+        <input type="checkbox" name="allow">
+      </div>
+      <div>
+        <input type="submit" value="Создать">
+      </div>
+    </form>
+    </div>
+  </div>
+</main>

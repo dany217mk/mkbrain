@@ -19,12 +19,28 @@
         <span>Конструктор тестов</span>
       </a>
       </div>
-        <div>
+      <div>
       <a href="marks">
         <i class="fa fa-table"></i>
         <span>Мои оценки</span>
       </a>
       </div>
+      <? if ($this->getUser()['user_role_id'] == 3 || $this->getUser()['user_role_id'] == 4): ?>
+      <div>
+        <a href="teacher">
+          <i class="fa fa-person-chalkboard"></i>
+          <span>Панель учителя</span>
+        </a>
+        </div>
+      <? endif; ?>
+      <? if ($this->getUser()['user_role_id'] == 4): ?>
+      <div>
+        <a href="director">
+          <i class="fas fa-school"></i>
+          <span>Панель директора</span>
+        </a>
+        </div>
+      <? endif; ?>
     </div>
   </div>
 </main>

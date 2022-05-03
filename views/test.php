@@ -8,7 +8,7 @@
           <?php if (isset($attempt)): ?>
             <?php echo "<div class='alert warning'>У вас продолжается прошлая попытка</div>"; ?>
           <?php endif; ?>
-          <form action="../checktest/<?= $id_view; ?>" method="post">
+          <form id="form_check_test" action="../checktest/<?= $id_view; ?>" method="post">
           <?php
             $query = "SELECT * FROM `questions` WHERE  `ques_test_id` = '" . $id_view . "' ORDER BY RAND()";
             $resQues = mysqli_query($con, $query);
@@ -138,6 +138,7 @@
 
       function timeOver() {
         notification("Время закончились!");
+        document.getElementById('form_check_test').submit();
         document.getElementById('layer_bg').classList.add('active');
         document.getElementById('sub').style.transform = "scale(3) translateX(-50%) translateY(-50%)";
         document.getElementById('sub').style.position = "fixed";

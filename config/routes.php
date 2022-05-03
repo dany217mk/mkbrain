@@ -1,7 +1,10 @@
 <?php
 $routes = array(
   'ServiceController' => array(
-    'services' => 'service'
+    'services' => 'service',
+    'teacher' => 'teacher',
+    'director' => 'director',
+    'organization_add' => 'addorganization'
   ),
   'TestController' => array(
     'testview/([0-9]+)' => 'testview/$1',
@@ -30,7 +33,8 @@ $routes = array(
     'putlike' => 'putlike',
     'addcomment' => 'addcomment',
     'add-record/([0-9]+)' => 'addrecord/$1',
-    'news' => 'news'
+    'news' => 'news',
+    'group_add' => 'add'
   ),
   'FriendController' => array(
     'friends' => 'friends',
