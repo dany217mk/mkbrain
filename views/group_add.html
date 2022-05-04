@@ -2,23 +2,32 @@
   <div class="clm">
     <div class="form">
       <div class="linkBack">
-        <a href="../group/<?= $id_group; ?>"><i class="fas fa-arrow-left-long"></i></a>
+        <a href="teacher"><i class="fas fa-arrow-left-long"></i></a>
       </div>
       <h1>Создание класса</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" id="form" enctype="multipart/form-data">
       <div>
-        <label>Название класса: </label>
-        <input type="text" name="name">
+        <div>
+          <label>Название класса: </label>
+          <input type="text" name="name" id="name">
+        </div>
+        <div class="error" id="nameError"></div>
       </div>
       <div>
+        <div>
         <label>Организация:</label>
         <input type="text" readonly name="organization" value="<?= $this->getUser()['organization_name']; ?>">
+        </div>
       </div>
       <div>
+        <div>
         <label>Описание класса:</label>
-        <textarea name="describe"></textarea>
+        <textarea name="describe" id="describe"></textarea>
+        </div>
+        <div class="error" id="describeError"></div>
       </div>
      <div>
+       <div>
       <label>Изображение:</label>
       <div class="input_wrapper">
         <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
@@ -29,9 +38,13 @@
          </label>
       </div>
       </div>
+      <div class="error" id="imgError"></div>
+      </div>
       <div>
+        <div>
         <label>Разрешение добавлять записи всем пользователям</label>
         <input type="checkbox" name="allow">
+        </div>
       </div>
       <div>
         <input type="submit" value="Создать">

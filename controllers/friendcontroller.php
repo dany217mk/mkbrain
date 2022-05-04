@@ -151,6 +151,7 @@
         }
       $split = explode("-", $view['user_dob']);
       $dob = $split[2] . "." . $split[1] . "." . $split[0];
+      $tests = $this->friendModel->getUserTests($id_view);
       $totalFriend = 0;
       $title = $view['user_name'] . " " . $view['user_surname'];
       $styles = [CSS . '/view.css'];

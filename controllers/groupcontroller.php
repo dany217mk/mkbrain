@@ -19,6 +19,19 @@ class GroupController extends Controller{
 
   public function actionAdd(){
     $title = "Создание Класса";
+    if (isset($_POST['name'])) {
+      $name = $this->helper->escape_srting($_POST['name']);
+      $describe = $this->helper->escape_srting($_POST['describe']);
+      if ($_FILES['img']['error'] == 0) {
+        $filename = $this->groupModel->addImgGroup();
+        move_uploaded_file($_FILES['img']['tmp_name'], './assets/img_group/' . $filename);
+      }
+      $allow = (isset($_POST['allow'])) ? 1 : 0;
+      $code = $this->helper->generationToken(8);
+      $doc = time();
+      $last_id = $this->groupModel->addGroup($name, $describe, $filename, $allow, $code, $doc, $this->getUser()['user_organization_id']);
+      header("Location: ./group/" . $last_id);
+    }
     $styles = [CSS . '/group_add.css'];
     $scripts = [JS . '/group_add.js'];
     require_once   './views/common/head.html';
@@ -292,6 +305,10 @@ class GroupController extends Controller{
   public function actionGroupaction(){
     if (isset($_POST['id_group'])) {
       if ($_POST['type'] == 'deleteRequest' || $_POST['type'] == 'removeRequest') {
+        if ($this->groupModel->checkIfIsAdmin($_POST['id_group'])) {
+          echo "admin";
+          exit;
+        }
         $res = $this->groupModel->delete($_POST['id_group']);
         if ($res) {
           echo "success";
@@ -454,13 +471,13 @@ class GroupController extends Controller{
                     LEFT JOIN `users` ON `group_user_id` = `user_id`
                     LEFT JOIN `organizations` ON `organization_id` = `group_organization_id`
                     LEFT JOIN `requests` ON `request_group_id` = `group_id`
-                    WHERE `request_user_id` = '" . $_COOKIE['uid'] . "'
+                    WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_status_id` = 2
                   ORDER BY `group_name` DESC;";
     $queryAll = "SELECT `group_name`, `group_img`, `organization_name`, `user_name`, `group_id`,`user_surname`, `user_id` FROM `groups`
                     LEFT JOIN `users` ON `group_user_id` = `user_id`
                     LEFT JOIN `organizations` ON `organization_id` = `group_organization_id`
                     LEFT JOIN `requests` ON `request_group_id` = `group_id`
-                    WHERE `request_user_id` = '" . $_COOKIE['uid'] . "'
+                    WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_status_id` = 2
                   ORDER BY `group_name` DESC LIMIT " . (int)$_POST['border'] . ", " . 20 . ";";
     $funFilter = 'Helper::searchFilterGroup';
     $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<div class='no-group'><h3>Вы пока-что не состоите ни в одном классе :( </h3><a href='group-search'>Найти класс</a></div>");

@@ -41,7 +41,7 @@
           <? if(is_null($group['group_img']) || $group['group_img'] == ""): ?>
             <img src="../assets/img/group.png" alt="">
           <? else: ?>
-            <img src="./assets/img_group/' . $group['group_img'] . '" alt="">
+            <img src="../assets/img_group/<?= $group['group_img']; ?>" alt="">
           <? endif; ?>
         <div id="group-action">
           <?= $btnActionText; ?>

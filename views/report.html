@@ -27,6 +27,9 @@
   <?php elseif($incident == 'admin_org'): ?>
     <h3>Вы не можете выйти из этой организации, так как вы являетесь администратором</h3>
     <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
+  <?php elseif($incident == 'admin_group'): ?>
+    <h3>Вы не можете выйти из этой группы, так как вы являетесь администратором</h3>
+    <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>
    <?php elseif($incident == 'noquery'): ?>
         <h3>Такого запроса не существует</h3>
         <p>Ознакомьтесь с <a href="<?=FULL_SITE_ROOT?>/privacy">политикой сайта.</a></p>

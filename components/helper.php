@@ -135,9 +135,11 @@ class Helper
       }
       $data = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-      if (isset($_COOKIE['search']) && $_COOKIE['search']) {
+      if ($funFilter != ''){
+        if (isset($_COOKIE['search']) && $_COOKIE['search']) {
            $data = array_filter($data, $funFilter);
-       }
+        }
+      }
        return $data;
     }
 

@@ -33,6 +33,11 @@ class Friend extends Model{
      return $this->returnAssoc($query);
   }
 
+  public function getUserTests($id){
+    $query = "SELECT `test_id`, `test_name`, `test_code` FROM `tests` WHERE `test_user_id` = '$id' AND `test_privacy` = 0;";
+    return $this->returnAllAssoc($query);
+  }
+
   public function countAllUsers(){
     $query = "SELECT COUNT(*) FROM `users`";
      return $this->returnAssoc($query)['COUNT(*)'];

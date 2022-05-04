@@ -47,7 +47,7 @@ main > div{
   color: #0056b3;
   text-decoration: underline;
 }
-.warning, .noquery, .numtry, .nopromo, .errorUpload, .numtryx, .no_organization, .admin_org{
+.warning, .noquery, .numtry, .nopromo, .errorUpload, .numtryx, .no_organization, .admin_org, .admin_group{
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
@@ -68,7 +68,7 @@ main > div{
 .noreg hr, .undefinedUser hr, .connectAdmin hr, .development hr, .technical hr, .noexist hr{
   border-color: #a1dae3;
 }
-.warning hr, .noquery hr, .numtry hr, .nopromo hr,  .errorUpload hr, .numtryx hr, .no_organization hr, .admin_org hr{
+.warning hr, .noquery hr, .numtry hr, .nopromo hr,  .errorUpload hr, .numtryx hr, .no_organization hr, .admin_org hr, .admin_group hr{
   border-color: #ffe8a1;
 }
 .success,  .successUpload{

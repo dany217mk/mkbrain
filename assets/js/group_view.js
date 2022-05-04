@@ -12,7 +12,7 @@ document.getElementById('show-details').onclick = function(){
 
 
    function deleteRequest(id){
-     if (!confirm("Вы точно хотите удалить этого пользователя?")){
+     if (!confirm("Вы точно хотите выйти из этой группы?")){
        return false;
      }
      var request = createRequest();
@@ -25,6 +25,9 @@ document.getElementById('show-details').onclick = function(){
          if (request.responseText == "success") {
            notification("Пользователь удалён", 'success');
            window.location.href = "../group/" + id_group;
+         } else if (request.responseText == "admin") {
+           notification("Вы не можете выйти из этой группы, так как вы являетесь администратором", 'warning');
+           window.location.href = "../report/admin_group";
          } else{
            notification("Ошибка удаления!", 'error');
          }

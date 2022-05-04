@@ -361,14 +361,24 @@ main > div:nth-child(2){
 }
 
 @media (max-width: 800px) {
-  main > div:nth-child(2) {
-    width: 100%;
-    margin-top: 20px;
-    margin-right: 5px;
-    margin-right: 5px;
+  main > div:nth-child(1) {
+    width: 95%;
+    margin: 0 auto !important;
   }
+  main > div:nth-child(2) {
+    position: static;
+    width: 95%;
+    margin: 10px auto !important;
+    margin-bottom: 10px;
+}
   .user-img > div {
     display: flex;
     justify-content: center;
+  }
+  .main-section table {
+    width: 100%;
+  }
+  .user-info ul li {
+    width: 100%;
   }
 }

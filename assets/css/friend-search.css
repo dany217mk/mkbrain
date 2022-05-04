@@ -292,15 +292,15 @@ main > div:nth-child(3).active {
     flex-direction: column-reverse;
   }
   main > div:nth-child(1) {
-    width: 100%;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: 95%;
+    margin: 0 auto !important;
   }
   main > div:nth-child(2) {
     position: static;
-    width: 100%;
+    width: 95%;
+    margin: 10px auto !important;
     margin-bottom: 10px;
-  }
+}
   #form-friend.sticky {
     width: 80%;
     left: 5px;

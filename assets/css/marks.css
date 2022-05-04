@@ -86,3 +86,37 @@ main fieldset{
   width: 95%;
   margin: 10px auto;
 }
+.five{
+  color: green;
+}
+.four{
+  color: lightgreen;
+}
+.three{
+  color: #F9C941;
+}
+.two{
+  color: red;
+}
+#total{
+  font-weight: bold;
+  font-size: 24px;
+}
+@media (max-width: 800px) {
+  main > div:nth-child(1) {
+    width: 95%;
+    margin: 0 auto !important;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 95%;
+    margin: 10px auto !important;
+    margin-bottom: 10px;
+  }
+  main .total{
+    width: 95%;
+  }
+  main table{
+    width: 95%;
+  }
+}

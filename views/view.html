@@ -65,7 +65,25 @@
      <? if ($view['user_privacy'] == 1 && !$boolFriend): ?>
      <h3>Аккаунт приватный</h3>
      <? else: ?>
-      <h3>Нет информации</h3>
+      <h3>Тесты пользователя</h3>
+      <? if (!empty($tests)): ?>
+      <table class="table">
+        <thead>
+          <th>Название</th>
+          <th>Код</th>
+        </thead>
+        <tbody>
+          <? foreach($tests as $test): ?>
+            <tr>
+              <td><a href="../testview/<?= $test['test_id']; ?>"><?= $test['test_name']; ?></a></td>
+              <td><?= $test['test_code'] ?></td>
+            </tr>
+          <? endforeach; ?>
+        </tbody>
+      </table>
+      <? else: ?>
+      <div class="empty">У пользователя нет тестов</div>
+      <? endif; ?>
      <? endif; ?>
    </div>
    </div>

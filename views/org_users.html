@@ -1,0 +1,30 @@
+<main id="main">
+  <div class="clm">
+    <div class="list-groups">
+      <div class="form" id="form-user">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="search" maxlength="36" id="search" name="search-user" placeholder="Поиск" class="input">
+      </div>
+      <table class="table">
+        <thead>
+          <th>Имя Фамилия</th>
+          <th>Почта</th>
+          <th>Роль</th>
+          <th>Действия</th>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clm list-aside">
+    <ul>
+      <li><a href="org_groups">Классы</a></li>
+      <li><span>Пользователи</span></li>
+    </ul>
+  </div>
+</main>
+<script type="text/javascript">
+  let total = <?= $total; ?>;
+</script>

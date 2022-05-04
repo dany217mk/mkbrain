@@ -68,3 +68,12 @@ main .form .sub{
     color: #777;
     font-size: 11px;
 }
+@media (max-width: 800px) {
+  main > div:nth-child(1) {
+    width: 95%;
+    margin: 0 auto !important;
+  }
+  main .form {
+    width: 90%;
+  }
+}

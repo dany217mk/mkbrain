@@ -260,8 +260,15 @@ margin: 0 auto;
 }
 @media (max-width: 800px) {
   main > div:nth-child(1) {
-      width: 100%;
+    width: 95%;
+    margin: 0 auto !important;
   }
+  main > div:nth-child(2) {
+    position: static;
+    width: 95%;
+    margin: 10px auto !important;
+    margin-bottom: 10px;
+}
   .record_block {
     width: 90%;
   }
@@ -276,5 +283,8 @@ margin: 0 auto;
     display: block;
     margin: 0 auto;
     margin-bottom: 15px;
+  }
+  .group-info ul li {
+    width: 100%;
   }
 }

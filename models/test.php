@@ -60,6 +60,11 @@ class Test extends Model{
     return $row['mark_value'];
   }
 
+  public function searchTest($val){
+    $query = "SELECT `test_id`, `test_name` FROM `tests` WHERE LOWER(`test_name`) LIKE '%" . mb_strtolower($val) . "%' LIMIT 15;";
+    return $this->returnAllAssoc($query);
+  }
+
   public function getNumAtt($id){
     $query = "SELECT * FROM `test_status` WHERE `test_status_test_id` = '" . $id . "' AND `test_status_user_id` = '" . $_COOKIE['uid'] . "' AND `test_status_is_completed` = '1'";
     return $this->returnNumRows($query);

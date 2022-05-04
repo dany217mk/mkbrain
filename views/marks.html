@@ -2,9 +2,9 @@
   <div class="clm">
     <div class="total">
       <h3>Ваши результаты</h3>
-      <div>Средний балл за все тесты: <span id="total"><?= $markAvg; ?></span></div>
+      <div>Средний балл за все тесты: <span class="<?= $markClass; ?>" id="total"><?= $markAvg; ?></span></div>
       <div>Кол-во попыток за всё время: <span id="tryNum"><?= $totalAttempt; ?></span></div>
-      <div>Успеваемость: <span id="perf"><?= $perf; ?></span></div>
+      <div>Успеваемость: <span id="perf" class="<?= $markClass; ?>"><?= $perf; ?></span></div>
       <div>Рекомендации: <span id="rec"><?= $rec; ?></span></div>
     </div>
     <table>

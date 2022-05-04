@@ -43,6 +43,12 @@
       return $row['COUNT(*)'];
     }
 
+    public function getCountUsersMyOrg($org){
+      $query = "SELECT COUNT(*) FROM `users` WHERE `user_organization_id` = '$org'";
+      $row = $this->returnAssoc($query);
+      return $row['COUNT(*)'];
+    }
+
     public function isAdminOrg(){
       $query = "SELECT COUNT(*) as `cnt` FROM `organizations` WHERE `organization_user_id` = '" . $_COOKIE['uid'] . "'";
       $row = $this->returnAssoc($query);
@@ -62,6 +68,11 @@
     public function deleteFavorite($id){
       $query = "DELETE FROM `favorites` WHERE `favorite_id` = $id";
       return $this->returnActionQuery($query);
+    }
+
+    public function removeOrg($id_user){
+      $query = "UPDATE `users` SET `user_organization_id` = NULL WHERE `user_id` = '$id_user';";
+      $this->actionQuery($query);
     }
 
     public function getMark(){

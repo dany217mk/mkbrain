@@ -23,6 +23,12 @@ class Group extends Model{
     return $this->returnAllAssoc($query);
   }
 
+  public function getCountMyOrgGroup($org){
+    $query = "SELECT COUNT(*) FROM `groups` WHERE `group_organization_id` = '$org'";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
   public function addRecord($text, $type, $id, $doc){
     $query = "INSERT INTO `records`(`record_group_id`, `record_user_id`, `record_type_id`, `record_date`, `record_text`) VALUES ('$id','" . $_COOKIE['uid'] . "','$type',FROM_UNIXTIME('$doc'),'$text')";
     return $this->returnLastId($query);
@@ -31,6 +37,43 @@ class Group extends Model{
   public function addRecordImg($id, $filename){
     $query = "INSERT INTO `records_img`(`record_img_record_id`, `record_img_path`) VALUES ('$id','$filename')";
     return $this->actionQuery($query);
+  }
+
+  public function addImgGroup(){
+    $upload_path = IMG_GROUP . '/';
+    $filename = $this->getHelper()->generationToken() . ".png";
+
+    $allow = false;
+    $counterIter = 0;
+
+    while (!$allow) {
+      $counterIter++;
+      $fetch_mas = $this->check_group_img($filename);
+      $counter =  $fetch_mas['COUNT(*)'];
+      if ($counter > 0) {
+        $allow = false;
+      } else {
+        $allow = true;
+      }
+    if (!$allow){
+      $filename = $this->getHelper()->generationToken() . ".png";
+    }
+  }
+    return $filename;
+  }
+
+  public function check_group_img($filename){
+    $query = "SELECT COUNT(*) FROM `groups` WHERE `group_img` = '" . $filename . "'";
+    $res = $this->returnActionQuery($query);
+    return mysqli_fetch_assoc($res);
+  }
+
+  public function addGroup($name, $describe, $filename, $allow, $code, $doc, $org){
+    $query = "INSERT INTO `groups`(`group_name`, `group_user_id`, `group_describe`, `group_img`, `group_code`, `group_organization_id`, `group_doc`, `group_allow_add`) VALUES ('$name','" . $_COOKIE['uid'] . "','$describe','$filename','$code','$org',FROM_UNIXTIME('$doc'),'$allow')";
+    $last_id = $this->returnLastId($query);
+    $query2 = "INSERT INTO `requests`(`request_user_id`, `request_group_id`, `request_status_id`) VALUES ('" . $_COOKIE['uid'] . "','$last_id','2')";
+    $this->actionQuery($query2);
+    return $last_id;
   }
 
   public function getCountAllRecords(){
@@ -81,6 +124,16 @@ class Group extends Model{
     }
   }
 
+  public function checkIfIsAdmin($id){
+    $query = "SELECT COUNT(*) FROM `groups` LEFT JOIN `requests` ON `request_id` = '$id' WHERE `group_user_id` = '" . $_COOKIE['uid'] . "' AND `group_id` = `request_group_id`";
+    $row = $this->returnAssoc($query);
+    if ($row['COUNT(*)'] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function putLike($id){
     $query = "INSERT INTO `record_likes`(`record_like_user_id`, `record_like_record_id`) VALUES ('" . $_COOKIE['uid'] . "','$id')";
     return $this->actionQuery($query);
@@ -110,6 +163,16 @@ class Group extends Model{
 
   public function add($id){
     $query = "INSERT INTO `requests` (`request_user_id`, `request_group_id`, `request_status_id`) values ('" . $_COOKIE['uid'] . "', '$id', 1)";
+    return $this->returnActionQuery($query);
+  }
+
+  public function addAccess($id){
+    $query = "INSERT INTO `requests` (`request_user_id`, `request_group_id`, `request_status_id`) values ('" . $_COOKIE['uid'] . "', '$id', 2)";
+    return $this->returnActionQuery($query);
+  }
+
+  public function update($id){
+    $query = "UPDATE `requests` SET `request_status_id`='2' WHERE `request_id` = '$id'";
     return $this->returnActionQuery($query);
   }
 
@@ -163,6 +226,16 @@ class Group extends Model{
     } else {
       return false;
     }
+  }
+
+  public function checkIfUserRequest($id){
+    $query = "SELECT `request_id` FROM `requests`
+              WHERE `request_user_id` = '" . $_COOKIE['uid'] . "' AND `request_group_id` = '$id'";
+    $row = $this->returnAssoc($query);
+    if (empty($row)) {
+      return 0;
+    }
+    return $row['request_id'];
   }
 
   public function getAllTypes(){

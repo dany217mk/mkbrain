@@ -1,0 +1,22 @@
+<main id="main">
+  <div class="clm">
+    <h1>Результаты поиска</h1>
+    <div class="list">
+      <? if (isset($data)): ?>
+        <? if (empty($data)): ?>
+        <div class="empty">
+          <h4>Ничего не найдено :(</h4>
+        </div>
+        <? else: ?>
+          <? foreach ($data as $item): ?>
+            <div><a href="./testview/<?= $item['test_id']; ?>"><?= $item['test_name']; ?></a></div>
+          <? endforeach; ?>
+        <? endif;?>
+      <? else: ?>
+        <div class="empty">
+          <h4>Пустой поисковой запрос :()</h4>
+        </div>
+      <? endif; ?>
+    </div>
+  </div>
+</main>

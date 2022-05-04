@@ -67,22 +67,28 @@
       $testMarks = $this->getUserModel()->getAllTestMarks();
       $totalAttempt = $this->getUserModel()->getCountAttempts();
       $markAvg = round($this->getUserModel()->getMark(),2);
+      $markClass = '';
       if ($markAvg >= 4.5) {
         $perf = "Отличник";
         $rec = 'Продолжайте в том же духе, не сбивайте планку и добивайтесь успехов. Вы молодец!';
+        $markClass = 'five';
       } elseif ($markAvg >= 3.5) {
         $perf = "Хорошист";
         $rec = 'Очень хорошо, до стадии «отличник» остался один шаг, работайте и развивайтесь!';
+        $markClass = 'four';
       } elseif ($markAvg >= 2.5) {
         $perf = "Троечник";
         $rec = 'Неплохо, но можно и лучше, постарайтесь сконцентрироваться и попробывать ещё раз, у вас все получится, не сомневайтесь! ';
+        $markClass = 'three';
       } elseif ($markAvg == 0) {
         $perf = "Мы пока-что не знаем какой вы ученик";
         $rec = 'Пока-что никаких рекомендаций';
+        $markClass = 'undefined';
       }
        else {
         $perf = "Двоечник";
         $rec = 'Соберитесь и сконцентрируйтесь на решении задач, у вас все получится, просто надо немного постараться';
+        $markClass = 'two';
       }
       $markNum = [$this->getUserModel()->getCountDefeniteMark(2, $testMarks), $this->getUserModel()->getCountDefeniteMark(3, $testMarks), $this->getUserModel()->getCountDefeniteMark(4, $testMarks), $this->getUserModel()->getCountDefeniteMark(5, $testMarks)];
       $title = 'Оценки';

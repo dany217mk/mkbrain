@@ -240,14 +240,16 @@ main .total div{
 main{
   flex-direction: column-reverse;
 }
-main > div:nth-child(2){
+main > div:nth-child(1) {
+  width: 95%;
+  margin: 0 auto !important;
+}
+main > div:nth-child(2) {
   position: static;
-  width: 100%;
+  width: 95%;
+  margin: 10px auto !important;
   margin-bottom: 10px;
 }
-main > div:nth-child(1) {
-    width: 100%;
-  }
   .alert.warning {
     width: 80%;
     margin: 0 auto;
@@ -259,4 +261,11 @@ main > div:nth-child(1) {
     margin-left: 0;
     width: 80%;
   }
+  .block_ques {
+    margin: 20px 1px;
+}
+.clm > h1{
+  margin-top: 50px;
+}
+
 }

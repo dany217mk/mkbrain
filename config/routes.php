@@ -4,7 +4,13 @@ $routes = array(
     'services' => 'service',
     'teacher' => 'teacher',
     'director' => 'director',
-    'organization_add' => 'addorganization'
+    'organization_add' => 'addorganization',
+    'org_groups' => 'orggroups',
+    'org_users' => 'orgusers',
+    'orgupdategroups' => 'orgupdategroups',
+    'orgupdateusers' => 'orgupdateusers',
+    'check_group/([0-9]+)' => 'check/$1',
+    'exclude_user/([0-9]+)' => 'exclude/$1'
   ),
   'TestController' => array(
     'testview/([0-9]+)' => 'testview/$1',
@@ -83,6 +89,7 @@ $routes = array(
     'auth' => 'auth',
   ),
   'MainController' => array(
+      'search' => 'search',
       'report/([a-z]+)' => 'report/$1',
       'privacy' => 'privacy',
       '' => 'index'

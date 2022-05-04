@@ -51,4 +51,26 @@ class MainController
     require_once  './views/privacy.html';
     $this->helper->outputCommonFoot($scripts);
   }
+
+  public function actionSearch(){
+    if (!isset($_POST['search'])) {
+      header("Location: " . FULL_SITE_ROOT . "/report/noexist");
+      die();
+    }
+    if (trim($_POST['search']) == '') {
+      $title = 'Пустой поисковой запрос :()';
+    } else {
+      $title = $_POST['search'];
+      $search = $_POST['search'];
+      $testModel = new Test();
+      $data = $testModel->searchTest($search);
+    }
+    $title = $_POST['search'];
+    $styles = [CSS . '/search.css'];
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/search.html';
+    $this->helper->outputCommonFoot();
+  }
 }

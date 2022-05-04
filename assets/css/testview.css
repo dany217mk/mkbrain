@@ -145,13 +145,15 @@ main > div:nth-child(2){
 }
 @media (max-width: 800px) {
   main > div:nth-child(1) {
-      width: 100%;
-    }
-    main > div:nth-child(2) {
-      position: static;
-      width: 100%;
-      margin-bottom: 20px;
-    }
+    width: 95%;
+    margin: 0 auto !important;
+  }
+  main > div:nth-child(2) {
+    position: static;
+    width: 95%;
+    margin: 10px auto !important;
+    margin-bottom: 10px;
+  }
     main {
     flex-direction: column-reverse;
   }
