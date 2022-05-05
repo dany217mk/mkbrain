@@ -1,0 +1,41 @@
+<main id="main">
+  <div class="clm">
+    <div class="total">
+      <h3>Результаты теста</h3>
+      <div>Средний балл за все тесты: <span class="<?= $markClass; ?>" id="total"><?= $markAvg; ?></span></div>
+      <div>Кол-во попыток за всё время: <span id="tryNum"><?= $totalAttempt; ?></span></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Ученик</th>
+          <th>Оценка</th>
+        </tr>
+      </thead>
+      <tbody>
+        <? if (empty($testMarks)): ?>
+        <h4>Вы еще не решали тесты</h4>
+        <? else: ?>
+          <? foreach($testMarks as $testMark): ?>
+            <tr>
+              <td><a href="../view/<?= $testMark['user_id']; ?>"><?= $testMark['user_name']; ?> <?= $testMark['user_surname']; ?></a></td>
+              <td><span><?= round($testMark['mark_value'], 2); ?></span></td>
+            </tr>
+          <? endforeach; ?>
+        <? endif; ?>
+      </tbody>
+    </table>
+    <fieldset>
+      <legend>Статстика</legend>
+      <? if (empty($testMarks)): ?>
+        <h4>Статистики пока нет :Х, решите тесты на сайте и вернитесь!</h4>
+      <? else: ?>
+            <canvas id="myChart1"></canvas>
+      <? endif; ?>
+    </fieldset>
+  </div>
+</main>
+
+<script>
+    let masNum = [<?=$markNum[0];?>, <?=$markNum[1];?>, <?=$markNum[2];?>, <?=$markNum[3];?>];
+</script>

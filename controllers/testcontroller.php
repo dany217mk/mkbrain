@@ -19,6 +19,65 @@ class TestController extends Controller{
     $this->helper->outputCommonFoot($scripts);
   }
 
+  public function actionMytests(){
+    $title = "Мои тесты";
+    $styles = [CSS . '/list_services.css'];
+    $scripts = [JS . '/my_tests.js'];
+    $total = $this->testModel->getCountMyTests();
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/my_tests.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
+  public function actionMytest($data){
+    $id_test = $data[0];
+    $this->testModel->solveAllTest($id_test);
+    $testMarks = $this->testModel->getAllTestMarks($id_test);
+    $totalAttempt = $this->testModel->getCountAttempts($id_test);
+    $markAvg = round($this->testModel->getMarkTotal($id_test),2);
+    $markNum = [$this->getUserModel()->getCountDefeniteMark(2, $testMarks), $this->getUserModel()->getCountDefeniteMark(3, $testMarks), $this->getUserModel()->getCountDefeniteMark(4, $testMarks), $this->getUserModel()->getCountDefeniteMark(5, $testMarks)];
+    $title = 'Оценки за мой тест';
+    $styles = [CSS . '/marks.css'];
+    $scripts = ['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js', JS . '/marks.js', ];
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/test_marks.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
+  public function actionMyupdatetests(){
+    $text = "";
+    $total = $this->testModel->getCountMyTests();
+      $querySearch = "SELECT `test_id`, `test_code`, `test_name` FROM `tests`
+                      WHERE `test_user_id` = '" . $_COOKIE['uid'] . "'
+                      ORDER BY `test_name` DESC;";
+      $queryAll = "SELECT `test_id`, `test_code`, `test_name` FROM `tests`
+                    WHERE `test_user_id` = '" . $_COOKIE['uid'] . "'
+                    ORDER BY `test_name` DESC LIMIT " . (int)$_POST['border'] . ", " . 20 . ";";
+      $funFilter = 'Helper::searchFilterTest';
+      $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<tr><h3>У вас пока-что нет тестов</h3></tr>");
+      $counter = 0;
+      foreach ($data as $item) {
+        $text .= "<tr>";
+        $text .= "<td><a href='./testview/" . $item['test_id'] . "'>" . $item['test_name'] . "</a></td>";
+        $text .= "<td>" . $item['test_code'] . "</td>";
+        $text .= "<td><a class='btn' href='./mytest/" . $item['test_id'] . "'>Итоги теста</a></td>";
+        $text .= "</tr>";
+       $counter++;
+       if (isset($_COOKIE['search']) && $counter>=50){
+         break;
+       }
+      }
+      if ($text == ""){
+        $text = "<tr class='empty'><td>Не найдено ни одной записи</td></tr>";
+      }
+      echo $text;
+
+  }
+
   public function actionTest($data){
     $id_view = $data[0];
     $view = $this->testModel->getTest($id_view);
@@ -140,6 +199,16 @@ class TestController extends Controller{
     $this->helper->outputCommonFoot($scripts);
   }
 
+  public function actionTestputlike(){
+    if ($this->testModel->checkIfPutLike($_POST['id_test'])) {
+      $this->testModel->removeLike($_POST['id_test']);
+      echo "remove";
+    } else {
+      $this->testModel->putLike($_POST['id_test']);
+      echo "put";
+    }
+  }
+
   public function actionConstructor(){
     $title = "Конструктор";
     $styles = [CSS . '/constructor.css'];
@@ -246,7 +315,7 @@ class TestController extends Controller{
     $total = $this->testModel->getCount();
     $check = false;
 
-  $queryAll = "SELECT `test_id`, `test_name`, `test_likes`, `test_attempts`, `subject_name`, `test_privacy`, `user_name`, `user_surname`, `user_id`, `test_img`
+  $queryAll = "SELECT `test_id`, `test_name`, `test_attempts`, `subject_name`, `test_privacy`, `user_name`, `user_surname`, `user_id`, `test_img`, `test_likes`
    FROM `tests`
    LEFT JOIN `subjects` ON `test_subject_id` = `subject_id`
    LEFT JOIN `users` ON `test_user_id` = `user_id`";
@@ -287,6 +356,7 @@ class TestController extends Controller{
      if ($item['test_privacy'] == 1 && !isset($_POST['privacy'])) {
       continue;
     }
+    $num_likes = $this->testModel->getCountLikes($item['test_id']);
     $text .= '<div>';
     $text .= '<a class="block-link" href="testview/' . $item['test_id'] . '">';
     $text .= '<div>';

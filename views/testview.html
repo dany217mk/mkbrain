@@ -37,7 +37,11 @@
                     <li><span>Время на решение теста:</span><span><?= $test_time; ?></span></li>
                     <? endif; ?>
                     <li><span>Кол-во моих попыток:</span><span><?= $numAtt; ?></span></li>
-                    <li><span>Поставить лайк: </span><span class="like"><i class="fa fa-thumbs-up"></i></span></li>
+                    <? if ($this->testModel->checkIfPutLike($id_view)): ?>
+                      <li><span>Поставить лайк: </span><span class="like_block"><span class="like" onclick="putLike('<?= $id_view ?>')"><i id="like_icon" class="fa fa-thumbs-up active"></i></span><span id="num_likes"><?= $view['test_likes']; ?></span></span></li>
+                    <? else: ?>
+                      <li><span>Поставить лайк: </span><span class="like_block"><span class="like" onclick="putLike('<?= $id_view ?>')"><i id="like_icon" class="fa fa-thumbs-up"></i></span><span id="num_likes"><?= $view['test_likes']; ?></span></span></li>
+                    <? endif; ?>
                   </ul>
                 </div>
               </div>

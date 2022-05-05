@@ -124,7 +124,7 @@ form div textarea{
     margin: 5px 0;
     text-shadow: 1px 1px 0 rgb(255 255 255);
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   .clm{
     width: 95%;
     margin: 0 auto !important;

@@ -114,7 +114,7 @@ canvas{
 .report_menu ul li a:hover {
 	border-bottom: 3px solid #434343;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
 .clm{
   width: 95%;
   margin: 0 auto !important;

@@ -360,7 +360,7 @@ main > div:nth-child(2){
 	border-radius: 0 8px 8px 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main > div:nth-child(1) {
     width: 95%;
     margin: 0 auto !important;

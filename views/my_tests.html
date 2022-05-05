@@ -1,0 +1,29 @@
+<main id="main">
+  <div class="clm">
+    <div class="list-groups">
+      <div class="form" id="form-test">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="search" maxlength="36" id="search" name="search-test" placeholder="Поиск" class="input">
+      </div>
+      <table class="table">
+        <thead>
+          <th>Название</th>
+          <th>Код</th>
+          <th>Действия</th>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clm list-aside">
+    <ul>
+      <li><span>Мои тесты</span></li>
+      <li><a href="tests">Все тесты</a></li>
+    </ul>
+  </div>
+</main>
+<script type="text/javascript">
+  let total = <?= $total; ?>;
+</script>

@@ -102,7 +102,7 @@ main fieldset{
   font-weight: bold;
   font-size: 24px;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main > div:nth-child(1) {
     width: 95%;
     margin: 0 auto !important;

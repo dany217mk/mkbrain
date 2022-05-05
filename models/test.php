@@ -5,6 +5,13 @@ class Test extends Model{
     $row = $this->returnAssoc($query);
     return $row['COUNT(*)'];
   }
+
+  public function getCountMyTests(){
+    $query = "SELECT COUNT(*) FROM `tests` WHERE `test_user_id` = '" . $_COOKIE['uid'] . "';";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
   public function chooseFavorite($id){
     $query = "SELECT * FROM `favorites` WHERE `favorite_user_id` = '" . $_COOKIE['uid'] . "' AND `favorite_test_id` = '" . $id . "'";
     return $this->returnActionQuery($query);
@@ -43,6 +50,83 @@ class Test extends Model{
     LEFT JOIN `subjects` ON  `test_subject_id` = `subject_id`
      WHERE `test_id` = '" . $id . "'";
      return $this->returnAssoc($query);
+  }
+
+  public function solveAllTest($id){
+    $query = "SELECT * FROM `test_status` WHERE `test_status_test_id` = '$id' AND `test_status_is_completed` = 0";
+    $row =  $this->returnAllAssoc($query);
+    foreach ($row as $item) {
+      if ($item['test_status_doe'] - time() <= 0){
+        $this->actionQuery("UPDATE `test_status` SET `test_status_is_completed` = 1 WHERE `test_status_id` = '" . $item['test_status_id'] . "';");
+        $this->actionQuery("INSERT INTO `marks` (`mark_user_id`, `mark_value`, `mark_test_id`) VALUES ('" . $item['test_status_user_id'] . "', '2', '$id');");
+      }
+    }
+  }
+
+  public function getAllTestMarks($id){
+    $query = "SELECT *, `test_method_id`, `test_id`, `user_name`, `user_surname` FROM `marks` LEFT JOIN `tests` ON `test_id` = `mark_test_id` LEFT JOIN `users` ON `user_id` = `mark_user_id` WHERE `mark_test_id` = '$id';";
+    $masCheck = [];
+    $data = array();
+    $row = $this->returnAllAssoc($query);
+    foreach ($row as $item) {
+      if (in_array($item['mark_user_id'], $masCheck)) {
+        continue;
+      }
+      if ($item['test_method_id'] == 1) {
+        $query = "SELECT `user_name`, `user_surname`, `mark_value`, `user_id` FROM `marks` LEFT JOIN `users` ON `user_id` = `mark_user_id` WHERE `mark_user_id` = '" . $item['mark_user_id'] . "' AND `mark_test_id` = '" . $id . "' ORDER BY `mark_id` LIMIT 1;";
+        array_push($data, $this->returnAssoc($query));
+      } elseif ($item['test_method_id'] == 2) {
+        $query = "SELECT `user_name`, `user_surname`, AVG(`mark_value`) AS `mark_value`, `user_id` FROM `marks` LEFT JOIN `users` ON `user_id` = `mark_user_id` WHERE `mark_user_id` = '" . $item['mark_user_id'] . "' AND `mark_test_id` = '" . $id . "' ORDER BY `mark_id`;";
+        array_push($data, $this->returnAssoc($query));
+      } elseif ($item['test_method_id'] == 3) {
+        $query = "SELECT `user_name`, `user_surname`, `mark_value`, `user_id` FROM `marks` LEFT JOIN `users` ON `user_id` = `mark_user_id` WHERE `mark_user_id` = '" . $item['mark_user_id'] . "' AND `mark_test_id` = '" . $id . "' ORDER BY `mark_id` DESC LIMIT 1;";
+        array_push($data, $this->returnAssoc($query));
+      }
+      array_push($masCheck, $item['mark_user_id']);
+    }
+    return $data;
+  }
+
+  public function getCountAttempts($id){
+    $query = "SELECT COUNT(*) FROM `marks`  WHERE `mark_test_id` = '$id'";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
+  public function getMarkTotal($id){
+    $query = "SELECT AVG(`mark_value`) as `avg` FROM `marks` WHERE `mark_test_id` = '$id'";
+    $row = $this->returnAssoc($query);
+    return $row['avg'];
+  }
+
+  public function getCountLikes($id){
+    $query = "SELECT COUNT(*) FROM `likes` WHERE `like_test_id` = '$id'";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
+  public function checkIfPutLike($id){
+    $query = "SELECT COUNT(*) FROM `likes` WHERE `like_user_id` = '" . $_COOKIE['uid'] . "' AND `like_test_id` = '$id'";
+    $row = $this->returnAssoc($query);
+    if ($row['COUNT(*)'] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function removeLike($id){
+    $query = "DELETE FROM `likes` WHERE `like_user_id` = '" . $_COOKIE['uid'] . "' AND `like_test_id` = '$id'";
+    $queryRemove = "UPDATE `tests` SET `test_likes` = `test_likes`-1 WHERE `test_id` = $id;";
+    $this->actionQuery($queryRemove);
+    return $this->actionQuery($query);
+  }
+
+  public function putLike($id){
+    $query = "INSERT INTO `likes`(`like_user_id`, `like_test_id`) VALUES ('" . $_COOKIE['uid'] . "','$id')";
+    $queryAdd = "UPDATE `tests` SET `test_likes` = `test_likes`+1 WHERE `test_id` = $id;";
+    $this->actionQuery($queryAdd);
+    return $this->actionQuery($query);
   }
 
   public function getMark($type, $id){

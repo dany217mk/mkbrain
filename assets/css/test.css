@@ -236,7 +236,7 @@ main .total div{
 #layer_bg.active {
   display: block;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
 main{
   flex-direction: column-reverse;
 }

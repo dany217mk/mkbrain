@@ -54,7 +54,7 @@
   background: #eee;
   margin-bottom: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
 .services a{
   width: 100px;
   height: 100px;

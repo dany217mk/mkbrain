@@ -1,5 +1,4 @@
-@media (max-width: 800px) {
-  main{
+main{
     flex-direction: column-reverse;
   }
   main > div:nth-child(1) {
@@ -287,7 +286,7 @@ main > div:nth-child(3).active {
 #clearFilter span:hover{
   background: #eee;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main{
     flex-direction: column-reverse;
   }

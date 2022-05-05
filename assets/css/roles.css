@@ -33,7 +33,7 @@ body{
 .btns a:hover {
     background: #00314dd4;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   body{
     flex-direction: column;
   }

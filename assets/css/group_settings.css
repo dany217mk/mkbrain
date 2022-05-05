@@ -190,7 +190,7 @@ main > div{
 .linkBack a {
     color: #434343;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main{
     flex-direction: column-reverse;
   }

@@ -506,7 +506,7 @@ font-weight: bold;
 border-radius: 2em;
 transition: all .3s ease-out;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main > div:nth-child(1) {
     width: 95%;
     margin: 0 auto !important;

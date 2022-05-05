@@ -147,7 +147,17 @@ main > div:nth-child(2){
   font-size: 28px;
   color: #ccc;
 }
-@media (max-width: 800px) {
+#like_icon.active{
+  color: red;
+}
+.like_block{
+  display: flex !important;
+}
+#num_likes{
+  margin-left: 10px;
+  margin-top: 5px;
+}
+@media (max-width: 1020px) {
   main > div:nth-child(1) {
     width: 95%;
     margin: 0 auto !important;

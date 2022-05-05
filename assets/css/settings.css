@@ -269,7 +269,7 @@ main > div:nth-child(2){
 .list-aside ul li button, .list-aside ul li span, .list-aside ul li a {
     width: 100%;
   }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main{
     flex-direction: column-reverse;
   }

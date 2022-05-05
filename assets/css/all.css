@@ -690,7 +690,13 @@ input[type=radio] + label {
 .sidebar_mobile ul li a:hover{
   background: #eee;
 }
-@media (max-width: 800px) {
+@media (max-width: 1400px)
+{
+	.sidebar.open ~ main{
+		margin-left: 3% !important;
+	}
+}
+@media (max-width: 1020px) {
 	.sidebar{
 		display: none;
 	}

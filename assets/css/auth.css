@@ -718,7 +718,7 @@ main p a{
        width: 55px;
      }
    }
-  @media (max-width: 800px) {
+  @media (max-width: 1020px) {
      .close-area {
        width: 55px;
        height: 55px;

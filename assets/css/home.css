@@ -1066,7 +1066,7 @@ main{
   margin: 0 auto;
 }
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   .promo-title {
     font-size: 45px;
     margin: 30px 0;

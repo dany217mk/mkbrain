@@ -351,7 +351,7 @@ main > div:nth-child(2){
 .empty{
   text-align: center;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
 .user-img > div {
     display: flex;
     justify-content: center;

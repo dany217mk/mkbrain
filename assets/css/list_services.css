@@ -90,7 +90,7 @@ main > div:nth-child(2){
 table a.btn {
   color: red;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main{
     flex-direction: column-reverse;
   }

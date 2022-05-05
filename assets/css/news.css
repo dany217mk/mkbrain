@@ -169,7 +169,7 @@ main > div:nth-child(2){
 .record_header > a{
   margin-left: 20px;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main > div:nth-child(2) {
     display: none;
   }

@@ -360,7 +360,7 @@ main > div:nth-child(3).active {
   content: "\f005";
   color: gold;
 }
-@media (max-width: 800px) {
+@media (max-width: 1020px) {
   main{
     flex-direction: column-reverse;
   }

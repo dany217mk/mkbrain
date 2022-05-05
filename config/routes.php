@@ -25,7 +25,11 @@ $routes = array(
     'infoinserting' => 'infoinserting',
     'formchecking' => 'formchecking',
     'timechecking' => 'timechecking',
-    'checktest/([0-9]+)' => 'checktest/$1'
+    'checktest/([0-9]+)' => 'checktest/$1',
+    'testputlike' => 'testputlike',
+    'mytests' => 'mytests',
+    'myupdatetests' => 'myupdatetests',
+    'mytest/([0-9]+)' => 'mytest/$1'
   ),
   'GroupController' => array(
     'groups' => 'groups',
