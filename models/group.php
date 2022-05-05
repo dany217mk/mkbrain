@@ -39,6 +39,57 @@ class Group extends Model{
     return $this->actionQuery($query);
   }
 
+  public function existImg($id_group){
+    if (is_null($this->getImg($id_group)) || $this->getImg($id_group) == "") {
+       return IMG_GROUP_DEFAULT;
+    } else {
+        return '<img src="' . IMG_GROUP . '/' . $this->getImg($id_group) . '">';
+     }
+  }
+
+  public function countParticipants($id_group){
+    $query = "SELECT COUNT(*) FROM `requests` WHERE `request_group_id` = '$id_group' AND `request_status_id` = 2";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
+  public function accessParticipant($id){
+    $query = "UPDATE `requests` SET `request_status_id` = '2' WHERE `request_id` = '$id';";
+    return $this->returnActionQuery($query);
+  }
+
+  public function countParticipantsRequests($id_group){
+    $query = "SELECT COUNT(*) FROM `requests` WHERE `request_group_id` = '$id_group' AND `request_status_id` = 1";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
+  }
+
+  public function deleteParticipant($id){
+    $query = "DELETE FROM `requests` WHERE `request_id` = '" . $id . "'";
+    return $this->returnActionQuery($query);
+  }
+
+  public function getImg($id){
+    $query = "SELECT `group_img` FROM `groups` WHERE `group_id` = '$id'";
+    $res = $this->returnAssoc($query);
+    return $res['group_img'];
+  }
+
+  public function updateAllow($allow, $id){
+    $query = "UPDATE groups SET group_allow_add = '$allow' WHERE group_id = '$id'";
+     return $this->returnActionQuery($query);
+  }
+
+  public function updateImg($filename, $id){
+    $query = "UPDATE `groups` SET `group_img` = '" . $filename . "' WHERE `group_id` = '$id'";
+    return $this->returnActionQuery($query);
+  }
+
+  public function deleteimg($id){
+    $query = "UPDATE `groups` SET `group_img` = '' WHERE `group_id` = '$id'";
+    $this->actionQuery($query);
+  }
+
   public function addImgGroup(){
     $upload_path = IMG_GROUP . '/';
     $filename = $this->getHelper()->generationToken() . ".png";
@@ -66,6 +117,12 @@ class Group extends Model{
     $query = "SELECT COUNT(*) FROM `groups` WHERE `group_img` = '" . $filename . "'";
     $res = $this->returnActionQuery($query);
     return mysqli_fetch_assoc($res);
+  }
+
+  public function getCountTeacherGroups(){
+    $query = "SELECT COUNT(*) FROM `groups` WHERE `group_user_id` = '" . $_COOKIE['uid'] . "'";
+    $row = $this->returnAssoc($query);
+    return $row['COUNT(*)'];
   }
 
   public function addGroup($name, $describe, $filename, $allow, $code, $doc, $org){
@@ -132,6 +189,34 @@ class Group extends Model{
     } else {
       return false;
     }
+  }
+
+  public function checkIfRecordMy($id){
+    $queryCheck = "SELECT COUNT(*) FROM `records` WHERE `record_user_id` = '" . $_COOKIE['uid'] . "' AND `record_id` =  $id";
+    $row = $this->returnAssoc($queryCheck);
+    if ($row['COUNT(*)'] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function deleteRecord($id){
+    $query = "SELECT * FROM `records_img` WHERE `record_img_record_id` = $id";
+    $dataImg = $this->returnAllAssoc($query);
+    if (!empty($dataImg)) {
+      foreach ($dataImg as $item) {
+        unlink('./assets/img_record/' . $item['record_img_path']);
+      }
+    }
+    $queryDelImg = "DELETE FROM `records_img` WHERE `record_img_record_id` = $id";
+    $queryDelLikes = "DELETE FROM `record_likes` WHERE `record_like_record_id` = $id";
+    $queryDelComment = "DELETE FROM `comments` WHERE `comment_record_id` = $id";
+    $queryDel = "DELETE FROM `records` WHERE `record_id` = $id";
+    $this->actionQuery($queryDelImg);
+    $this->actionQuery($queryDelLikes);
+    $this->actionQuery($queryDelComment);
+    return $this->returnActionQuery($queryDel);
   }
 
   public function putLike($id){

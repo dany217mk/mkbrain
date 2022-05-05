@@ -151,6 +151,7 @@ margin: 0 auto;
   width: 60%;
   box-shadow: 1px 2px 12px 0 rgb(53 0 132 / 12%);
   background: #fff;
+  position: relative;
 }
 .list .type{
   background: #b04fff;
@@ -209,6 +210,7 @@ margin: 0 auto;
 .form_comments input{
   border-radius: 0;
   padding: .65rem 1rem;
+  width: 70%;
 }
 .body_comments > div{
   display: flex;
@@ -257,6 +259,30 @@ margin: 0 auto;
 .list #type5{
   background: #eee;
   color: #000
+}
+.btn-delete {
+    background: #fff;
+    border: none;
+    position: absolute !important;
+    right: 20px;
+    top: 5px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+.groups_settings a{
+  margin-top: 10px;
+  display: block;
+  background: var(--main);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 1px solid #00000020;
+  transition: all 0.3s ease;
+}
+.groups_settings a:hover{
+  opacity: .8;
 }
 @media (max-width: 800px) {
   main > div:nth-child(1) {

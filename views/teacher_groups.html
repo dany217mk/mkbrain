@@ -1,0 +1,29 @@
+<main id="main">
+  <div class="clm">
+    <div class="list-groups">
+      <div class="form" id="form-group">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="search" maxlength="36" id="search" name="search-group" placeholder="Поиск" class="input">
+      </div>
+      <table class="table">
+        <thead>
+          <th>Название</th>
+          <th>Код</th>
+          <th>Действия</th>
+        </thead>
+        <tbody id="list">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="clm list-aside">
+    <ul>
+      <li><span>Классы</span></li>
+      <li><a href="group_add">Добавить класс</a></li>
+    </ul>
+  </div>
+</main>
+<script type="text/javascript">
+  let total = <?= $total; ?>;
+</script>

@@ -254,12 +254,26 @@ main > div:nth-child(1) > div:nth-child(2) {
   main{
     margin-top: 50px;
   }
-  .typing-area {
+.typing-area {
     position: fixed;
-    width: 90%;
+    width: 99%;
     bottom: 60px;
+    padding-left: 2px;
+    padding-right: 2px;
   }
   .chat-box {
     height: 65vh;
+  }
+  .typing-area input {
+    border-radius: 0;
+    height: 50px;
+    width: calc(100% - 73px);
+  }
+  .typing-area input:focus {
+    box-shadow: none;
+  }
+  .typing-area button {
+    border-radius: 0;
+    width: 70px;
   }
 }

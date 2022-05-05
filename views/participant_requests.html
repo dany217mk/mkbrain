@@ -1,0 +1,29 @@
+<main id="main">
+      <div class="clm">
+        <div class="list-participants">
+          <div class="header">
+            <ul>
+              <li><a href="" class="active">Заявки в  класс <span><?= $total; ?></span></a></li>
+            </ul>
+          </div>
+          <div class="form" id="form-participant">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="search" maxlength="36" id="search" name="search-participant" placeholder="Поиск" class="input">
+          </div>
+          <div class="body" id="list">
+
+          </div>
+        </div>
+    </div>
+    <div class="clm list-aside">
+      <ul>
+        <li><a href="../groupssettings/<?= $id_group; ?>">Настройки группы</a></li>
+        <li><a href="../participants/<?= $id_group; ?>">Участники</a></li>
+        <li><span>Запросы</span></li>
+      </ul>
+    </div>
+    </main>
+<script>
+      		let total = <?= $total; ?>;
+          let id_group = <?= $id_group; ?>;
+    </script>

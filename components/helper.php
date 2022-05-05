@@ -47,7 +47,7 @@ class Helper
         }
 
     public function escape_srting($val){
-      return mysqli_real_escape_string($this->con, $val);
+      return htmlentities(mysqli_real_escape_string($this->con, $val));
     }
 
     public function searchFilterOrg($row) {

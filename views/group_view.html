@@ -47,9 +47,12 @@
           <?= $btnActionText; ?>
      </div>
     </div>
-    <div>
-
-    </div>
+  </div>
+  <? if ($adminBool): ?>
+  <div class="groups_settings">
+    <a href="../groupssettings/<?= $id_group; ?>">Панель администратора</a>
+  </div>
+  <? endif; ?>
   </div>
 </main>
 <script>

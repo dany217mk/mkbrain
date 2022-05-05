@@ -143,6 +143,10 @@ main > div:nth-child(2){
     color: #434343;
     display: block;
 }
+.like i{
+  font-size: 28px;
+  color: #ccc;
+}
 @media (max-width: 800px) {
   main > div:nth-child(1) {
     width: 95%;

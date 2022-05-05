@@ -1121,3 +1121,11 @@ header> div > div:nth-child(2) a, header> div > div:nth-child(2) button {
   font-size: 14px;
 }
 }
+@media (max-width: 351px) {
+.promo-title {
+  padding-top: 170px;
+}
+header > div > div:nth-child(1) a b {
+  display: none;
+}
+}

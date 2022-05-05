@@ -1,0 +1,67 @@
+<main id="main">
+      <div class="clm">
+        <div class="block">
+          <div class="linkBack">
+            <a href="../group/<?= $id_group; ?>"><i class="fas fa-arrow-left-long"></i></a>
+          </div>
+          <h1>Настройки группы <?= $group['group_name']; ?></h1>
+          <div>
+            <table>
+              <tr>
+                <td>Добавление записей всеми пользователями</td>
+                <td>
+                  <div class="checkbox">
+                    <input type="checkbox" id="allow" <?= $checkAllow; ?> class="checkbox-input">
+                    <label for="allow" class="checkbox-label"></label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="block">
+          <div>
+            <table class="img">
+              <tr>
+                <td>Изменить изображение</td>
+                <td>
+                  <form id="upload_file" action="../uploadgroupfile"  enctype="multipart/form-data" method="post">
+                  <div class="input_wrapper">
+                    <input type='hidden' name='MAX_FILE_SIZE' value='5000000'>
+                     <input type="file" name="img" accept="image/png,image/jpg,image/jpeg,image/gif" id="input_file" class="input input_file">
+                     <label for="input_file" class="input_file-button" id="inp_file_block">
+                        <span class="input_file-icon-wrapper"><img class="input_file-icon" src="../assets/img/add.svg" alt="Выбрать файл" width="25"></span>
+                        <span class="input_file-button-text">Выберите файл</span>
+                     </label>
+                  </div>
+                  <div id="mistakeImg" class="error"></div>
+                  <input type="hidden" name="id_group" value="<?= $id_group; ?>">
+                  <input type="submit" id="change_img" value="Cохранить">
+                </form>
+                </td>
+              </tr>
+              <tr>
+                <td>Удалить изображение</td>
+                <td>
+                  <? if ($this->groupModel->existImg($id_group) != IMG_GROUP_DEFAULT): ?>
+                    <a href="../deletegroupimg/<?= $id_group; ?>"  class="btn-delete" id="delete_img">Удалить изображение</a>
+                  <? else: ?>
+                    <button class="btn-delete" disabled id="delete_img">У вас нет изображения</button>
+                  <? endif; ?>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="clm list-aside">
+        <ul>
+          <li><span>Настройки группы</span></li>
+          <li><a href="../participants/<?= $id_group; ?>">Участники</a></li>
+          <li><a href="../participantrequests/<?= $id_group; ?>">Запросы</a></li>
+        </ul>
+      </div>
+    </main>
+<script>
+  let id_group = <?= $id_group; ?>;
+</script>

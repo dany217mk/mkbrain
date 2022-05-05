@@ -77,6 +77,19 @@ class ServiceController extends Controller{
     $this->helper->outputCommonFoot($scripts);
   }
 
+  public function actionTeachergroups(){
+    $groupModel = new Group();
+    $title = 'Мои классы';
+    $total = $groupModel->getCountTeacherGroups();
+    $styles = [CSS . '/list_services.css'];
+    $scripts = [JS . '/teacher_groups.js'];
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/teacher_groups.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
   public function actionOrgupdateusers(){
     $text = "";
     $total = $this->getUserModel()->getCountUsersMyOrg($this->getUser()['user_organization_id']);
@@ -100,6 +113,36 @@ class ServiceController extends Controller{
       $text .= "<td>" . $item['user_email'] . "</td>";
       $text .= "<td>" . $item['role_name']  . "</td>";
       $text .= "<td><a class='btn' href='./exclude_user/" . $item['user_id'] . "'>Исключить</a></td>";
+      $text .= "</tr>";
+     $counter++;
+     if (isset($_COOKIE['search']) && $counter>=50){
+       break;
+     }
+    }
+    if ($text == ""){
+      $text = "<tr class='empty'><td>Не найдено ни одной записи</td></tr>";
+    }
+    echo $text;
+  }
+
+  public function actionTeacherupdategroups(){
+    $groupModel = new Group();
+    $text = "";
+    $total = $groupModel->getCountTeacherGroups();
+    $querySearch = "SELECT `group_name`, `group_code`, `group_id` FROM `groups`
+                    WHERE `group_user_id` = '" . $_COOKIE['uid'] . "'
+                    ORDER BY `group_name` DESC;";
+    $queryAll = "SELECT `group_name`, `group_code`, `group_id` FROM `groups`
+                 WHERE `group_user_id` = '" . $_COOKIE['uid'] . "'
+                 ORDER BY `group_name` DESC LIMIT " . (int)$_POST['border'] . ", " . 20 . ";";
+    $funFilter = 'Helper::searchFilterGroup';
+    $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<tr><h3>У вас пока-что нет классов</h3></tr>");
+    $counter = 0;
+    foreach ($data as $item) {
+      $text .= "<tr>";
+      $text .= "<td><a href='./group/" . $item['group_id'] . "'>" . $item['group_name'] . "</a></td>";
+      $text .= "<td>" . $item['group_code'] . "</td>";
+      $text .= "<td><a class='btn' href='./groupssettings/" . $item['group_id'] . "'>Панель администратора</a></td>";
       $text .= "</tr>";
      $counter++;
      if (isset($_COOKIE['search']) && $counter>=50){
@@ -144,6 +187,7 @@ class ServiceController extends Controller{
     }
     echo $text;
   }
+
   public function actionCheck($data){
     $groupModel = new Group();
     $id_group = $data[0];

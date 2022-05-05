@@ -18,9 +18,10 @@
     define("IMG_USER", ASSETS . "/img_user");
     define("IMG_RECORD", ASSETS . "/img_record");
     define('IMG_GROUP', ASSETS . "/img_group");
-
     define("IMG_DEFAULT", "<img src='" . IMG . "/profile.png'>");
+    define("IMG_GROUP_DEFAULT", "<img src='" . IMG . "/group.png'>");
     define("ROLE_PAGE", '/mkbrain/roles');
+    define("NO_SCRIPT_PAGE", '/mkbrain/no_scripts');
     $db = array(
            'host' => 'localhost',
            'user' => 'root',

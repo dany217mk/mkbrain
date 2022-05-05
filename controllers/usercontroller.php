@@ -213,7 +213,7 @@
 
       public function actionUpload(){
         if (!is_null($this->getUserModel()->getImg()) && $this->getUserModel()->getImg() != "") {
-          unlink('./assets/img_user/' . $this->getImg()['user_img']);
+          unlink('./assets/img_user/' . $this->getUser()['user_img']);
         }
         $file = 'img';
         $filename = $this->getUserModel()->addImg();
@@ -225,7 +225,6 @@
       } else {
         echo "error";
         exit;
-        //header("Location: ./report/errorUpload");
       }
     }
     public function actionDeleteimg(){

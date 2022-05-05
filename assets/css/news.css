@@ -41,6 +41,17 @@ main > div:nth-child(2){
   width: 60%;
   box-shadow: 1px 2px 12px 0 rgb(53 0 132 / 12%);
   background: #fff;
+  position: relative;
+}
+.btn-delete {
+    background: #fff;
+    border: none;
+    position: absolute !important;
+    right: 20px;
+    top: 5px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
 }
 .list .type{
   padding: 2px;
@@ -110,6 +121,7 @@ main > div:nth-child(2){
 .form_comments input{
   border-radius: 0;
   padding: .65rem 1rem;
+  width: 70%;
 }
 .body_comments > div{
   display: flex;

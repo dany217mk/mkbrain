@@ -83,6 +83,7 @@
  }
 
 
+let cntComment = 0;
 function addComment(id, user_id, user_img, user_name, user_surname){
   let inp = document.getElementById('input_comment' + id);
   if (inp.value.trim() == '') {
@@ -97,10 +98,13 @@ function addComment(id, user_id, user_img, user_name, user_surname){
   request.addEventListener('readystatechange', function() {
     if ((request.readyState==4) && (request.status==200)) {
       if (request.responseText == "success") {
+        cntComment++;
         let date = new Date();
         let str_date = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-        let temp = '<div><a href="../view/' + user_id + '"><img src="' + user_img + '"></a><div><a href="../view/' + user_id + '">' + user_name + ' ' + user_surname + '</a><p>' + inp.value + '</p><span>' + str_date + '</span></div></div>';
+        let text = inp.value;
+        let temp = '<div><a href="../view/' + user_id + '"><img src="' + user_img + '"></a><div><a href="../view/' + user_id + '">' + user_name + ' ' + user_surname + '</a><p id="text' + cntComment + '"></p><span>' + str_date + '</span></div></div>';
          document.getElementById('comment' + id).insertAdjacentHTML('beforeend', temp);
+         document.getElementById('text' + cntComment).innerText = text;
         inp.value = '';
       } else {
         notification("Ошибка 202", 'error');
@@ -108,4 +112,26 @@ function addComment(id, user_id, user_img, user_name, user_surname){
     }
   });
   request.send(data);
+}
+
+function deleteRecord(id){
+  if (!confirm("Вы точно хотите удалить эту запись?")){
+    return false;
+  }
+  var request = createRequest();
+  var data = new FormData();
+  data.append('id', id);
+  request.open('POST','recorddeleted');
+  request.addEventListener('readystatechange', function() {
+    if ((request.readyState==4) && (request.status==200)) {
+      notification(request.responseText);
+      if (request.responseText.trim() == "success") {
+        notification("Запись удалена", 'success');
+        window.location.reload();
+      } else{
+        notification("Ошибка удаления!", 'error');
+      }
+    }
+  });
+ request.send(data);
 }

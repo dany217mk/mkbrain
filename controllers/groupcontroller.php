@@ -101,7 +101,7 @@ class GroupController extends Controller{
     $split = explode("-", $group['group_doc']);
     $doc = $split[2] . "." . $split[1] . "." . $split[0];
     $title = $group['group_name'];
-    $styles = [CSS . '/group_view.css'];
+    $styles = [CSS . '/group_view.css', CSS . '/tooltip.css'];
     $scripts = [JS . '/group_view.js'];
     require_once   './views/common/head.html';
     require_once   './views/common/header.html';
@@ -110,9 +110,216 @@ class GroupController extends Controller{
     $this->helper->outputCommonFoot($scripts);
   }
 
+  public function actionGroupssettings($data){
+    $id_group = $data[0];
+    if (!$this->groupModel->checkIfUserAdmin($id_group)) {
+      header("Location: ../report/noquery");
+      exit;
+    }
+    $group = $this->groupModel->getViewGroup($id_group);
+    $checkAllow = '';
+    if ($group['group_allow_add'] == 1) {
+      $checkAllow = 'checked';
+    }
+    $title = $group['group_name'];
+    $styles = [CSS . '/group_settings.css'];
+    $scripts = [JS . '/group_settings.js'];
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/group_settings.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
+  public function actionParticipants($data){
+    $id_group = $data[0];
+    if (!$this->groupModel->checkIfUserAdmin($id_group)) {
+      header("Location: ../report/noquery");
+      exit;
+    }
+    $title = "Участники класса";
+    $styles = [CSS . '/participants.css', CSS . '/tooltip.css'];
+    $scripts = [JS . '/participants.js'];
+    $total = $this->groupModel->countParticipants($id_group);
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/participants.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
+  public function actionParticipantrequests($data){
+    $id_group = $data[0];
+    if (!$this->groupModel->checkIfUserAdmin($id_group)) {
+      header("Location: ../report/noquery");
+      exit;
+    }
+    $title = "Заявки в класс";
+    $styles = [CSS . '/participant_requests.css'];
+    $scripts = [JS . '/participant_requests.js'];
+    $total = $this->groupModel->countParticipantsRequests($id_group);
+    require_once   './views/common/head.html';
+    require_once   './views/common/header.html';
+    require_once  './views/common/nav.php';
+    require_once  './views/participant_requests.html';
+    $this->helper->outputCommonFoot($scripts);
+  }
+
+  public function actionUpdateparticipantrequests(){
+    $id_group = $_POST['id'];
+    $text = "";
+    $total =  $this->groupModel->countParticipantsRequests($id_group);
+    $querySearch = "SELECT `user_img`, `user_name`, `user_surname`,  `user_id`, `request_id` FROM `users`
+                    LEFT JOIN `requests` ON `request_user_id` = `user_id`
+                    WHERE `user_id` != '" . $_COOKIE['uid'] . "' AND `request_group_id` = '$id_group' AND `request_status_id` = 1
+                    ORDER BY `user_surname` DESC;";
+    $queryAll = "SELECT `user_img`, `user_name`, `user_surname`,  `user_id`, `request_id` FROM `users`
+                LEFT JOIN `requests` ON `request_user_id` = `user_id`
+                WHERE `user_id` != '" . $_COOKIE['uid'] . "' AND `request_group_id` = '$id_group' AND `request_status_id` = 1
+                ORDER BY `user_surname` DESC LIMIT " . (int)$_POST['border'] . ", " . 20 . ";";
+    $funFilter = 'Helper::searchFilterFriend';
+    $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<div><h3>Заявок пока-что нет</h3></div>");
+    $counter = 0;
+    foreach ($data as $item) {
+        $text .= '<div>';
+        if (is_null($item['user_img']) || $item['user_img'] == "") {
+          $text .= '<a href="../view/' . $item['user_id'] . '"><img src="../assets/img/profile.png" alt=""></a>';
+        } else{
+              $text .= '<a href="../view/' . $item['user_id'] . '"> <img src="../assets/img_user/' . $item['user_img'] . '" alt=""></a>';
+        }
+        $text .= '<div>';
+        $text .= '<a href="../view/' . $item['user_id'] . '">' . $item['user_surname'] . ' ' . $item['user_name'] . '</a>';
+
+        $text .= '<div><button onclick="acceptRequest(\'' . $item['request_id'] . '\')">Принять заявку</button><button class="del" onclick="deleteParticipant(\'' . $item['request_id'] . '\')">Отклонить заявку</button><a href="../view/' . $item['user_id'] . '">Смотреть профиль</a></div>';
+        $text .= '</div>';
+        $text .= '</div>';
+        $counter++;
+        if (isset($_COOKIE['search']) && $counter>=50){
+          break;
+        }
+      }
+    if ($text == ""){
+      $text = "<div class='empty'>Не найдено ни одной записи</div>";
+    }
+    echo $text;
+  }
+
+  public function actionParticipantdeleted(){
+    if (isset($_POST['id'])) {
+      $res = $this->groupModel->deleteParticipant($_POST['id']);
+      if ($res) {
+        echo "success";
+      } else{
+        echo "error";
+      }
+    }
+  }
+
+  public function actionParticipantaccepting(){
+    if (isset($_POST['id'])) {
+      $res = $this->groupModel->accessParticipant($_POST['id']);
+      if ($res) {
+        echo "success";
+      } else{
+        echo "error";
+      }
+    }
+  }
+
+  public function actionUpdateparticipants(){
+    $id_group = $_POST['id'];
+    $text = "";
+    $total =  $this->groupModel->countParticipants($id_group);
+    $querySearch = "SELECT `user_img`, `user_name`, `user_surname`,  `user_id`, `request_id` FROM `users`
+                    LEFT JOIN `requests` ON `request_user_id` = `user_id`
+                    WHERE `user_id` != '" . $_COOKIE['uid'] . "' AND `request_group_id` = '$id_group' AND `request_status_id` = 2
+                    ORDER BY `user_surname` DESC;";
+    $queryAll = "SELECT `user_img`, `user_name`, `user_surname`,  `user_id`, `request_id` FROM `users`
+                LEFT JOIN `requests` ON `request_user_id` = `user_id`
+                WHERE `user_id` != '" . $_COOKIE['uid'] . "' AND `request_group_id` = '$id_group' AND `request_status_id` = 2
+                ORDER BY `user_surname` DESC LIMIT " . (int)$_POST['border'] . ", " . 20 . ";";
+    $funFilter = 'Helper::searchFilterFriend';
+    $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<div><h3>В данном классе пока-что нет участников</h3></div>");
+    $counter = 0;
+    foreach ($data as $item) {
+        $text .= '<div>';
+        if (is_null($item['user_img']) || $item['user_img'] == "") {
+          $text .= '<a href="../view/' . $item['user_id'] . '"><img src="../assets/img/profile.png" alt=""></a>';
+        } else{
+          $text .= '<a href="../view/' . $item['user_id'] . '"> <img src="../assets/img_user/' . $item['user_img'] . '" alt=""></a>';
+        }
+        $text .= '<div>';
+        $text .= '<a href="../view/' . $item['user_id'] . '">' . $item['user_surname'] . ' ' . $item['user_name'] . '</a>';
+        $text .= '</div>';
+        $text .= '<button class="btn-delete" aria-label="Удалить из группы" data-microtip-position="bottom-left" role="tooltip" onclick="deleteParticipant(\'' . $item['request_id'] . '\')"><i class="fa fa-times" aria-hidden="true"></i></button>';
+        $text .= '</div>';
+        $counter++;
+        if (isset($_COOKIE['search']) && $counter>=50){
+          break;
+        }
+      }
+    if ($text == ""){
+      $text = "<div class='empty'>Не найдено ни одной записи</div>";
+    }
+    echo $text;
+  }
+
+  public function actionUploadgroupfile(){
+    $id_group = $_POST['id_group'];
+    if (!is_null($this->groupModel->getImg($id_group)) && $this->groupModel->getImg($id_group) != "") {
+      unlink('./assets/img_group/' . $this->groupModel->getImg($id_group));
+    }
+    $file = 'img';
+    $filename = $this->groupModel->addImgGroup();
+    if (move_uploaded_file($_FILES[$file]['tmp_name'], './assets/img_group/' . $filename)){
+      $resImg = $this->groupModel->updateImg($filename, $id_group);
+      if ($resImg == 1) {
+        header("Location: ./report/successUpload");
+      }
+  } else {
+    echo "error";
+    exit;
+  }
+  }
+
+  public function actionDeletegroupimg($data){
+    $id_group = $data[0];
+    $boolDel = false;
+    if ($this->groupModel->existImg($id_group) == IMG_GROUP_DEFAULT) {
+      header("Location: ../report/noquery");
+    }
+    if ($this->groupModel->getImg($id_group) != "" && file_exists('./assets/img_group/' . $this->groupModel->getImg($id_group))) {
+     unlink('./assets/img_group/' . $this->groupModel->getImg($id_group));
+     $this->groupModel->deleteimg($id_group);
+     $boolDel = true;
+    }
+    if ($boolDel) {
+      header("location: ../report/success");
+    } else {
+      header("location: ../report/error");
+    }
+  }
+
+  public function actionUpdateallow(){
+    if (isset($_POST['allow'])) {
+      if ($_POST['allow'] == 'true') {
+        $allow = 1;
+      } else {
+        $allow = 0;
+      }
+      $res = $this->groupModel->updateAllow($allow, $_POST['id']);
+      if ($res) {
+        echo "Данные успешно отправлены";
+      } else {
+        echo "Ошибка";
+      }
+    }
+  }
+
   public function actionUpdaterecords(){
     $text = "";
     $id_group = $_POST['id_group'];
+    $adminBool = $this->groupModel->checkIfUserAdmin($id_group);
     $total = $this->groupModel->countRecords($id_group);
     $querySearch = "SELECT `record_id`, `user_name`, `user_surname`, `type_name`, `record_date`, `record_text`, `user_id`, `type_id` FROM `records`
                     LEFT JOIN `users` ON `user_id` = `record_user_id`
@@ -127,6 +334,7 @@ class GroupController extends Controller{
     $funFilter = '';
     $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<h1 class='no-records'>Здесь пока-что нет записей</h1>");
     foreach ($data as $item) {
+      $myRecordBool = $this->groupModel->checkIfRecordMy($item['record_id']);
       $imgs = $this->groupModel->getRecordImgs($item['record_id']);
       $comments = $this->groupModel->getComments($item['record_id']);
       $numLikes = $this->groupModel->getCountLikes($item['record_id']);
@@ -138,6 +346,9 @@ class GroupController extends Controller{
       $doc = $split[2] . "." . $split[1] . "." . $split[0];
       $text .= '<div class="record_block" id="record' . $item['record_id'] . '">';
       $text .= '<span class="type" id="type' . $item['type_id'] . '">' .  $item['type_name'] . '</span>';
+      if ($adminBool || $myRecordBool) {
+        $text .= '<button class="btn-delete" aria-label="Удалить запись" data-microtip-position="bottom-left" role="tooltip" onclick="deleteRecord(\'' . $item['record_id'] . '\')"><i class="fa fa-times" aria-hidden="true"></i></button>';
+      }
       $text .= '<div class="text">';
       $text .= '<p>' . $item['record_text'] . '</p>';
       $text .= '</div>';
@@ -173,7 +384,7 @@ class GroupController extends Controller{
       }
       $text .= '</div>';
       $text .= '<div class="form_comments">';
-      $text .= '<input type="text" placeholder="Ответить..." id="input_comment' . $item['record_id']  . '"><button onclick="addComment(\'' . $item['record_id'] . '\', \'' . $this->getUser()['user_id'] . '\',\'' . $this->getUserModel()->getImgWithDefault() . '\',\'' . $this->getUser()['user_name'] . '\',\'' . $this->getUser()['user_surname'] . '\')" title="' . $item['record_id'] . '" class="btn_comment"><i class="fa fa-paper-plane"></i></button>';
+      $text .= '<input type="text" placeholder="Ответить..." id="input_comment' . $item['record_id']  . '"><button onclick="addComment(\'' . $item['record_id'] . '\', \'' . $this->getUser()['user_id'] . '\',\'' . $this->getUserModel()->getImgWithDefault() . '\',\'' . $this->getUser()['user_name'] . '\',\'' . $this->getUser()['user_surname'] . '\')" title="' . $item['record_id'] . '" class="btn_comment"><i class="fa fa-circle-up"></i></button>';
       $text .= '</div>';
       $text .= '</div>';
       $text .= '</div>';
@@ -184,9 +395,20 @@ class GroupController extends Controller{
       echo $text;
   }
 
+  public function actionRecorddeleted(){
+    if (isset($_POST['id'])) {
+      $res = $this->groupModel->deleteRecord($_POST['id']);
+      if ($res) {
+        echo "success";
+      } else{
+        echo "error";
+      }
+    }
+  }
+
   public function actionNews(){
     $title = 'Новости';
-    $styles = [CSS . '/news.css'];
+    $styles = [CSS . '/news.css', CSS . '/tooltip.css'];
     $scripts = [JS . '/news.js'];
     $total = $this->groupModel->getCountAllRecords();
     require_once   './views/common/head.html';
@@ -216,6 +438,8 @@ class GroupController extends Controller{
     $funFilter = '';
     $data  = $this->helper->outputSmt($total, $queryAll, $querySearch, $funFilter, "<h1 class='no-records'>Здесь пока-что ничего нет, вам необходимо <a href='groups'>присоединиться к классу</a></h1>");
     foreach ($data as $item) {
+      $myRecordBool = $this->groupModel->checkIfRecordMy($item['record_id']);
+          $adminBool = $this->groupModel->checkIfUserAdmin($item['group_id']);
       $imgs = $this->groupModel->getRecordImgs($item['record_id']);
       $comments = $this->groupModel->getComments($item['record_id']);
       $numLikes = $this->groupModel->getCountLikes($item['record_id']);
@@ -235,6 +459,9 @@ class GroupController extends Controller{
       $text .= '<a href="group/' . $item['group_id'] . '">' .  $item['group_name'] . '</a>';
       $text .= '</div>';
       $text .= '<span class="type" id="type' . $item['type_id'] . '">' .  $item['type_name'] . '</span>';
+      if ($adminBool || $myRecordBool) {
+        $text .= '<button class="btn-delete" aria-label="Удалить запись" data-microtip-position="bottom-left" role="tooltip" onclick="deleteRecord(\'' . $item['record_id'] . '\')"><i class="fa fa-times" aria-hidden="true"></i></button>';
+      }
       $text .= '<div class="text">';
       $text .= '<p>' . $item['record_text'] . '</p>';
       $text .= '</div>';
@@ -270,7 +497,7 @@ class GroupController extends Controller{
       }
       $text .= '</div>';
       $text .= '<div class="form_comments">';
-      $text .= '<input type="text" placeholder="Ответить..." id="input_comment' . $item['record_id']  . '"><button onclick="addComment(\'' . $item['record_id'] . '\', \'' . $this->getUser()['user_id'] . '\',\'' . $this->getUserModel()->getImgWithDefaultOther() . '\',\'' . $this->getUser()['user_name'] . '\',\'' . $this->getUser()['user_surname'] . '\')" title="' . $item['record_id'] . '" class="btn_comment"><i class="fa fa-paper-plane"></i></button>';
+      $text .= '<input type="text" placeholder="Ответить..." id="input_comment' . $item['record_id']  . '"><button onclick="addComment(\'' . $item['record_id'] . '\', \'' . $this->getUser()['user_id'] . '\',\'' . $this->getUserModel()->getImgWithDefaultOther() . '\',\'' . $this->getUser()['user_name'] . '\',\'' . $this->getUser()['user_surname'] . '\')" title="' . $item['record_id'] . '" class="btn_comment"><i class="fa fa-circle-up"></i></button>';
       $text .= '</div>';
       $text .= '</div>';
       $text .= '</div>';
