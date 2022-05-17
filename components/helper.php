@@ -142,9 +142,4 @@ class Helper
       }
        return $data;
     }
-
-
-
-
-
 }

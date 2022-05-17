@@ -42,6 +42,15 @@
       $row = $this->returnAssoc($query);
       return $row['COUNT(*)'];
     }
+    
+    public function checkIfUserAdminOrg(){
+      $query = "SELECT COUNT(*) FROM `organizations`  WHERE `organization_user_id` = '" . $_COOKIE['uid'] . "'";
+      $row = $this->returnAssoc($query);
+      if ($row['COUNT(*)'] > 0){
+          return true;
+      }
+      return false;
+    }
 
     public function getCountUsersMyOrg($org){
       $query = "SELECT COUNT(*) FROM `users` WHERE `user_organization_id` = '$org'";

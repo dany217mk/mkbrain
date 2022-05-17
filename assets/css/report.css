@@ -47,7 +47,7 @@ main > div{
   color: #0056b3;
   text-decoration: underline;
 }
-.warning, .noquery, .numtry, .nopromo, .errorUpload, .numtryx, .no_organization, .admin_org, .admin_group{
+.warning, .noquery, .numtry, .nopromo, .errorUpload, .numtryx, .admin_org, .admin_group{
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
@@ -60,15 +60,15 @@ main > div{
 .error hr{
   border-color: #f5c6cb;
 }
-.noreg, .undefinedUser, .connectAdmin, .development, .technical, .noexist{
+.noreg, .undefinedUser, .connectAdmin, .development, .technical, .noexist, .no_organization{
   color: #0c5460;
   background-color: #d1ecf1;
   border-color: #bee5eb;
 }
-.noreg hr, .undefinedUser hr, .connectAdmin hr, .development hr, .technical hr, .noexist hr{
+.noreg hr, .undefinedUser hr, .connectAdmin hr, .development hr, .technical hr, .noexist hr, .no_organization hr{
   border-color: #a1dae3;
 }
-.warning hr, .noquery hr, .numtry hr, .nopromo hr,  .errorUpload hr, .numtryx hr, .no_organization hr, .admin_org hr, .admin_group hr{
+.warning hr, .noquery hr, .numtry hr, .nopromo hr,  .errorUpload hr, .numtryx hr, .admin_org hr, .admin_group hr{
   border-color: #ffe8a1;
 }
 .success,  .successUpload{

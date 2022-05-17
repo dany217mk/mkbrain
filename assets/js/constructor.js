@@ -361,6 +361,17 @@ let masBtn = [];
              this.title = counterRad;
         }
       }
+      
+      let inpAnswerCheck = document.getElementsByClassName('inpAns');
+       for (var i = 0; i < inpAnswerCheck.length; i++) {
+         inpAnswerCheck[i].oninput = function(){
+           var last = this.value.toString().slice(-1);
+           if (last == "|") {
+             notification("Символ запрещен");
+             this.value = this.value.slice(0, -1);
+           }
+         }
+       }
 
       }
 
@@ -470,8 +481,8 @@ let masBtn = [];
             var request = createRequest();
             var data = new FormData();
             data.append('ques', ques[i]);
-            data.append('answ[]', answ[i]);
-            data.append('right_answ[]', right_answ[i]);
+            data.append('answ[]', answ[i].join('|'));
+            data.append('right_answ[]', right_answ[i].join('|'));
             data.append('types_answ', types_answ[i]);
             data.append('types_ques', types_ques[i]);
             data.append('test_id', test_id);

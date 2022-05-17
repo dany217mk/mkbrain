@@ -1096,7 +1096,7 @@ header {
   width: 95%;
 }
 #banner p {
-  margin-left: 0;
+  margin-left: auto;
 }
 #banner .main_a {
   width: 80%;

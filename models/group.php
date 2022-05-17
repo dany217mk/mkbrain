@@ -338,6 +338,4 @@ class Group extends Model{
       return false;
     }
   }
-
-
 }

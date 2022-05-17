@@ -215,7 +215,9 @@ let blocks = document.getElementsByClassName('block');
             loadMoreBlock.innerHTML = '';
             boolFriend = true;
             output();
-           } else{
+           } else if (request.responseText.trim() == "admin")
+           notification("Вы являетесь администратором организации", 'warning');
+           else{
              notification("Ошибка!", 'error');
            }
          }

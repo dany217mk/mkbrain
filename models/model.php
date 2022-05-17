@@ -41,5 +41,4 @@ class Model
       public function getLastId(){
         return mysqli_insert_id($this->con);;
       }
-
 }

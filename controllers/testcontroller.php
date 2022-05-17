@@ -239,8 +239,8 @@ class TestController extends Controller{
         }
         $ques_id = $this->testModel->addQues($ques, $test_id, $types_ques, $types_answ);
         for ($i=0; $i < count($answ); $i++) {
-            $ansMas = explode(',', $answ[$i]);
-            $rgtMas = explode(',', $right_answ[$i]);
+            $ansMas = explode('|', $answ[$i]);
+            $rgtMas = explode('|', $right_answ[$i]);
             for ($j=0; $j < count($ansMas); $j++) {
               $this->testModel->addAns($ansMas[$j], $ques_id, $rgtMas[$j]);
             }

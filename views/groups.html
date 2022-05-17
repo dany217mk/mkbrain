@@ -23,6 +23,9 @@
         <li><a href="group-search">Поиск групп</a></li>
       </ul>
     </div>
+    <? if ($this->getUser()['user_role_id'] == 3 || $this->getUser()['user_role_id'] == 4): ?>
+        <a href="group_add" class='group_add_link'>Создать класс</a>
+    <? endif; ?>
     </main>
 <script>
       		let total = <?= $totalGroup; ?>;

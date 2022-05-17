@@ -78,7 +78,7 @@
         $markClass = 'four';
       } elseif ($markAvg >= 2.5) {
         $perf = "Троечник";
-        $rec = 'Неплохо, но можно и лучше, постарайтесь сконцентрироваться и попробывать ещё раз, у вас все получится, не сомневайтесь! ';
+        $rec = 'Неплохо, но можно и лучше, постарайтесь сконцентрироваться и попробовать ещё раз, у вас все получится, не сомневайтесь! ';
         $markClass = 'three';
       } elseif ($markAvg == 0) {
         $perf = "Мы пока-что не знаем какой вы ученик";
@@ -142,6 +142,10 @@
       }
     }
     public function actionAddorg(){
+      if ($this->getUserModel()->checkIfUserAdminOrg()){
+          echo "admin";
+          exit;
+      }
       if (isset($_POST['id'])){
             $res = $this->getUserModel()->updateOrg($_POST['id']);
             if ($res) {

@@ -1,3 +1,4 @@
+@media (max-width: 1020px) {
 main{
     flex-direction: column-reverse;
   }
@@ -21,7 +22,8 @@ main{
   .no-friend > a {
     width: 80%;
   }
-  }body{
+  }
+  body{
   padding-bottom: 10px;
   min-height: auto;
 }

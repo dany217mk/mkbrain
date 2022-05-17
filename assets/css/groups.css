@@ -162,7 +162,26 @@ main > div:nth-child(2){
   color: red;
   cursor: pointer;
 }
+  .group_add_link{
+    position: fixed;
+    display: block;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 60px;
+    background-image: linear-gradient(to right, var(--main), purple);
+    transition: all 0.3s ease;
+    padding: 1rem 2rem;
+    color: #fff;
+  }
+    .group_add_link:hover{
+        background-image: linear-gradient(to left, var(--main), purple);
+        color: #fff;
+        text-decoration: none;
+    }
 @media (max-width: 1020px) {
+      .group_add_link{
+        bottom: 70px;   
+      }
   main{
     flex-direction: column-reverse;
   }
