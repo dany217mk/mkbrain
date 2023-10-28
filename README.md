@@ -1,6 +1,7 @@
 __MKBrain__
 ***
 Социально-образовательная платформа MKBrain
+<a href="https://drive.google.com/drive/folders/10JjABp3Y52S5sNHJ1C8u9_yluVZ3Cy1_?usp=sharing">Демнострация работы</a>
 ***
 __Функциональность сайта - его главное приемущество__
 
