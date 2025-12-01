@@ -7,7 +7,7 @@
 ---
 
 ## Демонстрация
-- **Видео-демо:** [https://drive.google.com/drive/folders/10JjABp3Y52S5sNHJ1C8u9_yluVZ3Cy1_?usp=sharing](https://drive.google.com/drive/folders/10JjABp3Y52S5sNHJ1C8u9_yluVZ3Cy1_?usp=sharing)
+- **Видео-демо:** [https://drive.google.com/file/d/1zlUUOU4k3bSqiHgW6_V3gBDwCwWvGoLw/view?usp=sharing](https://drive.google.com/file/d/1zlUUOU4k3bSqiHgW6_V3gBDwCwWvGoLw/view?usp=sharing)
 
 ## Основная идея проекта
 
