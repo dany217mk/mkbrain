@@ -99,7 +99,7 @@ git clone https://github.com/Dany21mk/mkbrain
 
 
 ---
-Разработчик: [Москалец Данила](https://vk.com/dany_217mk)
+Разработчик: [Москалец Данила](https://t.com/moskaletsd)
 ***
    by MKStudio
 
